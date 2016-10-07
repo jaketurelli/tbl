@@ -1,0 +1,86 @@
+<?php
+
+	include('get_SESSION.php');
+
+
+	$league_name      = $_POST['leaguename'];
+	$league_pword     = $_POST['leaguepassword'];
+
+	$SPECIAL_CHARACTERS = "/[\'^£$%&*()}{@#~?><>,|=_+¬-]/";
+	if(preg_match($SPECIAL_CHARACTERS, $league_name) ){
+		echo "<script>alert('No special characters allowed.');
+					 window.location.href='createjoin.html';
+						</script>";
+	}
+
+	if(!$_POST['createleague']) {
+		echo "<script>alert('Please fill out the form.');
+					 window.location.href='createjoin.html';
+						</script>";
+	} else {
+		$query = "SELECT * FROM `league` WHERE `name` LIKE '$league_name' ";
+		$result = mysqli_query($dbc,$query) or die ("Error in query: $query " . mysqli_error($dbc));
+		
+		if (mysqli_num_rows($result)==0){
+			$league = mysqli_fetch_array($result);
+
+			$pswd_hash = password_hash($league_pword, PASSWORD_DEFAULT);
+
+			$query = "INSERT INTO `league` (`league_id`, `name`, `commissioner_id`, `password`) VALUES (NULL, '$league_name', '$USER_ID', '$pswd_hash')";
+			mysqli_query($dbc, $query ) or die(mysqli_error($dbc));
+
+			$query = "SELECT * FROM `league` WHERE `name` LIKE '$league_name' AND `password` LIKE '$pswd_hash'";
+			$result = mysqli_query($dbc,$query) or die ("Error in query: $query " . mysqli_error($dbc));
+			$league = mysqli_fetch_array($result);
+			$league_id = $league['league_id'];
+			$_SESSION['LEAGUE_ID'] = $league_id;
+			$_SESSION['LEAGUE_NAME'] = $league['name'];
+
+			$query = "SELECT * FROM `user` WHERE `user_id` LIKE '$USER_ID'";
+			$result = mysqli_query($dbc,$query) or die ("Error in query: $query " . mysqli_error($dbc));
+			$user = mysqli_fetch_array($result);
+			$_SESSION['COMMISSIONER'] = $user['username'];
+			$_SESSION['COMMISH_ID'] = $league['commissioner_id'];
+
+			$query = "UPDATE `user` SET `league_id` = '$league_id' WHERE `user`.`user_id` = '$USER_ID'";
+			mysqli_query($dbc , $query );
+
+
+
+/////////////////////////////////////////////////////////////
+			// SET DEFUALT PICKS FOR ANY CEREMONY NOT LOCKED (ALPHABETICAL SELECTION)
+			$query = "SELECT * FROM ceremony";
+			$ceremony_query = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
+
+			if(mysqli_num_rows($ceremony_query) != 0){
+				foreach($ceremony_query as $curr_ceremony){
+					// get lock time
+					$curr_lock_time = $curr_ceremony['lock_time'];
+					$curr_ceremony_num = $curr_ceremony['ceremony_number'];
+					$curr_ceremony_picks = $curr_ceremony['number_picks'];
+
+					$curr_lock_time = strtotime($curr_lock_time);
+					if($curr_lock_time > $CURRENT_TIME){
+						$query = "SELECT * FROM picks WHERE user_id = $USER_ID AND league_id = $league_id AND ceremony = $curr_ceremony_num";
+						$result = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
+						
+						if(mysqli_num_rows($result) == 0){
+							for($i = 1; $i <= $curr_ceremony_picks; $i++ ){
+								$query = "INSERT INTO picks(pick_ind, user_id, ceremony, league_id, contestant_id, pick_order, score) VALUES (NULL, $USER_ID, $curr_ceremony_num, $league_id, $i , $i, 0)";
+								$update_picks = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
+							}
+						}
+					}
+				}
+			}
+/////////////////////////////////////////
+
+			header('Location: index.php');
+			exit();
+		}else{
+			echo "<script>alert('This league name already exists.');
+					 window.location.href='createjoin.html';
+						</script>";
+		}
+	}
+?>

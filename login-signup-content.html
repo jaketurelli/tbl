@@ -1,0 +1,489 @@
+<div class="modal fade" id="signupmodal" tabindex="-1" role="dialog" aria-labelledby="SignUpModal" aria-hidden="true">
+	<div class="modal-dialog modal-sm" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4>Sign Up</h4>	
+			</div>
+			<div class="modal-body">
+				<form id="signupform" role="form" action="signup.php" onsubmit="return checkPw()" method="post">
+					<fieldset class="form-group text-center">
+						<input id = "signup-facebook" type="button" class="btn facebook" value="Facebook" >
+						<input type="button" class="btn twitter" value="Twitter">
+					</fieldset>
+					<div class="or-container">
+						<hr class="or-hr">
+						<div id="or">or</div>
+					</div>
+					<fieldset class="form-group">
+						<label>Username</label>
+						<input type="text" class="form-control" name="uname" autocomplete="new-password" value=""> <!-- change type to email when ready -->
+					</fieldset>
+					<fieldset class="form-group">
+						<label>Alias</label>
+						<input type="text" class="form-control" name="alias">
+					</fieldset>
+					<fieldset class="form-group">
+						<label>Password</label>
+						<input type="password" id="pass1" class="form-control" name="pword" autocomplete="new-password" value="">
+					</fieldset>
+					<fieldset class="form-group">
+						<label>Confirm Password</label>
+						<input type="password" id="pass2" class="form-control" value="" onChange="checkPw();">
+					</fieldset>
+					<fieldset class="form-group text-center">
+						<input type="submit" class="btn btn-pink" name="signup" value="SIGN UP">
+					</fieldset>
+					<div class="border"></div>
+					<fieldset class="form-group form-inline">
+						<label>Already have an account? </label>
+						<button type="button" class="btn-link" id="switchtologin">Login</button>
+					</fieldset>
+				</form>
+			</div>
+		</div><!-- modal-content -->
+	</div><!-- modal-dialog -->
+</div><!-- signupmodal -->
+<div class="modal fade" id="loginmodal" tabindex="-1" role="dialog" aria-labelledby="LoginModal" aria-hidden="true">
+	<div class="modal-dialog modal-sm" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4>Login</h4>	
+			</div>
+			<div class="modal-body">
+				<form id="loginform" role="form" action="login.php" method="post">
+					<fieldset class="form-group text-center">
+						<input id = "logout-facebook" type="button" class="btn facebook" value="test_fb_logout">
+						<input id = "login-facebook" type="button" class="btn facebook" value="Facebook">
+						<input type="button" class="btn twitter" value="Twitter">
+					</fieldset>
+					<div class="or-container">
+						<hr class="or-hr">
+						<div id="or">or</div>
+					</div>
+					<fieldset class="form-group">
+						<label>Email</label>
+						<input type="text" class="form-control" name="uname" autocomplete="new-password" value=""><!-- change type back to email once working -->
+					</fieldset>
+					<fieldset class="form-group">
+						<label>Password</label>
+						<input type="password" class="form-control" name="pword" autocomplete="new-password" value="">
+					</fieldset>
+					<fieldset class="form-group">
+						<label><input type="checkbox">  Remember password</label><br>
+					</fieldset>
+					<fieldset class="form-group">
+						<input type="submit" class="btn btn-pink" name="login" value="LOGIN">
+						<button type="button" class="btn-link" id="forgotpw">Forgot password</button>
+					</fieldset>
+					<div class="border"></div>
+					<fieldset class="form-group form-inline">
+						<label>Don't have an account yet? </label>
+						<button type="button" class="btn-link" id="switchtosignup">Sign up</button>
+					</fieldset>
+				</form>
+			</div>
+		</div><!-- modal-content -->
+	</div><!-- modal-dialog -->
+</div><!-- loginmodal -->
+<div class="modal fade" id="forgotmodal" tabindex="-1" role="dialog" aria-labelledby="LoginModal" aria-hidden="true"><!-- need to finish -->
+	<div class="modal-dialog modal-sm" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4>Forgot Password</h4>	
+			</div>
+			<div class="modal-body">
+				<form id="forgotform" role="form">
+					<fieldset class="form-group">
+						<label>Email</label>
+						<input type="email" class="form-control" name="" value="">
+					</fieldset>
+					<fieldset class="form-group">
+						<input type="button" class="btn btn-wide" value="RESET PASSWORD">
+					</fieldset>
+				</form>
+			</div>
+		</div><!-- modal-content -->
+	</div><!-- modal-dialog -->
+</div><!-- loginmodal -->
+
+
+<script>
+
+// ########################################################### 
+// ###################### FACEBOOK ########################### 
+// ########################################################### 
+// https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow
+
+
+// GO THROUGH THIS DOCUMENT: !!!! v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-v-
+// https://www.sammyk.me/best-practice-for-facebook-login-with-the-javascript-sdk-and-php-sdk-v4-1
+// GO THROUGH THIS DOCUMENT: !!!! ^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-^-
+
+var loginFacebookObj = document.getElementById("login-facebook");
+if (loginFacebookObj.addEventListener) {
+	//loginFacebookObj.addEventListener("click", checkLoginState, false);
+    loginFacebookObj.addEventListener("click", loginFacebook, false);
+	
+}
+
+function loginFacebook(){
+	FB.login(function(response) {
+	    if (response.authResponse) {
+	     	FB.api('/me', {fields: 'id,name,first_name,last_name,email'}, function(response) {
+	       		console.log('ID: ' + response.id );
+				console.log('First:' + response.first_name );
+				console.log('Last:' + response.last_name );
+	    		console.log('Name: ' + response.name );
+	    		console.log('Email: ' + response.email );
+
+	       		var fb_id	 	= response.id;
+	       		var first_name	= response.first_name;
+	       		var last_name 	= response.last_name;
+	       		var fullName 	= response.name;
+	       		var email 	 	= response.email;
+
+	       		$.ajax({
+					type: "POST",
+					url: "login.php",
+					data: { fb_id:    	fb_id,
+						    first:     	first_name,
+						    last:  		last_name,
+						    fullName:  	fullName,
+						    email:  	email,
+					success: function(msg){}
+						   }
+					
+				});
+			
+	     	});
+
+
+	    } else {
+	     	console.log('User cancelled login or did not fully authorize.');
+	    }
+		//window.location = "index.php";
+	}, {
+		scope: 'public_profile,email',
+		return_scopes: true
+	   }
+	);
+
+	$('#loginmodal').modal('hide');
+/*
+	$(document).ready(function() {
+		window.location.reload();
+	});
+*/
+
+}
+
+
+var signupFacebookObj = document.getElementById("signup-facebook");
+if (signupFacebookObj.addEventListener) {
+    signupFacebookObj.addEventListener("click", signupFacebook, false);
+}
+
+
+function signupFacebook(){
+	FB.login(function(response) {
+	    if (response.authResponse) {
+	     	FB.api('/me', {fields: 'id,name,first_name,last_name,email'}, function(response) {
+	       		console.log('ID: ' + response.id );
+				console.log('First:' + response.first_name );
+				console.log('Last:' + response.last_name );
+	    		console.log('Name: ' + response.name );
+	    		console.log('Email: ' + response.email );
+
+	       		var fb_id	 	= response.id;
+	       		var first_name	= response.first_name;
+	       		var last_name 	= response.last_name;
+	       		var fullName 	= response.name;
+	       		var email 	 	= response.email;
+
+	       		$.ajax({
+					type: "POST",
+					url: "signup.php",
+					data: { fb_id:    	fb_id,
+						    first:     	first_name,
+						    last:  		last_name,
+						    fullName:  	fullName,
+						    email:  	email,
+					success: function(msg){}
+						   }
+					
+				});
+			
+	     	});
+
+
+	    } else {
+	     	console.log('User cancelled login or did not fully authorize.');
+	    }
+	    //window.location = "index.php";
+
+	}, {
+		scope: 'public_profile,email',
+		return_scopes: true
+	   }
+	);
+
+	$('#signupmodal').modal('hide');
+/*
+	$(document).ready(function() {
+		window.location.reload();
+	});
+*/
+	
+}
+
+
+var logoutFacebookObj = document.getElementById("logout-facebook");
+if (logoutFacebookObj.addEventListener) {
+    logoutFacebookObj.addEventListener("click", logoutFacebook, false);
+}
+
+function logoutFacebook(){
+	FB.logout(function(response) {
+		$('#loginmodal').modal('hide');
+		window.location = "logout_facebook.php";
+		//window.location.reload();
+	});
+}
+
+window.fbAsyncInit = function() {
+	FB.init({
+		appId      	: '977910758994332',
+		//status 	 : true, 
+		xfbml      	: true,
+		version    	: 'v2.7'
+	});
+
+/*
+	FB.getLoginStatus(function(response) {
+		statusChangeCallback(response);
+	});
+*/
+
+};
+
+// Load the SDK asynchronously
+(function(d, s, id) {
+	var js, fjs = d.getElementsByTagName(s)[0];
+	if (d.getElementById(id)) return;
+	js = d.createElement(s); js.id = id;
+	js.src = "//connect.facebook.net/en_US/sdk.js";
+	fjs.parentNode.insertBefore(js, fjs);
+} (document, 'script', 'facebook-jssdk'));
+
+
+
+
+
+// This is called with the results from from FB.getLoginStatus().
+function statusChangeCallback(response) {
+	console.log('statusChangeCallback');
+	//console.log(response);
+	// The response object is returned with a status field that lets the
+	// app know the current login status of the person.
+	// Full docs on the response object can be found in the documentation
+	// for FB.getLoginStatus().
+	if (response.status === 'connected') {
+		// Logged into your app and Facebook.
+		/*console.log('Logged into bachleague and facebook');
+		var uid = response.authResponse.userID;
+		var accessToken = response.authResponse.accessToken;
+		console.log(uid);
+		console.log(accessToken);*/
+		testAPI();
+		/*FB.Event.subscribe('auth.login', function(response) {
+  			// do something with response
+  			console.log('FB.Event.subscribe:')
+  			console.log(response);
+		});*/
+	  	//testAPI();
+	} else if (response.status === 'not_authorized') {
+	  	// The person is logged into Facebook, but not your app.
+	  	//document.getElementById('status').innerHTML = 'Please log ' +
+	  	//  'into this app.';
+	  	console.log('Logged into facebook, but not bachleague');
+	  	//signupFacebook()
+	} else {
+	  	// The person is not logged into Facebook, so we're not sure if
+	  	// they are logged into this app or not.
+	  	//document.getElementById('status').innerHTML = 'Please log ' +
+	  	//  'into Facebook.';
+	  	console.log('Not logged into facebook, nor bachleague');
+	  	//loginFacebook();
+
+
+	  	// UPDATE _SESSION VARIABLE IS_FB_LOGGED_IN
+
+	}
+}
+
+// This function is called when someone finishes with the Login
+// Button.  See the onlogin handler attached to it in the sample
+// code below.
+function checkLoginState() {
+	FB.getLoginStatus(function(response) {
+	  	statusChangeCallback(response);
+	});
+}
+
+
+
+
+
+function testAPI() {
+	//console.log('Welcome!  Fetching your information.... ');
+	FB.api('/me', {fields: 'id,name,email,first_name,last_name'}, function(response) {
+		console.log('ID: ' + response.id );
+		console.log('First:' + response.first_name );
+		console.log('Last:' + response.last_name );
+	    console.log('Name: ' + response.name );
+	    console.log('Email: ' + response.email );
+  		console.log(response);
+  	//document.getElementById('status').innerHTML =
+  	//  'Thanks for logging in, ' + response.name + '!';
+	});
+}
+
+
+
+
+
+/* // HIDE LOGIN FOR NOW
+function loginFacebook(){
+	FB.login(function(response) {
+	    if (response.authResponse) {
+			///console.log('Welcome!  Fetching your information.... ');
+	     	FB.api('/me', {fields: 'id,name,first_name,last_name,email'}, function(response) {
+	     		//alert('loginFacebook Testing for ' + response.name + '.');
+	       		console.log('ID: ' + response.id );
+				console.log('First:' + response.first_name );
+				console.log('Last:' + response.last_name );
+	    		console.log('Name: ' + response.name );
+	    		console.log('Email: ' + response.email );
+
+	       		var fbName = response.name;
+	       		var fbID = response.id;
+	       		
+	       		$.ajax({
+					type: "POST",
+					url: "login_facebook.php",
+					data: "fbName=" + fbName + "&fbID=" + fbID,
+
+					success: function(msg){}
+				});
+
+	     	});
+	    } else {
+	     	console.log('User cancelled login or did not fully authorize.');
+	    }
+	    statusChangeCallback(response);
+	    $('#loginmodal').modal('hide');
+	    //window.location = "index.php";
+	}, {
+		scope: 'public_profile,email',
+		return_scopes: true
+	   }
+	);
+}
+*/
+
+// Now that we've initialized the JavaScript SDK, we call 
+// FB.getLoginStatus().  This function gets the state of the
+// person visiting this page and can return one of three states to
+// the callback you provide.  They can be:
+//
+// 1. Logged into your app ('connected')
+// 2. Logged into Facebook, but not your app ('not_authorized')
+// 3. Not logged into Facebook and can't tell if they are logged into
+//    your app or not.
+//
+// These three cases are handled in the callback function.
+
+
+
+/*
+FB.getLoginStatus(checkLoginStatus);
+// Login in the current user via Facebook and ask for email permission
+function authUser() {
+	FB.login(checkLoginStatus, {scope:'email'});
+}
+
+// Check the result of the user status and display login button if necessary
+function checkLoginStatus(response) {
+	if(response && response.status === 'connected') {
+		alert('User is authorized');
+	  
+		// Hide the login button
+		// document.getElementById('loginButton').style.display = 'none';
+	  
+		// Now Personalize the User Experience
+		console.log('Access Token: ' + response.authResponse.accessToken);
+	} else {
+		alert('User is not authorized');
+	  
+		// Display the login button
+		//document.getElementById('loginButton').style.display = 'block';
+	}
+}
+*/
+
+
+
+// Here we run a very simple test of the Graph API after login is
+// successful.  See statusChangeCallback() for when this call is made.
+
+
+
+
+
+
+/*
+function signupFacebook(){
+	FB.login(function(response) {
+	    if (response.authResponse) {
+			console.log('Welcome!  Fetching your information.... ');
+		 	FB.api('/me', function(response) {
+			  	//alert('signupFacebook Testing for , ' + response.name + '.');
+			 	//console.log('Good to see you, ' + response.name + '.');
+			 	var fbName = response.name;
+	       		var fbID = response.id;
+			 	$.ajax({
+					type: "POST",
+					url: "signup_facebook.php",
+					data: "fbName=" + fbName + "&fbID=" + fbID,
+
+					success: function(msg){}
+				});
+
+		 	});
+	    } else {
+	     console.log('User cancelled login or did not fully authorize.');
+	    }
+	    statusChangeCallback(response);
+	    $('#signupmodal').modal('hide');
+	}, {
+		scope: 'public_profile,email',
+		return_scopes: true
+	   }
+	);
+
+}
+*/
+
+
+
+
+
+// ########################################################### 
+// ################### END FACEBOOK ########################## 
+// ########################################################### 
+
+
+</script>
