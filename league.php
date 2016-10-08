@@ -327,13 +327,14 @@ include('header_content.html');
 											<h4 class="modal-title">Email league members</h4>
 										</div>
 										<div class="modal-body">
-											<form method="post" action="contact-us-send.php">
+											<form method="post" action="email-league.php">
 												<label style="display:none;">To</label>
 												<input id="email-group" name="email-group" style="display:none;">
 												<label>Email Subject</label><br>
 												<input id="email" name="email" type="email"><br>
 												<label>Message</label><br>
 												<textarea id="message" rows="4" class="message" name="message" type="text"></textarea>
+												<!-- <label><input type="checkbox"> Send me a copy of the email</input></label> -->
 												<div class="modal-footer">
 													<input id="submit" class="btn pull-right text-center" name="submit" type="submit" value="SUBMIT">
 												</div>
@@ -356,17 +357,29 @@ include('header_content.html');
 										</div>
 										<div class="modal-body">
 											<form method="post" action="contact-us-send.php">
-												<label style="display:none;">List of current league members</label>
-												<input id="email-group" name="email-group" style="display:none;">
-												<label>Email Subject</label><br>
-												<input id="email" name="email" type="email"><br>
-												<label>Message</label><br>
-												<textarea id="message" rows="4" class="message" name="message" type="text"></textarea>
+												<label>List of current league members:</label>
+												<br>
+												<label><input type="checkbox"> Name of league member</input></label><!-- JAKE list each league member -->
 												<div class="modal-footer">
-													<input id="submit" class="btn pull-right text-center" name="submit" type="submit" value="SUBMIT">
+													<a href="#" data-toggle="modal" data-target="#confirm-modal"><button>SUBMIT</button></a>
+													<input class="btn pull-right text-center" value="CANCEL"></input>
 												</div>
 											</form>
 										</div>
+									</div>
+								</div>
+							</div>
+							<div class="modal fade" id="confirm-modal" tabindex="-1" role="dialog" aria-labelledby="confirmremovemembers" aria-hidden="true">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+										<h4 class="modal-title">Confirm removal</h4>
+									</div>
+									<div class="modal-body">
+										<label>Are you sure you want to remove:</label>
+									</div>
+									<div class="modal-footer">
+										<input id="submit" class="btn pull-right text-center" name="submit" type="submit" value="SUBMIT"></input>
 									</div>
 								</div>
 							</div>
