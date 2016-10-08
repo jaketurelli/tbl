@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="350px" height="240px" viewBox="0 0 350 240" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
+    <title>trashtalk-sm</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M78.5931542,36.6889952 L141.851729,36.6889952 C151.980192,36.6889952 160.191388,28.4758839 160.191388,18.3444976 C160.191388,8.21088372 151.980443,0 141.851729,0 L71.0477921,0 C60.9193296,0 52.708134,8.21311134 52.708134,18.3444976 C52.708134,25.4004787 56.6890153,31.5242698 62.5263158,34.5931039 L62.5263158,47.7990431 L78.5931542,36.6889952 Z" id="path-1"></path>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="107.483254" height="47.7990431" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <path d="M139.864015,51.2437296 C136.762196,48.3075722 132.57448,46.507177 127.966169,46.507177 L88.1042962,46.507177 C78.5543515,46.507177 70.7942584,54.2575779 70.7942584,63.8181818 C70.7942584,73.3808879 78.5442263,81.1291866 88.1042962,81.1291866 L127.966169,81.1291866 C137.516114,81.1291866 145.276207,73.3787858 145.276207,63.8181818 C145.276207,61.0871303 144.644089,58.504069 143.518218,56.2072229 L148.822967,42.8899522 L139.864015,51.2437296 Z" id="path-3"></path>
+        <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="78.0287081" height="38.2392344" fill="white">
+            <use xlink:href="#path-3"></use>
+        </mask>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="trashtalk">
+            <g id="Trash-Talk" transform="translate(67.000000, 67.000000)">
+                <g id="Group-3" transform="translate(0.000000, 18.602871)" fill="#41D9D6">
+                    <ellipse id="Oval-1" cx="34.5215311" cy="18.1937799" rx="18.1937799" ry="18.1937799"></ellipse>
+                    <path d="M49.0172116,33.7740561 C60.5831839,40.4193073 68.576555,54.6477408 68.576555,71.1277746 C68.576555,93.9662382 0,93.9662382 0,71.1277746 C0,54.4926952 8.14448339,40.1517818 19.8867295,33.5885167 C23.2008573,38.0673863 28.5220773,40.9712503 34.5215311,40.9712503 C40.4377337,40.9712503 45.6943948,38.1474179 49.0172116,33.7740561 Z" id="Combined-Shape"></path>
+                </g>
+                <g id="Group-3" transform="translate(147.272727, 18.602871)" fill="#41D9D6">
+                    <ellipse id="Oval-1" cx="34.5215311" cy="18.1937799" rx="18.1937799" ry="18.1937799"></ellipse>
+                    <path d="M49.0172116,33.7740561 C60.5831839,40.4193073 68.576555,54.6477408 68.576555,71.1277746 C68.576555,93.9662382 0,93.9662382 0,71.1277746 C0,54.4926952 8.14448339,40.1517818 19.8867295,33.5885167 C23.2008573,38.0673863 28.5220773,40.9712503 34.5215311,40.9712503 C40.4377337,40.9712503 45.6943948,38.1474179 49.0172116,33.7740561 Z" id="Combined-Shape"></path>
+                </g>
+                <text id="$@#%!&amp;" font-family="Raleway" font-size="20" font-weight="normal" fill="#3F3F3F">
+                    <tspan x="67.6937799" y="26.7478051">$@#%!&amp;</tspan>
+                </text>
+                <use id="Combined-Shape" stroke="#252525" mask="url(#mask-2)" stroke-width="2" xlink:href="#path-1"></use>
+                <use id="Combined-Shape" stroke="#212121" mask="url(#mask-4)" stroke-width="2" xlink:href="#path-3"></use>
+                <text id="$&amp;@!" font-family="Raleway" font-size="20" font-weight="normal" fill="#3E3E3E">
+                    <tspan x="84.0473824" y="72.1973203">$&amp;@!</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

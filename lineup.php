@@ -64,9 +64,16 @@
 
 <?php
 include('header_content.html');
+if(!$IS_MOBILE){
+?>
+	<!-- THIS IS NECESSARY FOR DRAGGABLE/DROPPABLE ON DESKTOP BUT DISABLES MODAL STUFF FOR MOBILE.
+		 DO NOT INCLUDE IF ON MOBILE -->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+<?php
+}
 ?>
 	<link rel="stylesheet" href="jquery-ui.css">
-	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 	<script type="text/javascript" src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="jquery.json.min.js"></script> 
 	<script type="text/javascript" src="jquery.ui.touch-punch.min.js"></script>
@@ -250,10 +257,10 @@ include('header_content.html');
 																		}
 																		?>
 
-																			<tr class=<?php echo '"' . $curr_dragDrop_class . '"'?> id = <?php echo $curr_contestant_id ?>>
+																			<tr class=<?php echo '"' . $curr_dragDrop_class . '"'?> id = <?php echo '"' . $curr_contestant_id . '"'; ?>>
 																				<td class="td-center">
 																				<?php if($IS_MOBILE){ ?>
-																					<button class="move-btn" data-toggle="modal" data-target="#movemodal">MOVE</button>
+																					<button class="move-btn" class="move-btn" data-toggle="modal" id = <?php echo '"' . $curr_contestant_id . '"'; ?> data-target="#movemodal">MOVE</a>
 																				<?php } else { ?>
 																					<span class="glyphicon glyphicon-menu-hamburger"></span>
 																				<?php } ?>
@@ -305,10 +312,10 @@ include('header_content.html');
 																		$curr_status = 'IR';
 																	}
 																	?>
-																	<tr class=<?php echo '"' . $curr_dragDrop_class . '"'?> id = <?php echo $curr_contestant_id?>>
+																	<tr class=<?php echo '"' . $curr_dragDrop_class . '"'?> id = <?php echo '"' . $curr_contestant_id . '"';?>>
 																		<td class="td-center">
 																		<?php if($IS_MOBILE){ ?>
-																			<button class="move-btn" data-toggle="modal" data-target="#movemodal">MOVE</button>
+																			<button class="move-btn" data-toggle="modal" id = <?php echo '"' . $curr_contestant_id . '"'; ?> data-target="#movemodal">MOVE</button>
 																		<?php } else { ?>
 																			<span class="glyphicon glyphicon-menu-hamburger"></span>
 																		<?php } ?>
@@ -449,13 +456,77 @@ include('header_content.html');
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aroa-hidden="true">&times;</span></button>
 					<h4 class="modal-title" id="moveContestantsModal">Adjust Lineup</h4>
 				</div>
-				<div class="modal-body">
-					<h4>Moving:</h4>
-					<h4>Choose replacement:</h4>
+				<div id = "modal-replace" class="modal-body">
+					
+					This data is replaced by ajax
+					
 				</div>
 			</div>
 		</div>
 	</div>
+
+
+
+
+	<script>
+		// THIS UPDATES THE MOBILE MODAL LINEUP SELECTION HTML
+		$('#movemodal').on('show.bs.modal', function(e) {
+			//PASSED USER_ID, LEAGUE_ID, CEREMONY, CONTESTANT_ID IN ORDER TO PROPERLY SHOW BENCHED PLAYERS 
+			// https://openenergymonitor.org/emon/node/107
+			var $modal = $(this),
+			contestant_id = e.relatedTarget.id;
+			// QUERY CONTESTANT ID FOR STATUS, IMG, NAME
+			// NEED CONTESTANT ID, USER ID, CEREMONY ID IN ORDER TO SHOW BENCHED
+		    //-----------------------------------------------------------------------
+		    // 2) Send a http request with AJAX http://api.jquery.com/jQuery.ajax/
+		    //-----------------------------------------------------------------------
+		    $.ajax({                                      
+				url: 'lineup_mobile_modal.php',    	//the script to call to get data          
+				type: "GET",
+				data: { contestant_id:  contestant_id,
+					},                        		//you can insert url argumnets here to pass to api.php
+				                               		//for example "id=5&parent=6"
+				dataType: 'json',             		//data format      
+				success: function(data)         	//on recieve of reply
+				{
+
+				// SHOW SELECTED CONTESTANT
+				var selectedStatus = "A"; // default active
+				if (data[0][7] != 0) {
+					selectedStatus = "IR";
+				}
+				var selectedImage = 'img/lineup/'+data[0][6];
+				var selectedName = data[0][1];
+				var htmlString = '<h4>Moving:</h4>'+
+									'<table>'+
+										'<tr>'+
+											'<td class="td-center">'+selectedStatus+'</td><td><img class = "lineup-img" src="'+selectedImage+'"/>'+ selectedName+'</td>'+
+										'</tr>'+
+									'</table>';
+
+				// SHOW BENCHED CONTESTANTS TO REPLACE WITH
+				var status = "A"; // active by default
+				// start at i=1 (2nd index) to start showing contestants other than that seleceted (index = 0)
+				htmlString += 	'<h4>Replace With:</h4>'+
+									'<table>';
+				for (i = 1; i <= data.length-1; i++) { 
+					if (data[i][7] != 0) {
+						status = "IR";
+					}
+				    htmlString += 	'<tr>'+
+				    					'<td class="td-center">'+status+'</td><td><img class = "lineup-img" src="'+'img/lineup/'+data[i][6]+'"/>'+ data[i][1]+'</td>'+
+				    				'</tr>';
+				}
+				htmlString += 	"</table>";
+
+				// UPDATE MODAL HTML
+				$('#modal-replace').html(htmlString);
+				}
+		    });
+		});
+	</script> 
+
+
 
 	<script type = "text/javascript">
 		// https://www.fourfront.us/blog/store-html-table-data-to-javascript-array

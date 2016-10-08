@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="350px" height="240px" viewBox="0 0 350 240" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
+    <title>victory-sm</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="victory">
+            <g id="Victory" transform="translate(82.000000, 65.000000)">
+                <g id="Trophy" transform="translate(111.961165, 0.000000)">
+                    <ellipse id="Oval-21" stroke="#FFD341" stroke-width="5" transform="translate(54.184167, 27.522496) rotate(42.000000) translate(-54.184167, -27.522496) " cx="54.1841666" cy="27.5224957" rx="11.7378641" ry="15.9514563"></ellipse>
+                    <ellipse id="Oval-21" stroke="#FFD341" stroke-width="5" transform="translate(19.271545, 27.522496) scale(-1, 1) rotate(38.000000) translate(-19.271545, -27.522496) " cx="19.2715452" cy="27.5224957" rx="11.7378641" ry="15.9514563"></ellipse>
+                    <path d="M27.0873786,49.2593247 L27.0873786,34.5817782 C17.8916784,30.658656 11.4368932,21.4526415 11.4368932,10.7212947 C11.4368932,-3.57376491 62.6019417,-3.57376491 62.6019417,10.7212947 C62.6019417,21.2169282 56.4276001,30.2535012 47.553399,34.3156552 L47.5533981,49.2593247 C56.4180114,51.2703313 62.6019417,55.8140285 62.6019417,61.0970874 C62.6019417,68.2446172 12.038835,68.2446172 12.038835,61.0970874 C12.038835,55.8140285 18.2227653,51.2703313 27.0873786,49.2593247 Z" id="Combined-Shape" fill="#FFDE71"></path>
+                </g>
+                <g id="Group-3" transform="translate(0.000000, 7.223301)" fill="#41D9D6">
+                    <ellipse id="Oval-1" cx="65.4946063" cy="21.1933657" rx="21.1933657" ry="21.1933657"></ellipse>
+                    <path d="M82.3801715,39.3423425 C95.8530112,47.0831881 105.164239,63.6574457 105.164239,82.854522 C105.164239,109.458335 25.2815534,109.458335 25.2815534,82.854522 C25.2815534,63.4768378 34.7688076,46.771556 48.4469832,39.1262136 C52.307507,44.3435088 58.50603,47.7261293 65.4946063,47.7261293 C72.3862058,47.7261293 78.5095261,44.4367351 82.3801715,39.3423425 Z" id="Combined-Shape"></path>
+                    <rect id="Rectangle-19" transform="translate(109.071703, 39.090822) rotate(-43.000000) translate(-109.071703, -39.090822) " x="85.8217033" y="31.1903364" width="46.5" height="15.8009709" rx="7.90048544"></rect>
+                    <rect id="Rectangle-19" transform="translate(22.392092, 41.498589) rotate(43.000000) translate(-22.392092, -41.498589) " x="-0.857908326" y="33.5981034" width="46.5" height="15.8009709" rx="7.90048544"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
