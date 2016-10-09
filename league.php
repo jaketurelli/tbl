@@ -292,6 +292,33 @@ include('header_content.html');
 					</div>
 				</div>
 			<!--</div> end of container -->
+<a href="#" data-toggle="modal" data-target="#remove-league-modal">Remove league members</a>
+							<div class="modal fade" id="remove-league-modal" tabindex="-1" role="dialog" aria-labelledby="removeleaguemembers" aria-hidden="true">
+								<div class="modal-dialog" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+											<h4 class="modal-title">Remove league members</h4>
+										</div>
+										<div class="modal-body">
+											<form method="post" action="contact-us-send.php">
+												<label>List of current league members:</label>
+												<br>
+												<label><input type="checkbox"> Name of league member</input></label><!-- JAKE list each league member -->
+												<div class="modal-footer">
+													<a href="#" data-toggle="modal" data-target="#confirm-modal"><button>SUBMIT</button></a>
+													<input class="btn pull-right text-center" value="CANCEL"></input>
+													<button id="test" class="btn">TESt</button>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+
+			
 		</div><!-- end of container fluid -->
 
 		<?php
@@ -336,7 +363,7 @@ include('header_content.html');
 												<textarea id="message" rows="4" class="message" name="message" type="text"></textarea>
 												<!-- <label><input type="checkbox"> Send me a copy of the email</input></label> -->
 												<div class="modal-footer">
-													<input id="submit" class="btn pull-right text-center" name="submit" type="submit" value="SUBMIT">
+													<input id="submit-email-league" class="btn pull-right text-center" name="submit" type="submit" value="SUBMIT">
 												</div>
 											</form>
 										</div>
@@ -363,6 +390,7 @@ include('header_content.html');
 												<div class="modal-footer">
 													<a href="#" data-toggle="modal" data-target="#confirm-modal"><button>SUBMIT</button></a>
 													<input class="btn pull-right text-center" value="CANCEL"></input>
+													<button id="test" class="btn">TESt</button>
 												</div>
 											</form>
 										</div>
@@ -717,5 +745,12 @@ include('header_content.html');
 	include('footer.html');
 	include('login-signup-content.html');
 	?>
+	<script type="text/javascript">
+		$(function(){
+    		$(document).on("click", "#test", function(event){
+        		alert( "GO" ); 
+    		}); 
+		});
+	</script>
 </body>
 </html>
