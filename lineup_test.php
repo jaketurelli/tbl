@@ -151,15 +151,17 @@ if(!$IS_MOBILE){
 						</div>
 						<!-- <table>
 							<tbody>
-								<tr id=<?php echo '"' . $LEAGUE_ID . '"' ?>><td><button>butt</button></td><td><?php echo '"' . $LEAGUE_ID . '"' ?></td><td><img src="img/derek.jpg" /></td></tr>
+								<tr id=<?php echo '"' . $LEAGUE_ID . 'poo"' ?>><td><button>butt</button></td><td><?php echo '"' . $LEAGUE_ID . '"' ?></td><td><img src="img/derek.jpg" /></td></tr>
 							
 								<tr id=<?php echo '"' . $LEAGUE_ID . '1"'?>><td><button>butt2</button></td><td><img src="img/grant.jpg" /></td><td><?php echo '"' . $LEAGUE_ID . '"'
 						?></td></tr>
 							</tbody>
-						</table> -->
+						</table>  -->
 						<div class="row row-bg">
+
 							<div class="col-md-12">
-								<nav class="ceremony-nav">
+
+								<!-- <nav class="ceremony-nav">
 									<ul class="nav nav-tabs" id="ceremonytabs">
 										<?php
 											if ($LEAGUE_ID > -1){
@@ -187,9 +189,10 @@ if(!$IS_MOBILE){
 											}
 										?>
 									</ul>
-								</nav>
+								</nav>  -->
 								<div class="tab-content" id = "ceremonypages">
-									<?php
+
+									<!-- <?php
 									if ($LEAGUE_ID > -1){
 										foreach($TABLE_CEREMONY as $this_ceremony){
 											$this_ceremony_num = $this_ceremony['ceremony_number'];
@@ -213,19 +216,23 @@ if(!$IS_MOBILE){
 												$this_tab_class = 'tab-pane';
 											}
 										
-									?>	
+									?>	  -->
 								
-											
-											<div class=<?php echo '"'. $this_tab_class. '"'?> id= <?php echo '"ceremony' . $this_ceremony_num . '"'?>>  
-												<div class="row">
+											<div class="5" id= "ceremony5">> 
+											<!-- <div class=<?php echo '"'. $this_tab_class. '"'?> id= <?php echo '"ceremony' . $this_ceremony_num . '"'?>>   -->
+												<!-- <div class="row">
 													<div class="col-md-12">
 														<input class="btn btn-pink btn-submit" name = "submitPicks" onclick = "submitPicks()" type = "button"  value = <?php echo $curr_button_text . $curr_button_disable ?> >
 													</div>
-												</div>
-												<tr id=<?php echo '"' . $LEAGUE_ID . '"' ?>><td><button>butt</button></td><td><?php echo '"' . $LEAGUE_ID . '"' ?></td><td>poop</td></tr>
+												</div> -->
+
+<table>
+<tbody>
+												<tr id=<?php echo '"' . $LEAGUE_ID . 'poo"' ?>><td><button>butt</button></td><td><?php echo '"' . $LEAGUE_ID . '"' ?></td><td>poop</td></tr>
 							
 								<tr id=<?php echo '"' . $LEAGUE_ID . '1"'?>><td><button>butt2</button></td><td>poop</td><td><?php echo '"' . $LEAGUE_ID . '"'
 						?></td></tr>
+						</tbody></table>
 												<table id= <?php echo '"roster_ceremony' . $this_ceremony_num . '"'?> class="table lineup-table">
 													<thead>
 														<tr>
@@ -422,11 +429,8 @@ if(!$IS_MOBILE){
 	<?php
 	}else{
 	?>
-		<div class="container-fluid">
+		<!-- <div class="container-fluid">
 			<div class="container">
-				<!--<div class="row text-center preview-title">
-					<h3>trash talk</h3>
-				</div>-->
 				<div class="row text-center preview-cta">
 					<h1 class="preview-title">Start playing The Bach League with your friends today!</h1>
 					<p>Sign up or login to start playing The Bach League</p>
@@ -458,7 +462,7 @@ if(!$IS_MOBILE){
 
 	<?php
 	}
-	?>
+	?> -->
 	<?php
 	include('footer.html');
 	include('login-signup-content.html');
@@ -717,7 +721,7 @@ if(!$IS_MOBILE){
 		$(function(){
 			$(document).on("click","#test-btn",function(event){
 				alert('pooooooo');
-				$("#9").replaceWith($("#11"));
+				$("#51").replaceWith($("#5poo"));
 			});
 		});
 	});

@@ -222,10 +222,11 @@ if(!$IS_MOBILE){
 														<input class="btn btn-pink btn-submit" name = "submitPicks" onclick = "submitPicks()" type = "button"  value = <?php echo $curr_button_text . $curr_button_disable ?> >
 													</div>
 												</div>
-												<tr id=<?php echo '"' . $LEAGUE_ID . '"' ?>><td><button>butt</button></td><td><?php echo '"' . $LEAGUE_ID . '"' ?></td><td>poop</td></tr>
+												<table><tbody>
+												<tr id=<?php echo '"' . $this_ceremony_num . 'poo"' ?>><td><button>butt</button></td><td><?php echo '"' . $this_ceremony_num . '"' ?></td><td>poop</td></tr>
 							
-								<tr id=<?php echo '"' . $LEAGUE_ID . '1"'?>><td><button>butt2</button></td><td>poop</td><td><?php echo '"' . $LEAGUE_ID . '"'
-						?></td></tr>
+								<tr id=<?php echo '"' . $this_ceremony_num . '1"'?>><td><button>butt2</button></td><td>poop</td><td><?php echo '"' . $this_ceremony_num . '"'
+						?></td></tr></tbody></table>
 												<table id= <?php echo '"roster_ceremony' . $this_ceremony_num . '"'?> class="table lineup-table">
 													<thead>
 														<tr>
@@ -717,7 +718,7 @@ if(!$IS_MOBILE){
 		$(function(){
 			$(document).on("click","#test-btn",function(event){
 				alert('pooooooo');
-				$("#9").replaceWith($("#11"));
+				$("#5poo").replaceWith($("#51"));
 			});
 		});
 	});
