@@ -17,29 +17,28 @@ include('header_content.html');
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</a>
-			<a class="navbar-brand navbar-brand-centered" href="index.php">The Bach League</a>
+			<a class="navbar-brand navbar-brand-centered" href="index.php"><img src="img/logo.png" alt="brand-image" /></a>
 			<ul class="nav pull-right" style="text-align:right">
 				<?php 
 				if($IS_SIGNED_IN){
 				?>
-					<li><a class="logout" href="logout.php">logout</a></li>
+					<li style="display:none" class="loginnav"><a class="logout" href="logout.php">Logout</a></li>
 				<?php
 				}else{
 				?>
-					<li style="display:none" class="loginnav"><a data-toggle="modal" data-target="#loginmodal" href="#">login</a></li>
+					<li style="display:none" class="loginnav"><a data-toggle="modal" data-target="#loginmodal" href="#">Login</a></li>
 				<?php
 				}
 				?>
 			</ul>
 		</div>
-		<div class=" navbar-collapse overlay">
+		<div class=" navbar-collapse overlay navbar-right">
 			<ul class="nav navbar-nav nav-pills">
-				<li><a href="index.php">Home</a></li>
-				<li><a href="league.php">League</a></li>
-				<li><a href="lineup.php">Lineup</a></li>
-				<li class="active"><a href="trashtalk.php">Trash Talk</a></li>
-				<li><a href="contestants.php">Contestants</a></li>
-				<li><a href="blog.php">Blog</a></li>
+				<li><a href="league.php">LEAGUE</a></li>
+				<li><a href="lineup.php">LINEUP</a></li>
+				<li class="active"><a href="trashtalk.php">TRASH TALK</a></li>
+				<li><a href="contestants.php">CONTESTANTS</a></li>
+				<li><a href="blog.php">BLOG</a></li>
 				<?php
 				if($IS_ADMIN){
 				?>

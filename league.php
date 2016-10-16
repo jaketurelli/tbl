@@ -292,33 +292,6 @@ include('header_content.html');
 					</div>
 				</div>
 			<!--</div> end of container -->
-<a href="#" data-toggle="modal" data-target="#remove-league-modal">Remove league members</a>
-							<div class="modal fade" id="remove-league-modal" tabindex="-1" role="dialog" aria-labelledby="removeleaguemembers" aria-hidden="true">
-								<div class="modal-dialog" role="document">
-									<div class="modal-content">
-										<div class="modal-header">
-											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-												<span aria-hidden="true">&times;</span>
-											</button>
-											<h4 class="modal-title">Remove league members</h4>
-										</div>
-										<div class="modal-body">
-											<form method="post" action="contact-us-send.php">
-												<label>List of current league members:</label>
-												<br>
-												<label><input type="checkbox"> Name of league member</input></label><!-- JAKE list each league member -->
-												<div class="modal-footer">
-													<a href="#" data-toggle="modal" data-target="#confirm-modal"><button>SUBMIT</button></a>
-													<input class="btn pull-right text-center" value="CANCEL"></input>
-													<button id="test" class="btn">TESt</button>
-												</div>
-											</form>
-										</div>
-									</div>
-								</div>
-							</div>
-
-			
 		</div><!-- end of container fluid -->
 
 		<?php
@@ -332,18 +305,18 @@ include('header_content.html');
 							<table id="leagueinfo">
 								<tbody>
 									<tr>
-										<td class="leagueinfotitle">LEAGUE</td><td class="leagueinput"><?php echo $LEAGUE_NAME ?></td>
+										<td class="leagueinfotitle white-text">LEAGUE</td><td class="leagueinput"><?php echo $LEAGUE_NAME ?></td>
 									</tr>
 									<tr>
-										<td class="leagueinfotitle">COMMISSIONER</td><td class="leagueinput"><?php echo $COMMISSIONER ?></td>
+										<td class="leagueinfotitle white-text">COMMISSIONER</td><td class="leagueinput"><?php echo $COMMISSIONER ?></td>
 									</tr>
 								</tbody>
 							</table>
 							<hr>
-							<h5>League Commissioner Tools</h5>
+							<h5 class="white-text">League Commissioner Tools</h5>
 <a href="https://mail.google.com/mail/?view=cm&fs=1&to=someone@gmail.com&su=subject_here&body=body_here">email test</a>
 
-							<a href="#" data-toggle="modal" data-target="#email-league-modal">Email league members</a><br>
+							<a class="white-text" href="#" data-toggle="modal" data-target="#email-league-modal">Email league members</a><br>
 							<div class="modal fade" id="email-league-modal" tabindex="-1" role="dialog" aria-labelledby="emailleague" aria-hidden="true">
 								<div class="modal-dialog" role="document">
 									<div class="modal-content">
@@ -370,9 +343,9 @@ include('header_content.html');
 									</div>
 								</div>
 							</div>
-							<a href="#">Add league members</a>
+							<a class="white-text" href="#">Add league members</a>
 							
-							<a href="#" data-toggle="modal" data-target="#remove-league-modal">Remove league members</a>
+							<a class="white-text" href="#" data-toggle="modal" data-target="#remove-league-modal">Remove league members</a>
 							<div class="modal fade" id="remove-league-modal" tabindex="-1" role="dialog" aria-labelledby="removeleaguemembers" aria-hidden="true">
 								<div class="modal-dialog" role="document">
 									<div class="modal-content">
@@ -388,32 +361,33 @@ include('header_content.html');
 												<br>
 												<label><input type="checkbox"> Name of league member</input></label><!-- JAKE list each league member -->
 												<div class="modal-footer">
-													<a href="#" data-toggle="modal" data-target="#confirm-modal"><button>SUBMIT</button></a>
+													<p>By clicking Submit, you will remove the user from the league and all of their saved ceremonies.</p>
+													<a href="#" ><button>SUBMIT</button></a>
 													<input class="btn pull-right text-center" value="CANCEL"></input>
-													<button id="test" class="btn">TESt</button>
+													
 												</div>
 											</form>
 										</div>
 									</div>
 								</div>
 							</div>
-							<div class="modal fade" id="confirm-modal" tabindex="-1" role="dialog" aria-labelledby="confirmremovemembers" aria-hidden="true">
-								<div class="modal-content">
+
+							<a class="white-text" href="#">Adjust scoring</a>
+							<div class="modal fade" id="adjust-scoring-modal" tabindex="-1" role="dialog" aria-labelledby="adjustscoring" aria-hidden="true">
+								<div class="modal-dialog" role="document">
 									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-										<h4 class="modal-title">Confirm removal</h4>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+										<h4 class="modal-title">Adjust Scoring</h4>
 									</div>
 									<div class="modal-body">
-										<label>Are you sure you want to remove:</label>
-									</div>
-									<div class="modal-footer">
-										<input id="submit" class="btn pull-right text-center" name="submit" type="submit" value="SUBMIT"></input>
+										
 									</div>
 								</div>
 							</div>
-							<a href="#">Adjust scoring</a>
 
-							<a href="#" data-toggle="modal" data-target="#league-announcement-modal">Write league announcement</a>
+							<a class="white-text" href="#" data-toggle="modal" data-target="#league-announcement-modal">Write league announcement</a>
 							<div class="modal fade" id="league-announcement-modal" tabindex="-1" role="dialog" aria-labelledby="leagueannouncementmodal" aria-hidden="true">
 							  	<div class="modal-dialog" role="document">
 							   		<div class="modal-content">
@@ -435,7 +409,7 @@ include('header_content.html');
 						  		</div><!-- /.modal-dialog -->
 							</div><!-- /.modal -->
 							<hr>
-							<h3 class="standingsheader">Standings</h3>
+							<h3 class="standingsheader white-text">Standings</h3>
 							<table id="standings">
 								<tbody>
 								<?php
@@ -745,12 +719,6 @@ include('header_content.html');
 	include('footer.html');
 	include('login-signup-content.html');
 	?>
-	<script type="text/javascript">
-		$(function(){
-    		$(document).on("click", "#test", function(event){
-        		alert( "GO" ); 
-    		}); 
-		});
-	</script>
+	
 </body>
 </html>

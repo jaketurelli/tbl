@@ -33,7 +33,7 @@ include('header_content.html');
 				?>
 			</ul>
 		</div>
-		<div class="navbar-collapse overlay navbar-right">
+		<div class=" navbar-collapse overlay navbar-right">
 			<ul class="nav navbar-nav nav-pills">
 				<li><a href="league.php">League</a></li>
 				<li><a href="lineup.php">Lineup</a></li>

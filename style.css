@@ -525,7 +525,7 @@ nav.navbar.nonhome {
 	font-size: 14px;
 	text-shadow: none;
 	color: #5A5A5A;
-	font-weight: 400;
+	font-weight: 600;
 	letter-spacing: 1.2px;
 /*	padding: 5px;
 	margin: 0 10px;*/
@@ -557,7 +557,8 @@ nav.navbar.nonhome {
 /*===LEAGUE===*/
 
 #sidebar {
-	background-color: rgba(226,243,243,1);
+	background-color: #657278;
+	color: #fff;
 	float: left;
 	height: 100vh;
 	/*height: 100vh;
@@ -576,7 +577,10 @@ nav.navbar.nonhome {
 #standings tr td:nth-child(4) {
 	width: 30%;
 }*/
-
+.white-text {
+	color: #fff!important;
+	font-weight: 600;
+}
 #tiledcontent {
 	margin-top: 20px;
 }
@@ -598,6 +602,7 @@ nav.navbar.nonhome {
 	padding: 25px 20px 10px 20px;
 }
 .place {
+	font-weight: 700;
 	text-align: right;
 	padding: 15px;
 }
@@ -652,7 +657,7 @@ nav.navbar.nonhome {
 /*===LINEUP===*/
 
 #lineup-bg, .row-bg {
-	background-color: #dddddd; /*rgba(226,243,243,1);*/
+	background-color: #007E89; /*rgba(226,243,243,1);*/
 }
 #lineup-content, .tab-content {
 	background-color: #fff;
@@ -688,8 +693,8 @@ nav.navbar.nonhome {
 }
 .lineup-table > thead > tr > th {
 	border: 2px solid white !important;
-	background-color: #E2F3F3;
-	color: #303030;
+	background-color: #657278;
+	color: #fff;
 	font-weight: 400;
 	font-size: 14px;
 	padding: 8px !important;
@@ -754,8 +759,8 @@ nav.navbar.nonhome {
 }
 .ceremony-schedule th {
 	border: 2px solid white !important;
-	background-color: #E2F3F3;
-	color: #303030;
+	background-color: #657278;
+	color: #fff;
 	font-weight: 400;
 	font-size: 12px;
 	padding: 6px 8px !important;
@@ -807,7 +812,7 @@ nav.navbar.nonhome {
 /*===TRASH TALK===*/
 
 #trashtalk {
-	background-color: #dddddd; /*rgba(226,243,243,1);*/
+	background-color: #007E89; /*rgba(226,243,243,1);*/
 }
 #trashtalk > .container {
 	background-color: #fff;
@@ -862,7 +867,7 @@ textarea:focus {
 	text-align: right;	
 }
 .chat-me-bg {
-	background-color: #26BEBC;
+	background-color: #00C5D5;
 	color: #fff;
 	border-radius: 10px;	
 	line-height: 2em!important;
