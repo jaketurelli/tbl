@@ -161,7 +161,7 @@ if(!$IS_MOBILE){
 
 							<div class="col-md-12">
 
-								<!-- <nav class="ceremony-nav">
+								<nav class="ceremony-nav">
 									<ul class="nav nav-tabs" id="ceremonytabs">
 										<?php
 											if ($LEAGUE_ID > -1){
@@ -189,10 +189,10 @@ if(!$IS_MOBILE){
 											}
 										?>
 									</ul>
-								</nav>  -->
+								</nav>
 								<div class="tab-content" id = "ceremonypages">
 
-									<!-- <?php
+									<?php
 									if ($LEAGUE_ID > -1){
 										foreach($TABLE_CEREMONY as $this_ceremony){
 											$this_ceremony_num = $this_ceremony['ceremony_number'];
@@ -216,15 +216,15 @@ if(!$IS_MOBILE){
 												$this_tab_class = 'tab-pane';
 											}
 										
-									?>	  -->
+									?>
 								
 											<div class="5" id= "ceremony5">> 
-											<!-- <div class=<?php echo '"'. $this_tab_class. '"'?> id= <?php echo '"ceremony' . $this_ceremony_num . '"'?>>   -->
-												<!-- <div class="row">
+											<div class=<?php echo '"'. $this_tab_class. '"'?> id= <?php echo '"ceremony' . $this_ceremony_num . '"'?>>
+												<div class="row">
 													<div class="col-md-12">
 														<input class="btn btn-pink btn-submit" name = "submitPicks" onclick = "submitPicks()" type = "button"  value = <?php echo $curr_button_text . $curr_button_disable ?> >
 													</div>
-												</div> -->
+												</div>
 
 <table>
 <tbody>
@@ -277,7 +277,7 @@ if(!$IS_MOBILE){
 																		}
 																		?>
 
-																			<tr class=<?php echo '"' . $curr_dragDrop_class . '"'?> id = <?php echo '"' . $curr_contestant_id . '"'; ?>>
+																			<tr class=<?php echo '"' . $curr_dragDrop_class . '"'?> id = <?php echo '"' .  $curr_contestant_id . '"'; ?>>
 																				<td class="td-center">
 																				<?php if($IS_MOBILE){ ?>
 																					<button class="move-btn" class="move-btn" data-toggle="modal" id = <?php echo '"' . $curr_contestant_id . '"'; ?> data-target="#movemodal">MOVE</a>

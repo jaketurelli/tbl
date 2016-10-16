@@ -271,7 +271,7 @@ if(!$IS_MOBILE){
 																		}
 																		?>
 
-																			<tr class=<?php echo '"' . $curr_dragDrop_class . '"'?> id = <?php echo '"' . $curr_contestant_id . '"'; ?>>
+																			<tr class=<?php echo '"' . $curr_dragDrop_class . '"'?> id = <?php echo '"' . $curr_picks_ceremony . '-' . $curr_contestant_id . '"'; ?>>
 																				<td class="td-center">
 																				<?php if($IS_MOBILE){ ?>
 																					<button class="move-btn" class="move-btn" data-toggle="modal" id = <?php echo '"' . $curr_contestant_id . '"'; ?> data-target="#movemodal">MOVE</a>
@@ -728,7 +728,7 @@ if(!$IS_MOBILE){
 		$(function(){
 			$(document).on("click",".swap-mobile",function(event){
 				// alert('boo');
-				$("#poo1").replaceWith($("#poo2"));
+				// $("#poo1").replaceWith($("#poo2"));
 				var m_move_id=$("div.contestant-to-move").prop("id");
 				alert(m_move_id);
 				var move_id=m_move_id.split("-")[1];
@@ -748,8 +748,8 @@ if(!$IS_MOBILE){
 
 				//div1.html(tdiv2.html());
 				//div2.html(tdiv1.html());
-				//div1.replaceWith(tdiv2);
-				//div2.replaceWith(tdiv1);
+				div1.replaceWith(tdiv2);
+				div2.replaceWith(tdiv1);
 
 				alert(tdiv1);
 			})
