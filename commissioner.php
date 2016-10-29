@@ -115,116 +115,145 @@ include('header_content.html');
 		}else{
 		?>
 		<div class="container-fluid">
-			<div class="row">
-				<h3>League Commissioner Tools</h3>
-				<div id="accordion" role="tablist" aria-multiselectable="true">
-				  	<div class="panel">
-				    	<div class="card-header" role="tab" id="headingOne">
-				      		<h5 class="mb-0">
-				        	<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-				          	Email league members
-				        	</a>
-				      		</h5>
-				    	</div>
+		<!-- <ul class="nav nav-tabs">
+   <li><a href="#a" data-toggle="tab">a</a></li>
+   <li><a href="#b" data-toggle="tab">b</a></li>
+   <li><a href="#c" data-toggle="tab">c</a></li>
+   <li><a href="#d" data-toggle="tab">d</a></li>
+</ul>
 
-					    <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
-					      	<div class="card-block">
-					        	<div class="modal-body">
-									<form method="post" action="email-league.php">
-										<label style="display:none;">To</label>
-										<input id="email-group" name="email-group" style="display:none;">
-										<label>Email Subject</label><br>
-										<input id="email" name="email" type="email"><br>
-										<label>Message</label><br>
-										<textarea id="message" rows="4" class="message" name="message" type="text"></textarea>
-										<!-- <label><input type="checkbox"> Send me a copy of the email</input></label> -->
-										<div class="modal-footer">
-											<input id="submit-email-league" class="btn pull-right text-center" name="submit" type="submit" value="SUBMIT">
-										</div>
-									</form>
-								</div>
-					      	</div>
-					    </div>
-				  	</div>
-				  	<div class="card">
-				    	<div class="card-header" role="tab" id="headingTwo">
-				      		<h5 class="mb-0">
-			        		<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-				         	Add league members
-				        	</a>
-				      		</h5>
-				    	</div>
-					    <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
-					      	<div class="card-block">
-					        	<form method="post" action="contact-us-send.php">
-									<label>List of current league members:</label>
-									<br>
-									<label><input type="checkbox"> Name of league member</input></label><!-- JAKE list each league member -->
-									<div class="modal-footer">
-										<p>By clicking Submit, you will remove the user from the league and all of their saved ceremonies.</p>
-										<a href="#" ><button>SUBMIT</button></a>
-										<input class="btn pull-right text-center" value="CANCEL"></input>
-									
-									</div>
-								</form>
-					      	</div>
-					    </div>
-				  	</div>
-				  	<div class="card">
-				    	<div class="card-header" role="tab" id="headingThree">
-				      		<h5 class="mb-0">
-				        	<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-				          	Remove league members
-				        	</a>
-				      		</h5>
-				    	</div>
-					    <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
-					      	<div class="card-block">
-					        	<form method="post" action="contact-us-send.php">
-									<label>List of current league members:</label>
-									<br>
-									<label><input type="checkbox"> Name of league member</input></label><!-- JAKE list each league member -->
-									<div class="modal-footer">
-										<p>By clicking Submit, you will remove the user from the league and all of their saved ceremonies.</p>
-										<a href="#" ><button>SUBMIT</button></a>
-										<input class="btn pull-right text-center" value="CANCEL"></input>
-									</div>
-								</form>
-					      	</div>
-					    </div>
-				  	</div>
-				  	<div class="card">
-				    	<div class="card-header" role="tab" id="headingFour">
-				      		<h5 class="mb-0">
-				        	<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-				          	Adjust scoring
-				        	</a>
-				      		</h5>
-				    	</div>
-					    <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour">
-					      	<div class="card-block">
-					        	
-					      	</div>
-					    </div>
-				  	</div>
-				  	<div class="card">
-				    	<div class="card-header" role="tab" id="headingFive">
-				      		<h5 class="mb-0">
-				        	<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-				          	Write league announcement
-				        	</a>
-				      		</h5>
-				    	</div>
-					    <div id="collapseFive" class="collapse" role="tabpanel" aria-labelledby="headingFive">
-					      	<div class="card-block">
-					        	<p>Upon saving, this league announcement will replace the previous one if there is one.</p>
-				        		<textarea rows="3"></textarea>
-				        		<button type="button" class="btn btn-blueoutline" data-dismiss="modal">Close</button>
-				        		<button type="button" class="btn">Save</button>
-					      	</div>
-					    </div>
-				  	</div>
+<div class="tab-content">
+   <div class="tab-pane active" id="a">..a.</div>
+   <div class="tab-pane" id="b">..b.</div>
+   <div class="tab-pane" id="c">.c..</div>
+   <div class="tab-pane" id="d">.h..</div>
+</div> -->
+			<div class="row">
+				<div class="col-md-1"></div>
+				<div class="col-md-10 col-sm-12">
+					<h3>League Commissioner Tools</h3>
 				</div>
+				<div class="col-md-1"></div>
+			</div>
+			<div class="row">
+				<div class="col-md-1"></div>
+				<div class="col-md-3 col-sm-3 tabbable sidebar-nav">
+					<ul class="nav nav-pills nav-stacked">
+						<li class="active"><a href="#a" data-toggle="tab">Email league members</a></li>
+						<li><a href="#b" data-toggle="tab">Write league announcement</a></li>
+						<li><a href="#c" data-toggle="tab">Adjust scoring</a></li>
+						<li><a href="#d" data-toggle="tab">Remove league members</a></li>
+						<li><a href="#e" data-toggle="tab">Add league members</a></li>
+
+						<!-- <li role="presentation" class="active"><a class="item" data-target="1" href="#">Email league members</a></li>
+						<li role="presentation"><a class="item" data-target="2" href="#">Write league announcement</a></li>
+						<li role="presentation"><a class="item" data-target="3" href="#">Adjust scoring</a></li>
+						<li role="presentation"><a class="item" data-target="4" href="#">Remove league members</a></li>
+						<li role="presentation"><a class="item" data-target="5" href="#">Add league members</a></li> -->
+					</ul>
+				</div>
+				<div id="commissioner-tab-content" class="tab-content col-md-7 col-sm-9">
+					<div id="a" class="tab-pane active">
+						<form method="post" action="email-league.php">
+							<label style="display:none;">To</label>
+							<input id="email-group" name="email-group" style="display:none;">
+							<label>Email Subject</label><br>
+							<input id="email" name="email" type="email"><br>
+							<label>Message</label><br>
+							<textarea id="message" rows="4" class="message" name="message" type="text"></textarea>
+							<!-- <label><input type="checkbox"> Send me a copy of the email</input></label> -->
+							<input class="btn pull-right text-center" value="SEND"></input>
+							<input class="btn btn-secondary pull-right text-center" value="CANCEL"></input>
+						</form>
+					</div>
+					<div id="b" class="tab-pane">
+						<p>Upon posting, this league announcement will replace the previous one if there is one.</p>
+		        		<textarea rows="3"></textarea>
+		        		<input class="btn pull-right text-center" value="POST"></input>
+						<input class="btn btn-secondary pull-right text-center" value="CANCEL"></input>
+					</div>
+					<div id="c" class="tab-pane">
+						<p>Select league member:</p>
+						<p>Select ceremony number:</p>
+						<p>Ceremony 1 (Week 1 Date)</p>
+						<p>Number of points: 10</p>
+						<p>Enter updated number of points for Ceremony #:</p>
+						<input class="text"></input><br>
+						<input class="btn pull-right text-center" value="SAVE"></input>
+						<input class="btn btn-secondary pull-right text-center" value="CANCEL"></input>
+					</div>
+					<div id="d" class="tab-pane">
+						<form method="post" action="contact-us-send.php">
+							<label>List of current league members:</label>
+							<br>
+							<label><input type="checkbox"> Name of league member</input></label><!-- JAKE list each league member -->
+							<p>By clicking Remove, you will remove the user from the league and all of their saved ceremonies.</p>
+							<input class="btn pull-right text-center" value="REMOVE"></input>
+							<input class="btn btn-secondary pull-right text-center" value="CANCEL"></input>
+						</form>
+					</div>
+					<div id="e" class="tab-pane">
+						<form method="post" action="contact-us-send.php">
+							<label>Enter email address of the user you'd like to invite:</label>
+							<br>
+							<input type="email" value=""></input>
+							<p>The user will be sent an email containing information on joining your league.</p>
+							<input class="btn pull-right text-center" value="INVITE"></input>
+							<input class="btn btn-secondary pull-right text-center" value="CANCEL"></input>
+						</form>
+					</div>
+
+
+					<!-- <div id="div1" class="targetDiv">
+						<form method="post" action="email-league.php">
+							<label style="display:none;">To</label>
+							<input id="email-group" name="email-group" style="display:none;">
+							<label>Email Subject</label><br>
+							<input id="email" name="email" type="email"><br>
+							<label>Message</label><br>
+							<textarea id="message" rows="4" class="message" name="message" type="text"></textarea>
+							<label><input type="checkbox"> Send me a copy of the email</input></label>
+							<div class="modal-footer">
+								<input id="submit-email-league" class="btn pull-right text-center" name="submit" type="submit" value="SUBMIT">
+							</div>
+						</form>
+					</div>
+					<div id="div2" class="targetDiv">
+						<p>Upon saving, this league announcement will replace the previous one if there is one.</p>
+		        		<textarea rows="3"></textarea>
+		        		<button type="button" class="btn btn-blueoutline" data-dismiss="modal">Close</button>
+		        		<button type="button" class="btn">Save</button>
+					</div>
+					<div id="div3" class="targetDiv">
+						
+					</div>
+					<div id="div4" class="targetDiv">
+						<form method="post" action="contact-us-send.php">
+							<label>List of current league members:</label>
+							<br>
+							<label><input type="checkbox"> Name of league member</input></label><!-- JAKE list each league member
+							<div class="modal-footer">
+								<p>By clicking Submit, you will remove the user from the league and all of their saved ceremonies.</p>
+								<a href="#" ><button>SUBMIT</button></a>
+								<input class="btn pull-right text-center" value="CANCEL"></input>
+							
+							</div>
+						</form>
+					</div>
+					<div id="div5" class="targetDiv">
+						<form method="post" action="contact-us-send.php">
+							<label>Enter email address of the user you'd like to invite:</label>
+							<br>
+							<input type="email">Email address</input>
+							<div class="modal-footer">
+								<p>The user will be sent an email containing information on joining your league.</p>
+								<a href="#" ><button>SUBMIT</button></a>
+								<input class="btn pull-right text-center" value="CANCEL"></input>
+							</div>
+						</form>
+					</div> -->
+				</div>
+				<div class="col-md-1"></div>
 				</div>
 			</div>
 		</div><!-- end of container fluid -->
@@ -236,5 +265,8 @@ include('header_content.html');
 	include('login-signup-content.html');
 	?>
 	
+	<script type="text/javascript">
+		
+	</script>
 </body>
 </html>

@@ -26,10 +26,24 @@ a{
 	font-family: 'Open Sans', Cabin, Raleway, Sans-serif;
 	text-decoration: none;
 }
-a:hover, a:focus{
+/*a:hover, a:focus{
 	color: #81888B;
 	text-decoration: none;
 	background-color: transparent!important;
+}*/
+label {
+	font-weight: 500;
+}
+input {
+	border: 1px solid #bdbdbd;
+	margin-bottom: 5px;
+}
+textarea {
+	border: 1px solid #bdbdbd;
+	width: 100%;
+}
+textarea:focus {
+    outline: none !important;
 }
 hr {
 	border-bottom-color: #acacac;
@@ -85,12 +99,17 @@ hr {
 	color: #fff;
 	background-color: #00C5D5;
 	border-radius: 1.5px;
-	font-family: Raleway, Sans-serif;
-	margin: 10px 0;
+	margin: 10px 5px;
 }
 .btn:hover, .btn:focus {
 	color: #fff;
 	background-color: #7EC0CE;
+}
+.btn-secondary {
+	background-color: #008995;
+	color: #fff;
+	border-radius: 1.5px;
+	margin: 10px 5px;
 }
 /*.btn-link {
 	color: #5A6063;
@@ -657,6 +676,34 @@ nav.navbar.nonhome {
 	}
 }
 
+/*===COMMISSIONER===*/
+/*---sidebar---*/
+.sidebar-nav {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.nav-stacked > li > a {
+	color: #5A5A5A;
+}
+.nav-stacked > li > a:hover {
+	background-color: rgba(0,197,213,0.5);
+}
+.nav-stacked > li.active > a {
+	background-color: #00C5D5!important;
+	color: #fff;
+}
+.nav-stacked > li.active > a:hover {
+	background-color: #00C5D5;
+}
+.nav-stacked > li:active > a:focus, .nav-stacked > li > a:focus {
+	background-color: transparent;
+}
+
+/*--- tabs ---*/
+#commissioner-tab-content > .tab-pane {
+	padding: 20px 40px 20px 40px;
+}
+
 /*===LINEUP===*/
 
 #lineup-bg, .row-bg {
@@ -676,7 +723,7 @@ nav.navbar.nonhome {
 	padding: 20px 20px 0 20px;
 	margin-top: 40px;
 }
-.ceremony-nav, .tab-pane {
+.ceremony-nav, #ceremonypages .tab-pane {
 	background-color: #fff;
 	padding: 10px 10px 0 10px;
 }
@@ -842,13 +889,7 @@ nav.navbar.nonhome {
 	/*line-height:1.5em;*/
 	overflow:auto;
 }
-textarea {
-	border: 1px solid #e7e7e7;
-	width: 100%;
-}
-textarea:focus {
-    outline: none !important;
-}
+
 #online-list {
 	padding-bottom: 20px;
 }
