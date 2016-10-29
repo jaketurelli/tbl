@@ -270,7 +270,7 @@ if(!$IS_MOBILE){
 																		}
 																		?>
 
-																			<tr class=<?php echo '"' . $curr_dragDrop_class . '"'?> id = <?php echo '"' . $curr_picks_ceremony . '-' . $curr_contestant_id . '"'; ?>>
+																			<tr class=<?php echo '"' . $curr_dragDrop_class . '"'?> id = <?php echo '"' . $curr_picks_ceremony . $curr_contestant_id . '"'; ?>>
 																				<td class="td-center">
 																				<?php if($IS_MOBILE){ ?>
 																					<button class="move-btn" class="move-btn" data-toggle="modal" id = <?php echo '"' . $curr_contestant_id . '"'; ?> data-target="#movemodal">MOVE</a>
@@ -717,7 +717,13 @@ if(!$IS_MOBILE){
 		$(function(){
 			$(document).on("click","#test-btn",function(event){
 				alert('pooooooo');
-				$("#5poo").replaceWith($("#51"));
+				var item1=$('#5poo');
+				var item2=$('#51');
+				var copy1=item1.clone();
+				var copy2=item2.clone();
+				// $("#5poo").replaceWith($("#51"));
+				item1.replaceWith(copy2);
+				item2.replaceWith(copy1);
 			});
 		});
 	});

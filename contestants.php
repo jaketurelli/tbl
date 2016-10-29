@@ -66,7 +66,7 @@ include('header_content.html');
 	</nav>
 	<div id="contestants-info" class="container-fluid">
 		<div class="container">
-			<div class="row text-center contestant-content">
+			<div class="row contestant-content">
 				<div class="col-md-12">
 					<h3>Meet this season's contestants</h3>
 					<a id="collapse-init-ex" class="pull-right" href="#">+ Expand all</a>

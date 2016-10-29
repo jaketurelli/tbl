@@ -35,6 +35,13 @@ include('header_content.html');
 		<div class=" navbar-collapse overlay navbar-right">
 			<ul class="nav navbar-nav nav-pills">
 				<li class="active"><a href="league.php">LEAGUE</a></li>
+				<?php
+				if($COMMISSIONER){
+				?>
+					<li><a href="commissioner.php">COMMISSIONER TOOLS</a></li>
+				<?php
+				}
+				?>
 				<li><a href="lineup.php">LINEUP</a></li>
 				<li><a href="trashtalk.php">TRASH TALK</a></li>
 				<li><a href="contestants.php">CONTESTANTS</a></li>
@@ -298,7 +305,7 @@ include('header_content.html');
 		}else{
 		?>
 		<div class="container-fluid">
-				<div class="row">
+				<div id="background" class="row">
 				
 					<div id="sidebar" class="col-md-3">
 						
@@ -313,102 +320,7 @@ include('header_content.html');
 								</tbody>
 							</table>
 							<hr>
-							<h5 class="white-text">League Commissioner Tools</h5>
-<a href="https://mail.google.com/mail/?view=cm&fs=1&to=someone@gmail.com&su=subject_here&body=body_here">email test</a>
-
-							<a class="white-text" href="#" data-toggle="modal" data-target="#email-league-modal">Email league members</a><br>
-							<div class="modal fade" id="email-league-modal" tabindex="-1" role="dialog" aria-labelledby="emailleague" aria-hidden="true">
-								<div class="modal-dialog" role="document">
-									<div class="modal-content">
-										<div class="modal-header">
-											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-												<span aria-hidden="true">&times;</span>
-											</button>
-											<h4 class="modal-title">Email league members</h4>
-										</div>
-										<div class="modal-body">
-											<form method="post" action="email-league.php">
-												<label style="display:none;">To</label>
-												<input id="email-group" name="email-group" style="display:none;">
-												<label>Email Subject</label><br>
-												<input id="email" name="email" type="email"><br>
-												<label>Message</label><br>
-												<textarea id="message" rows="4" class="message" name="message" type="text"></textarea>
-												<!-- <label><input type="checkbox"> Send me a copy of the email</input></label> -->
-												<div class="modal-footer">
-													<input id="submit-email-league" class="btn pull-right text-center" name="submit" type="submit" value="SUBMIT">
-												</div>
-											</form>
-										</div>
-									</div>
-								</div>
-							</div>
-							<a class="white-text" href="#">Add league members</a>
 							
-							<a class="white-text" href="#" data-toggle="modal" data-target="#remove-league-modal">Remove league members</a>
-							<div class="modal fade" id="remove-league-modal" tabindex="-1" role="dialog" aria-labelledby="removeleaguemembers" aria-hidden="true">
-								<div class="modal-dialog" role="document">
-									<div class="modal-content">
-										<div class="modal-header">
-											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-												<span aria-hidden="true">&times;</span>
-											</button>
-											<h4 class="modal-title">Remove league members</h4>
-										</div>
-										<div class="modal-body">
-											<form method="post" action="contact-us-send.php">
-												<label>List of current league members:</label>
-												<br>
-												<label><input type="checkbox"> Name of league member</input></label><!-- JAKE list each league member -->
-												<div class="modal-footer">
-													<p>By clicking Submit, you will remove the user from the league and all of their saved ceremonies.</p>
-													<a href="#" ><button>SUBMIT</button></a>
-													<input class="btn pull-right text-center" value="CANCEL"></input>
-													
-												</div>
-											</form>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<a class="white-text" href="#">Adjust scoring</a>
-							<div class="modal fade" id="adjust-scoring-modal" tabindex="-1" role="dialog" aria-labelledby="adjustscoring" aria-hidden="true">
-								<div class="modal-dialog" role="document">
-									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-										</button>
-										<h4 class="modal-title">Adjust Scoring</h4>
-									</div>
-									<div class="modal-body">
-										
-									</div>
-								</div>
-							</div>
-
-							<a class="white-text" href="#" data-toggle="modal" data-target="#league-announcement-modal">Write league announcement</a>
-							<div class="modal fade" id="league-announcement-modal" tabindex="-1" role="dialog" aria-labelledby="leagueannouncementmodal" aria-hidden="true">
-							  	<div class="modal-dialog" role="document">
-							   		<div class="modal-content">
-							      		<div class="modal-header">
-							        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							          			<span aria-hidden="true">&times;</span>
-							        		</button>
-							        		<h4 class="modal-title">League Announcement</h4>
-							      		</div>
-							      		<div class="modal-body">
-							        		<p>Upon saving, this league announcement will replace the previous one if there is one.</p>
-							        		<textarea rows="3"></textarea>
-							      		</div>
-							      		<div class="modal-footer">
-							        		<button type="button" class="btn btn-blueoutline" data-dismiss="modal">Close</button>
-							        		<button type="button" class="btn">Save</button>
-							      		</div>
-							    	</div><!-- /.modal-content -->
-						  		</div><!-- /.modal-dialog -->
-							</div><!-- /.modal -->
-							<hr>
 							<h3 class="standingsheader white-text">Standings</h3>
 							<table id="standings">
 								<tbody>
