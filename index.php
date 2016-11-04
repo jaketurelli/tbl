@@ -20,7 +20,7 @@ include('header_content.html');
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</a>
-					<a class="navbar-brand navbar-brand-centered" href="index.php"><img src="img/logowhite.png" alt="white-logo" /></a>
+					<a class="navbar-brand navbar-brand-centered" href="index.php"><img src="img/logowhite.png" alt="logo" /></a>
 					<ul class="nav pull-right" style="text-align:right">
 						<?php 
 						if($IS_SIGNED_IN){
@@ -126,8 +126,8 @@ include('header_content.html');
 						<div class="col-md-3">
 						</div>
 					</div>
-					<div class="row text-center">
-						<img class="img-responsive" src="img/logolargenoimgwhite.png" />
+					<div class="row">
+						<img class="img-responsive" src="img/tblheadline.png" />
 					</div>
 					<div class="row text-center">
 					<?php if(!$IS_SIGNED_IN){ ?>
