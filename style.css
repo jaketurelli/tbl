@@ -237,8 +237,11 @@ hr {
 
 /* ===HOME===*/
 
-#home .hero-unit {
-	background: linear-gradient(to bottom right,#FF9587,#41D9D6);
+#home .jumbotron {
+	/* background: linear-gradient(to bottom right,#FF9587,#41D9D6);*/
+	background-image: url("img/heroimage.png");
+	padding-top: 20px;
+	width: 100%;
 }
 #home .navbar-brand {
 /*	display: inline-block;

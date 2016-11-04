@@ -12,7 +12,7 @@ include('header_content.html');
 </head>
 <body>
 	<div id="home">
-		<div class="hero-unit">
+		<div class="jumbotron">
 			<nav class="navbar" role="navigation">
 				<div class="navbar-header">	
 					<a class="navbar-toggle" data-toggle="overlay" data-target=".navbar-collapse" href="#">
@@ -119,17 +119,18 @@ include('header_content.html');
 				<div class="container">
 					<div class="row text-center">
 						<div class="col-md-3">
+							<img class="img-responsive" src="img/tblheadline.svg" />
 						</div>
 						<div class="col-md-6">
-							<h4 id="hero-text" class="white">What brings friends together, creates healthy competition, and strengthens a relationship all while watching The Bachelor?</h4>
+							
 						</div>
 						<div class="col-md-3">
 						</div>
 					</div>
 					<div class="row">
-						<img class="img-responsive" src="img/tblheadline.png" />
+						<h4 id="hero-text" class="white">Play along as Nick Viall searches for love as the next Bachelor</h4>
 					</div>
-					<div class="row text-center">
+					<div class="row">
 					<?php if(!$IS_SIGNED_IN){ ?>
 						<button type="button" class="btn-white" data-toggle="modal" data-target="#signupmodal">SIGN UP</button>
 					
