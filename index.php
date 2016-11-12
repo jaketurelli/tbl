@@ -117,34 +117,42 @@ include('header_content.html');
  TEMP for $_SESSION testing -->
 			<div class="hero-unit-inner">
 				<div class="container">
-					<div class="row text-center">
-						<div class="col-md-3">
-							<img class="img-responsive" src="img/tblheadline.svg" />
+					<div class="row">
+						<div class="col-md-6">
+							<img src="img/tblheadline.svg" />
 						</div>
 						<div class="col-md-6">
 							
 						</div>
-						<div class="col-md-3">
+						
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<h4 id="hero-text" class="white">Play along as Nick Viall searches for love as the next Bachelor</h4>
 						</div>
+						<div class="col-md-3"></div>
+						<div class="col-md-3"></div>
 					</div>
 					<div class="row">
-						<h4 id="hero-text" class="white">Play along as Nick Viall searches for love as the next Bachelor</h4>
-					</div>
-					<div class="row">
-					<?php if(!$IS_SIGNED_IN){ ?>
-						<button type="button" class="btn-white" data-toggle="modal" data-target="#signupmodal">SIGN UP</button>
+						<div class="col-md-4">
+							<?php if(!$IS_SIGNED_IN){ ?>
+							<button type="button" class="btn-white" data-toggle="modal" data-target="#signupmodal">SIGN UP</button>
 					
-					<?php 
-					}elseif($LEAGUE_ID == -1){
-					?>
-						<button type="button" class="btn-white"><a href='createjoin.php'>JOIN LEAGUE</a></button>
-					<?php
-					}else{
-					?>
-						<button type="button" class="btn-white"><a href="league.php">LEAGUE HOME</a></button>
-					<?php
-					}
-					?>
+							<?php 
+							}elseif($LEAGUE_ID == -1){
+							?>
+								<button type="button" class="btn-white"><a href='createjoin.php'>JOIN LEAGUE</a></button>
+							<?php
+							}else{
+							?>
+								<button type="button" class="btn-white"><a href="league.php">LEAGUE HOME</a></button>
+							<?php
+							}
+							?>
+						</div>
+						<div class="col-md-4"></div>
+						<div class="col-md-4"></div>
+					
 					</div>
 				</div>
 			</div><!-- hero-unit-inner -->
