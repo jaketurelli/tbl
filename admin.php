@@ -117,6 +117,7 @@ include('header_content.html');
 			</select>
 			<select name="lock_time_year">
 				<option value=2016>2016</option>
+				<option value=2017>2017</option>
 			</select><label>Time: </label>
 			<select name="lock_time_hour">
 				<option value=0>00</option>
@@ -374,7 +375,7 @@ include('header_content.html');
 				<select name="lock_time_year">
 					<option selected = "selected"><?php echo $this_year ?></option>
 					<option value=2016>2016</option>
-
+					<option value=2017>2017</option>
 				</select>
 				<label> PST </label>
 			</td>

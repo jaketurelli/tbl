@@ -7,6 +7,8 @@
 		$query_contestants = "SELECT * FROM contestants ORDER BY eliminated ASC";
 		$query_picks       = "SELECT * FROM picks WHERE user_id = $USER_ID AND league_id = $LEAGUE_ID ORDER BY pick_order ASC";
 		
+		//var_dump($query_picks);
+		//exit();
 		$TABLE_CEREMONY    = mysqli_query($dbc, $query_ceremony) or die ("Error in query: $query_ceremony " . mysqli_error($dbc));
 		$TABLE_CONTESTANTS = mysqli_query($dbc, $query_contestants) or die ("Error in query: $query_contestants " . mysqli_error($dbc));
 		$TABLE_PICKS       = mysqli_query($dbc, $query_picks) or die ("Error in query: $query_picks " . mysqli_error($dbc));
@@ -224,7 +226,7 @@ if(!$IS_MOBILE){
 												<table><tbody>
 												<tr id=<?php echo '"' . $this_ceremony_num . 'poo"' ?>><td><button>butt</button></td><td><?php echo '"' . $this_ceremony_num . '"' ?></td><td>poop</td></tr>
 							
-								<tr id=<?php echo '"' . $this_ceremony_num . '1"'?>><td><button>butt2</button></td><td>poop</td><td><?php echo '"' . $this_ceremony_num . '"'
+												<tr id=<?php echo '"' . $this_ceremony_num . '1"'?>><td><button>butt2</button></td><td>poop</td><td><?php echo '"' . $this_ceremony_num . '"'
 						?></td></tr></tbody></table>
 												<table id= <?php echo '"roster_ceremony' . $this_ceremony_num . '"'?> class="table lineup-table">
 													<thead>
@@ -254,6 +256,8 @@ if(!$IS_MOBILE){
 																// show selected by user for this ceremony 
 																if($curr_picks_ceremony == $this_ceremony_num){
 																	$curr_contestant_id = $this_pick['contestant_id'];
+
+																	//var_dump($this_pick);
 																	$bookkeep_picked[] = $curr_contestant_id;
 																	if(count($bookkeep_picked) <= $TABLE_CEREMONY_ARRAY[$this_ceremony_num][1]){
 																		$curr_is_elim = $TABLE_CONTESTANTS_ELIM_ARRAY[$curr_contestant_id];
