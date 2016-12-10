@@ -115,3 +115,10 @@ CREATE TABLE `thebachleague`.`league` ( `league_id` INT(11) NOT NULL AUTO_INCREM
 									  	`commissioner_id` INT(11) NOT NULL, 
 									  	`password` VARCHAR(255) NOT NULL, 
 									  	PRIMARY KEY (`league_id`) ) ENGINE = InnoDB;
+
+CREATE TABLE `thebachleague`.`commissioner_announcements` ( 	`id` INT(11) NOT NULL AUTO_INCREMENT,
+											  					`league_id`  INT(11) NOT NULL , 
+															  	`commissioner_id` INT(11) NOT NULL, 
+															  	`announcement` VARCHAR(255) NOT NULL, 
+															  	`time_stamp` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+															  	PRIMARY KEY (`id`) ) ENGINE = InnoDB;

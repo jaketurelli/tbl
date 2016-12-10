@@ -110,8 +110,48 @@ if(isset($_POST['submit'])){
 	if (mysqli_num_rows($check_db)>0){
 		$this_ceremony = mysqli_fetch_array($check_db);
 		$id = $this_ceremony['id'];
+		$num_picks_previous =  $this_ceremony['number_picks'];
 		$query = "UPDATE ceremony SET number_picks = $num_picks, lock_time = FROM_UNIXTIME($lock_time) WHERE `ceremony`.`id` = $id";
 		$update_result = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
+
+
+
+		// IF NUMBER PICKS CHANGE, SET DEFUALT PICKS FOR EVERYONE ON THE WEBSITE OF THIS CEREMONY (ALPHABETICAL SELECTION)
+		
+		if ($num_picks_previous != $num_picks){
+			$query = "SELECT user_id, league_id FROM user WHERE league_id > -1";
+			$user_query = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
+			if(mysqli_num_rows($user_query) != 0){
+				$query = "SELECT contestant_id FROM contestants WHERE eliminated = 0 ORDER BY contestant_id ASC";
+				$contestants_query = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
+				$contestant_id_array = array();
+				foreach($contestants_query as $curr_contestant){
+					$contestant_id_array[] = $curr_contestant['contestant_id'];
+				}
+				foreach($user_query as $curr_array_user){
+					$curr_user_id   = $curr_array_user['user_id'];
+					$curr_league_id = $curr_array_user['league_id'];
+
+					$query = "DELETE FROM `picks` WHERE `picks`.`ceremony` =  $ceremony_num AND `picks`.`user_id`= $curr_user_id AND `picks`.`league_id`= $curr_league_id";
+					$delete_picks = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
+
+					for($i=0; $i<$num_picks; $i++){
+						$pick = $i+1;
+						$cont = $contestant_id_array[$i];
+						//var_dump($cont);
+						$query = "INSERT INTO picks(pick_ind, user_id, ceremony, league_id, contestant_id, pick_order, score) VALUES (NULL, $curr_user_id, $ceremony_num,      $curr_league_id,$cont , $pick, 0)";
+					           //"INSERT INTO picks(pick_ind, user_id, ceremony, league_id, contestant_id, pick_order, score) VALUES (NULL, $USER_ID,      $curr_ceremony_num, $league_id,     $i ,    $i,    0)";	
+						//var_dump($query);
+						$update_picks = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
+
+					}
+					
+
+				}
+			}
+		}
+		
+
 	}else{
 		
 	}
