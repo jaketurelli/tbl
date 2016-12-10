@@ -881,10 +881,13 @@ nav.navbar.nonhome {
 /*--- mobile lineup ---*/
 
 .move-btn {
-
+	padding: 4px 8px;
 }
 .move-pressed {
 	background-color: #fff;
+}
+.swap-mobile {
+	padding: 4px 8px;
 }
 .tr-pressed {
 	background-color: grey;

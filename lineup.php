@@ -601,24 +601,25 @@ if(!$IS_MOBILE){
 				var selectedImage = 'img/lineup/'+data[0][6];
 				var selectedName = data[0][1];
 				var htmlString = '<h4>Moving:</h4>'+ '<button id="test-btn">TEST</button>'+
+										'<table><thead><tr><th>Status</th><th>Contestant</th></tr></thead><tbody>'+
 										'<div id="m-'+ceremony_number+'-'+contestant_id+'" class="contestant-to-move">'+
-											'<div>'+selectedStatus+'</div><div><img class = "lineup-img" src="'+selectedImage+'"/>'+ selectedName+'</div>'+
-										'</div>'
+											'<tr><td><div>'+selectedStatus+'</div></td><td><div><img class = "lineup-img" src="'+selectedImage+'"/>'+ selectedName+'</div></td></tr>'+
+										'</div></tbody></table>'
 									;
 
 				// SHOW BENCHED CONTESTANTS TO REPLACE WITH
 				var status = "A"; // active by default
 				// start at i=1 (2nd index) to start showing contestants other than that seleceted (index = 0)
-				htmlString += 	'<h4>Replace With:</h4>';
+				htmlString += 	'<h4>Replace With:</h4><table><thead><tr><th></th><th>Status</th><th>Contestant</th></tr></thead><tbody>';
 				for (i = 1; i <= data.length-1; i++) { 
 					if (data[i][7] != 0) {
 						status = "IR";
 					}
 				    htmlString += 	'<a href="#">'+
-				    						'<div><button class="swap-mobile btn" id="m-'+ceremony_number+'-'+data[i][0]+'">SELECT</button></div><div>'+status+'</div><div><img class = "lineup-img" src="'+'img/lineup/'+data[i][6]+'"/>'+ data[i][1]+'</div>'+
+				    						'<tr><td><div><button class="swap-mobile btn" id="m-'+ceremony_number+'-'+data[i][0]+'">SELECT</button></div></td><td><div>'+status+'</div></td><td><div><img class = "lineup-img" src="'+'img/lineup/'+data[i][6]+'"/>'+ data[i][1]+'</div></td></tr>'+
 				    				'</a>';
 				}
-
+				htmlString += '</tbody></table>';
 				// UPDATE MODAL HTML
 				$('#modal-replace').html(htmlString);
 				}
