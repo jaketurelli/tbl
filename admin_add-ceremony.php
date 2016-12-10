@@ -121,11 +121,13 @@ if(isset($_POST['submit'])){
 	$ceremony_num     = $_POST['ceremony_num'];
 
 	$query = "DELETE FROM `ceremony` WHERE `ceremony`.`ceremony_number` = $ceremony_num";
-	$delete_db = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
+	$delete_ceremony = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
 	
 	$query = "DELETE FROM `picks` WHERE `picks`.`ceremony` =  $ceremony_num";
-	$delete_db = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
+	$delete_picks = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
 
+	$query = "UPDATE contestants SET eliminated = 0 WHERE eliminated = $ceremony_num";
+	$update_contestants = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
 	//header('Location: admin.php');
 }
 
