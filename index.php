@@ -187,11 +187,11 @@ include('header_content.html');
 				<div class="row">
 					<div class="col-md-6">
 						<h2 class="section-title">Get to know this season's contestants</h2>
-						<p>This season's bachelorette, Jojo Fletcher, has 25 eligible bachelors to choose from. See what these dudes are all about.</p>
+						<p>This season's bachelor, Nick Viall, has 25 eligible women to choose from. See what these ladies are all about.</p>
 						<a href="contestants.php"><button type="button" class="btn btn-pink">SEE CONTESTANTS</button></a>
 					</div>
 					<div class="col-md-6">
-						<img class="img-responsive" src="img/contestants-sm.png" alt="bachelorettecontestants" />
+						<img class="img-responsive" src="img/nickwcontestants.jpg" alt="bachelorettecontestants" />
 					</div>
 				</div>
 			</div>
