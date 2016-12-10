@@ -167,10 +167,31 @@ include('header_content.html');
 						</form>
 					</div>
 					<div id="b" class="tab-pane">
-						<p>Upon posting, this league announcement will replace the previous one if there is one.</p>
-		        		<textarea rows="3"></textarea>
-		        		<input class="btn pull-right text-center" value="POST"></input>
-						<input class="btn btn-secondary pull-right text-center" value="CANCEL"></input>
+						<form id="addannouncementform" role="form" method="post" action="commissioner_announcement.php">
+							<p>Upon posting, this league announcement will replace the previous one if there is one.</p>
+		        			<input type="text" id="announcement" class="form-control" name="announcement" value="">
+		        			<input type = "submit" class="btn pull-right text-center" value="POST"></input>
+							<input class="btn btn-secondary pull-right text-center" value="CANCEL"></input>
+						</form>
+						<?php 
+							$query = "SELECT * FROM commissioner_announcements WHERE league_id = $LEAGUE_ID ORDER BY id DESC";
+							$result = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
+							if(mysqli_num_rows($result)!=0){
+								$announcement_number = 1;
+								while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
+									$curr_announcement =  $row['announcement'];?>
+									<tr>
+										<td>
+											<?php echo $announcement_number . ":" . $curr_announcement;?>
+										</td><br>
+									</tr>
+								    <?php
+								    $announcement_number = $announcement_number+1;
+								}
+							}
+
+
+							?>
 					</div>
 					<div id="c" class="tab-pane">
 						<p>Select league member:</p>
@@ -190,6 +211,7 @@ include('header_content.html');
 							<p>By clicking Remove, you will remove the user from the league and all of their saved ceremonies.</p>
 							<input class="btn pull-right text-center" value="REMOVE"></input>
 							<input class="btn btn-secondary pull-right text-center" value="CANCEL"></input>
+
 						</form>
 					</div>
 					<div id="e" class="tab-pane">

@@ -20,10 +20,9 @@ if(mysqli_num_rows($ceremony_query) != 0){
 			if(mysqli_num_rows($result) == 0){
 				for($i = 1; $i <= $curr_ceremony_picks; $i++ ){
 					$query = "INSERT INTO picks(pick_ind, user_id, ceremony, league_id, contestant_id, pick_order, score) VALUES (NULL, $USER_ID, $curr_ceremony_num, $league_id, $i , $i, 0)";
-					var_dump($query);
 					$update_picks = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
 				}
-				exit();
+
 			}
 		}
 	}

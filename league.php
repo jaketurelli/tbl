@@ -87,7 +87,8 @@ include('header_content.html');
 						<div class="row">
 							<div class="col-sm-12">
 								<div class="tile">
-									<h3>Site Announcement</h3><p> Hi friends and family! You are using the beta version of The Bach League so it's the bare minimum of features and functionality. Jake and Kacy are in the process of adding features and will let you all know when new changes are pushed to the website! If you have any questions, comments, or feedback, feel free to email/text us.</p>
+									<h3>Site Announcement</h3>
+										<p> Hi friends and family! You are using the beta version of The Bach League so it's the bare minimum of features and functionality. Jake and Kacy are in the process of adding features and will let you all know when new changes are pushed to the website! If you have any questions, comments, or feedback, feel free to email/text us.</p>
 								</div>
 							</div>
 						</div>
@@ -95,7 +96,19 @@ include('header_content.html');
 							<div class="col-sm-6">
 								<div class="tile">
 									<h3>league announcement</h3>
-									<p>Hey guys! Don't forget to set your lineups for both ceremonies!!! Don't forget to set your lineup by 5pm PST for you west coasters.<br> - Julia</p>
+									<?php 
+										$query = "SELECT * FROM commissioner_announcements WHERE league_id = $LEAGUE_ID ORDER BY id DESC";
+										$result = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
+										if(mysqli_num_rows($result)!=0){
+											$latest_announcement = mysqli_fetch_array($result, MYSQL_ASSOC);
+											$announcement = $latest_announcement['announcement'];
+											echo "<p>" . $announcement . "</p>";
+										}else{
+											echo "<p>No announcements.</p>";
+											
+										}
+									?>
+									
 								</div>
 								<div class="tile">
 									<h3>standings</h3>
@@ -131,10 +144,7 @@ include('header_content.html');
 														}
 													}
 													$counter =$counter + 1;
-													$previous_score = $curr_score;
-													var_dump($counter);
-													var_dump($previous_score);
-													
+													$previous_score = $curr_score;													
 													?>
 													<tr>
 														<td class="col-md-2 place"><?php echo $curr_standing;?></td><td class="col-md-2"><img src="img/profile.png" /></td><td class="col-md-4"><?php echo $curr_alias ?></td><td class="col-md-4"><?php echo $curr_score ?> pts</td>
@@ -397,7 +407,19 @@ include('header_content.html');
 							<div id="leftleaguecol" class="col-md-6">
 								<div class="tile">
 									<h3>league announcement</h3>
-									<p>Hey guys! Don't forget to set your lineups for both ceremonies!!! Don't forget to set your lineup by 5pm PST for you west coasters.<br> - Julia</p>
+									<?php 
+										$query = "SELECT * FROM commissioner_announcements WHERE league_id = $LEAGUE_ID ORDER BY id DESC";
+										$result = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
+										if(mysqli_num_rows($result)!=0){
+											$latest_announcement = mysqli_fetch_array($result, MYSQL_ASSOC);
+											$announcement = $latest_announcement['announcement'];
+											echo "<p>" . $announcement . "</p>";
+										}else{
+											echo "<p>No announcements.</p>";
+											
+										}
+									?>
+
 								</div>
 								<div class="tile">
 									<h3>blog</h3>
