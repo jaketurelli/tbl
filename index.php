@@ -164,19 +164,19 @@ include('header_content.html');
 				</div>
 				<div id="steps" class="row">
 					<div class="col-md-3 inner-block center-div text-center">
-						<img class="img-responsive" src="img/group-sm.svg" alt="group" />
+						<img class="img-responsive" src="img/group-sm.png" alt="group" />
 						<p>Join a league with your friends</p>
 					</div>
 					<div class="col-md-3 inner-block center-div text-center">
-						<img class="img-responsive" src="img/roses-sm.svg" alt="roses" />
+						<img class="img-responsive" src="img/roses-sm.png" alt="roses" />
 						<p>Before each episode, pick who you think will get a rose</p>
 					</div>
 					<div class="col-md-3 inner-block center-div text-center">
-						<img class="img-responsive" src="img/trashtalk-sm.svg" alt="trash" />
+						<img class="img-responsive" src="img/trashtalk-sm.png" alt="trash" />
 						<p>Use the built-in chat to trash talk your leaguemates</p>
 					</div>
 					<div class="col-md-3 inner-block center-div text-center">
-						<img class="img-responsive" src="img/victory-sm.svg" alt="trophy" />
+						<img class="img-responsive" src="img/victory-sm.png" alt="trophy" />
 						<p>At the end of the season, see who stands victorious</p>
 					</div>
 				</div>
@@ -197,11 +197,12 @@ include('header_content.html');
 				</div>
 			</div>
 		</div><!-- end of contestants -->
+		<hr class="style-eight" width="50%">
 		<div id="blog">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6">
-						<img class="img-responsive" src="img/BlogFeature.svg" alt="blog" />
+						<img class="img-responsive" src="img/BlogFeature.png" alt="blog" />
 					</div>
 					<div class="col-md-6">
 						<h2 class="section-title">Your witty commentary could be featured on The Bach League Blog</h2>
@@ -211,6 +212,7 @@ include('header_content.html');
 				</div>
 			</div>
 		</div><!-- end of blog -->
+		<hr class="style-eight" width="50%">
 		<div id="app">
 			<div class="container">
 				<div class="row">
@@ -219,11 +221,12 @@ include('header_content.html');
 						<p>Our site can be viewed on any device and will resize depending on what device you're using, but a downloadable app is expected to come in 2017. Stay tuned!</p>
 					</div>
 					<div class="col-md-6">
-						<img class="img-responsive" src="img/AppComing.svg" alt="app" />
+						<img class="img-responsive" src="img/AppComing.png" alt="app" />
 					</div>
 				</div>
 			</div>
 		</div><!-- end of app -->
+		<hr class="style-eight" width="50%">
 		<div id="bottom-home-cta">
 			<div class="row">
 				<div class="col-md-3"></div>

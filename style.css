@@ -492,8 +492,7 @@ a.login:hover, a.signup:hover, a.logout:hover {
 	padding: 0 40px;
 }
 #steps img {
-	height: 80%;
-	width: 80%;
+	
 }
 
 /*---contestants---*/
@@ -525,7 +524,7 @@ a.login:hover, a.signup:hover, a.logout:hover {
 #app {
 	padding-top: 80px;
 	padding-bottom: 60px;
-	background-color: #DAECF3;
+	/*background-color: #DAECF3;*/
 }
 #app p {
 	padding: 0 80px 25px 0px;
