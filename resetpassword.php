@@ -8,7 +8,11 @@ include('header_content.html');
 </head>
 <body>
 	<h3>Reset Password</h3>
-	<form id="resetpasswordform" role="form" action="**.php" onsubmit="**return checkPw()" method="post">
+	<form id="resetpasswordform" role="form" action="resetpassword_database.php" onsubmit="return checkPw()" method="post">
+		<fieldset class="form-group">
+			<label>Username</label>
+			<input type="text" id="username" class="form-control" name="username" value="">
+		</fieldset>
 		<fieldset class="form-group">
 			<label>New Password</label>
 			<input type="password" id="newpass" class="form-control" name="pword" autocomplete="new-password" value="">
