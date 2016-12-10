@@ -226,7 +226,7 @@ if(!$IS_MOBILE){
 												<table><tbody>
 												<tr id=<?php echo '"' . $this_ceremony_num . 'poo"' ?>><td><button>butt</button></td><td><?php echo '"' . $this_ceremony_num . '"' ?></td><td>poop</td></tr>
 							
-												<tr id=<?php echo '"' . $this_ceremony_num . '1"'?>><td><button>butt2</button></td><td>poop</td><td><?php echo '"' . $this_ceremony_num . '"'
+												<tr id=<?php echo '"' . $this_ceremony_num . '1poo"'?>><td><button>butt2</button></td><td>poop</td><td><?php echo '"' . $this_ceremony_num . '"'
 						?></td></tr></tbody></table>
 												<table id= <?php echo '"roster_ceremony' . $this_ceremony_num . '"'?> class="table lineup-table">
 													<thead>
@@ -277,7 +277,7 @@ if(!$IS_MOBILE){
 																			<tr class=<?php echo '"' . $curr_dragDrop_class . '"'?> id = <?php echo '"' . $curr_picks_ceremony . '-' . $curr_contestant_id . '"'; ?>>
 																				<td class="td-center">
 																				<?php if($IS_MOBILE){ ?>
-																					<button class="move-btn" class="move-btn" data-toggle="modal" id = <?php echo '"' . $curr_picks_ceremony . '-' . $curr_contestant_id . '"'; ?> data-target="#movemodal">MOVE</a>
+																					<button class="move-btn" data-toggle="modal" id = <?php echo '"' . $curr_picks_ceremony . '-' . $curr_contestant_id . '"'; ?> data-target="#movemodal">MOVE</a>
 																				<?php } else { ?>
 																					<span class="glyphicon glyphicon-menu-hamburger"></span>
 																				<?php } ?>
@@ -332,7 +332,7 @@ if(!$IS_MOBILE){
 																	<tr class=<?php echo '"' . $curr_dragDrop_class . '"'?> id = <?php echo '"' . $curr_picks_ceremony . '-' . $curr_contestant_id . '"';?>>
 																		<td class="td-center">
 																		<?php if($IS_MOBILE){ ?>
-																			<button class="move-btn" data-toggle="modal" id = <?php echo '"' . $curr_contestant_id . '"'; ?> data-target="#movemodal">MOVE</button>
+																			<button class="move-btn" data-toggle="modal" id = <?php echo '"' . $curr_picks_ceremony . '-' . $curr_contestant_id . '"'; ?> data-target="#movemodal">MOVE</button>
 																		<?php } else { ?>
 																			<span class="glyphicon glyphicon-menu-hamburger"></span>
 																		<?php } ?>
@@ -598,7 +598,7 @@ if(!$IS_MOBILE){
 				var selectedImage = 'img/lineup/'+data[0][6];
 				var selectedName = data[0][1];
 				var htmlString = '<h4>Moving:</h4>'+
-										'<div id="m-'+contestant_id+'" class="contestant-to-move">'+
+										'<div id="m-'+ceremony_number+'-'+contestant_id+'" class="contestant-to-move">'+
 											'<div>'+selectedStatus+'</div><div><img class = "lineup-img" src="'+selectedImage+'"/>'+ selectedName+'</div>'+
 										'</div>'
 									;
@@ -612,7 +612,7 @@ if(!$IS_MOBILE){
 						status = "IR";
 					}
 				    htmlString += 	'<a href="#">'+
-				    						'<div><button class="swap-mobile btn" id="m-'+data[i][0]+'">SELECT</button></div><div>'+status+'</div><div><img class = "lineup-img" src="'+'img/lineup/'+data[i][6]+'"/>'+ data[i][1]+'</div>'+
+				    						'<div><button class="swap-mobile btn" id="m-'+ceremony_number+'-'+data[i][0]+'">SELECT</button></div><div>'+status+'</div><div><img class = "lineup-img" src="'+'img/lineup/'+data[i][6]+'"/>'+ data[i][1]+'</div>'+
 				    				'</a>';
 				}
 
@@ -727,8 +727,8 @@ if(!$IS_MOBILE){
 		$(function(){
 			$(document).on("click","#test-btn",function(event){
 				alert('pooooooo');
-				var item1=$('#5poo');
-				var item2=$('#51');
+				var item1=$('#2poo');
+				var item2=$('#21poo');
 				var copy1=item1.clone();
 				var copy2=item2.clone();
 				// $("#5poo").replaceWith($("#51"));
@@ -745,12 +745,12 @@ if(!$IS_MOBILE){
 				// alert('boo');
 				// $("#poo1").replaceWith($("#poo2"));
 				var m_move_id=$("div.contestant-to-move").prop("id");
-				alert(m_move_id);
-				var move_id=m_move_id.split("-")[1];
-				alert(move_id);
-				var replacewith_id=this.id.split("-")[1];
-				alert(replacewith_id);
-				var div1=$('#'+move_id);
+				alert(m_move_id); // m-id
+				var move_id=m_move_id.split(/-(.+)/)[1];
+				alert(move_id); // id
+				var replacewith_id=this.id.split(/-(.+)/)[1];
+				alert(replacewith_id); // id of replacement
+				var div1=$('#'+move_id); 
 				//var div1=$(div1_id);
 				//alert(div1_id);
 				var div2=$('#'+replacewith_id);

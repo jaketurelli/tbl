@@ -741,7 +741,7 @@ nav.navbar.nonhome {
 /*===LINEUP===*/
 
 #lineup-bg, .row-bg {
-	background-color: #657278; /*#007E89rgba(226,243,243,1);*/
+	background-color: #DAECF3; /*#007E89rgba(226,243,243,1);*/
 }
 #lineup-content, .tab-content {
 	background-color: #fff;
@@ -777,8 +777,8 @@ nav.navbar.nonhome {
 }
 .lineup-table > thead > tr > th {
 	border: 2px solid white !important;
-	background-color: #00C5D5;
-	color: #fff;
+	background-color: #022D41;
+	color: rgba(255,255,255,0.9);
 	font-weight: 400;
 	font-size: 14px;
 	padding: 8px !important;
