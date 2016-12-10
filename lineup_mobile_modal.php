@@ -1,10 +1,11 @@
 <?php
 include('get_SESSION.php');
 
-$contestant_id = $_GET['contestant_id'];
+$contestant_id   = $_GET['contestant_id'];
+$ceremony_number = $_GET['ceremony_number'];
 
 // GET ARRAY OF USER'S PICKED CONTESTANTS
-$query = "SELECT contestant_id FROM picks WHERE user_id = $USER_ID AND ceremony = $CURRENT_CEREMONY AND league_id = $LEAGUE_ID ORDER BY contestant_id ASC";
+$query = "SELECT contestant_id FROM picks WHERE user_id = $USER_ID AND ceremony = $ceremony_number AND league_id = $LEAGUE_ID ORDER BY contestant_id ASC";
 $result = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
 $pickedContestants = array();
 while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {

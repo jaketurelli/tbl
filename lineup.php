@@ -568,7 +568,12 @@ if(!$IS_MOBILE){
 			//PASSED USER_ID, LEAGUE_ID, CEREMONY, CONTESTANT_ID IN ORDER TO PROPERLY SHOW BENCHED PLAYERS 
 			// https://openenergymonitor.org/emon/node/107
 			var $modal = $(this),
-			contestant_id = e.relatedTarget.id;
+			//contestant_id = e.relatedTarget.id;
+			contestant_string = e.relatedTarget.id;
+			string_split = contestant_string.split("-"); // ceremony_number-contestant_id
+			ceremony_number = string_split[0];
+			contestant_id = string_split[1];
+
 			// QUERY CONTESTANT ID FOR STATUS, IMG, NAME
 			// NEED CONTESTANT ID, USER ID, CEREMONY ID IN ORDER TO SHOW BENCHED
 		    //-----------------------------------------------------------------------
@@ -577,7 +582,8 @@ if(!$IS_MOBILE){
 		    $.ajax({                                      
 				url: 'lineup_mobile_modal.php',    	//the script to call to get data          
 				type: "GET",
-				data: { contestant_id:  contestant_id,
+				data: { ceremony_number: ceremony_number,
+						contestant_id:  contestant_id,
 					},                        		//you can insert url argumnets here to pass to api.php
 				                               		//for example "id=5&parent=6"
 				dataType: 'json',             		//data format      
