@@ -197,6 +197,7 @@ include('header_content.html');
 			<th align = "center">Lock Date/Time</th>
 			<th align = "center">Update</th>
 			<th align = "center">Delete</th>
+			<th align = "center">Current?</th>
 		</tr>
 	<?php
 	//date_default_timezone_set('America/Los_Angeles');
