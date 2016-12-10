@@ -120,7 +120,7 @@ include('header_content.html');
 					<div class="row">
 						<!-- <div class="col-md-3"></div> -->
 						<div class="col-md-12 text-center">
-							<img src="img/tblheadline2.png"  style="width: 75%;" alt="headline" />
+							<img src="img/tblheadline2.png" alt="headline" />
 						</div>
 						<!-- <div class="col-md-3"></div> -->
 					</div>
