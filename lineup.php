@@ -276,10 +276,10 @@ if(!$IS_MOBILE){
 																		}
 																		?>
 
-																			<tr class=<?php echo '"' . $curr_dragDrop_class . '"'?> id = <?php echo '"' . $curr_picks_ceremony . '-' . $curr_contestant_id . '"'; ?>>
+																			<tr class=<?php echo '"' . $curr_dragDrop_class . '"'?> id = <?php echo '"' . $this_ceremony_num . '-' . $curr_contestant_id . '"'; ?>>
 																				<td class="td-center">
 																				<?php if($IS_MOBILE){ ?>
-																					<button class="move-btn" data-toggle="modal" id = <?php echo '"' . $curr_picks_ceremony . '-' . $curr_contestant_id . '"'; ?> data-target="#movemodal">MOVE</a>
+																					<button class="move-btn" data-toggle="modal" id = <?php echo '"' . $this_ceremony_num . '-' . $curr_contestant_id . '"'; ?> data-target="#movemodal">MOVE</a>
 																				<?php } else { ?>
 																					<span class="glyphicon glyphicon-menu-hamburger"></span>
 																				<?php } ?>
@@ -331,10 +331,10 @@ if(!$IS_MOBILE){
 																		$curr_status = 'IR';
 																	}
 																	?>
-																	<tr class=<?php echo '"' . $curr_dragDrop_class . '"'?> id = <?php echo '"' . $curr_picks_ceremony . '-' . $curr_contestant_id . '"';?>>
+																	<tr class=<?php echo '"' . $curr_dragDrop_class . '"'?> id = <?php echo '"' . $this_ceremony_num . '-' . $curr_contestant_id . '"';?>>
 																		<td class="td-center">
 																		<?php if($IS_MOBILE){ ?>
-																			<button class="move-btn" data-toggle="modal" id = <?php echo '"' . $curr_picks_ceremony . '-' . $curr_contestant_id . '"'; ?> data-target="#movemodal">MOVE</button>
+																			<button class="move-btn" data-toggle="modal" id = <?php echo '"' . $this_ceremony_num . '-' . $curr_contestant_id . '"'; ?> data-target="#movemodal">MOVE</button>
 																		<?php } else { ?>
 																			<span class="glyphicon glyphicon-menu-hamburger"></span>
 																		<?php } ?>
