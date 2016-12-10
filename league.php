@@ -114,14 +114,30 @@ include('header_content.html');
 											if (mysqli_num_rows($scores)==0){
 												// do nothing
 											}else{
+												$standing_counter=1;
+												$counter = 1;
 												while($curr_user = mysqli_fetch_array($scores)){
 													$ind = $curr_user['user_id'];
 													$curr_alias = $TABLE_USER_ALIAS_ARRAY[$ind];
 													$curr_score = $curr_user['total_score'];
-
+													if ($counter==1){
+														$curr_standing = $standing_counter;
+													}else{
+														if($previous_score==$curr_score){
+															$curr_standing = $standing_counter;
+														}else{
+															$standing_counter=1+$standing_counter;
+															$curr_standing= $standing_counter;
+														}
+													}
+													$counter =$counter + 1;
+													$previous_score = $curr_score;
+													var_dump($counter);
+													var_dump($previous_score);
+													
 													?>
 													<tr>
-														<td class="col-md-2 place">1</td><td class="col-md-2"><img src="img/profile.png" /></td><td class="col-md-4"><?php echo $curr_alias ?></td><td class="col-md-4"><?php echo $curr_score ?> pts</td>
+														<td class="col-md-2 place"><?php echo $curr_standing;?></td><td class="col-md-2"><img src="img/profile.png" /></td><td class="col-md-4"><?php echo $curr_alias ?></td><td class="col-md-4"><?php echo $curr_score ?> pts</td>
 													</tr>
 													<?php
 												}							
@@ -337,14 +353,27 @@ include('header_content.html');
 									if (mysqli_num_rows($scores)==0){
 										// do nothing
 									}else{
+										$standing_counter=1;
+										$counter = 1;
 										while($curr_user = mysqli_fetch_array($scores)){
 											$ind = $curr_user['user_id'];
 											$curr_alias = $TABLE_USER_ALIAS_ARRAY[$ind];
 											$curr_score = $curr_user['total_score'];
-
-											?>
+											if ($counter==1){
+												$curr_standing = $standing_counter;
+											}else{
+												if($previous_score==$curr_score){
+													$curr_standing = $standing_counter;
+												}else{
+													$standing_counter=1+$standing_counter;
+													$curr_standing= $standing_counter;
+												}
+											}
+											$counter =$counter + 1;
+											$previous_score = $curr_score;													
+									?>
 											<tr>
-												<td class="col-md-2 place">1</td><td class="col-md-2"><img src="img/profile.png" /></td><td class="col-md-4"><?php echo $curr_alias ?></td><td class="col-md-4"><?php echo $curr_score ?> pts</td>
+												<td class="col-md-2 place"><?php echo $curr_standing;?></td><td class="col-md-2"><img src="img/profile.png" /></td><td class="col-md-4"><?php echo $curr_alias ?></td><td class="col-md-4"><?php echo $curr_score ?> pts</td>
 											</tr>
 											<?php
 
