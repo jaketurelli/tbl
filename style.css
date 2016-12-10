@@ -106,6 +106,7 @@ hr {
 	background-color: #1AA6B7;
 	border-radius: 1.5px;
 	margin: 10px 5px;
+	padding: 12px 20px;
 }
 .btn:hover, .btn:focus {
 	color: #fff;
@@ -246,7 +247,7 @@ hr {
 #home .jumbotron {
 	/* background: linear-gradient(to bottom right,#FF9587,#41D9D6);*/
 	background-image: url("img/heroimage2.png");
-	background-position: center top;
+	background-position: center bottom;
 	background-repeat: no-repeat;
 	background-size: cover;
 	padding-top: 20px;
@@ -281,20 +282,21 @@ hr {
 	border-bottom: 2px solid #fff;
 }
 #hero-text {
-	padding: 20px 0px;
+	padding: 40px 0px;
 }
 .hero-unit-inner {
-	padding-top: 100px;
-	padding-bottom: 80px;
+	padding-top: 140px;
+	padding-bottom: 40px;
 }
 .hero-unit-inner h1, h3, h4 {
-	font-weight: 300;
+	font-weight: 400;
+	letter-spacing: 1.1px;
 	line-height: 30px;
 }
 .hero-unit-inner .btn-white {
 	background-color: transparent;
 	color: #fff;
-	padding: 10px 30px;
+	padding: 14px 30px;
 	border-radius: 0;
 	border-style: solid;
 	border-width: 3px;
@@ -302,6 +304,7 @@ hr {
 	font-family: Raleway;
 	font-size: 16px;
 	font-weight: 500;
+	letter-spacing: 3px;
 }
 .hero-unit-inner .btn-white a {
 	color: #fff!important;
@@ -497,7 +500,7 @@ a.login:hover, a.signup:hover, a.logout:hover {
 #contestants {
 	padding-top: 80px;
 	padding-bottom: 60px;
-	background-color: #DAECF3;
+	/*background-color: #1AA6B7;*/
 }
 #contestants p {
 	padding: 0 80px 25px 0px;
@@ -537,6 +540,23 @@ a.login:hover, a.signup:hover, a.logout:hover {
 }
 .bottom-home-cta-button {
 	margin: 20px 0px;
+}
+
+hr.style-eight {
+    padding: 0;
+    border: none;
+    border-top: 1px solid #DDD;
+    color: #ddd;
+    text-align: center;
+}
+hr.style-eight:after {
+    content: url(img/rosedivider.png);
+    display: inline-block;
+    position: relative;
+    top: -0.7em;
+    font-size: 1.5em;
+    padding: 0 0.25em;
+    background: white;
 }
 
 /*===HEADER NON-HOME===*/

@@ -118,23 +118,23 @@ include('header_content.html');
 			<div class="hero-unit-inner">
 				<div class="container">
 					<div class="row">
-						<div class="col-md-6">
-							<img src="img/tblheadline.svg" />
+						<!-- <div class="col-md-3"></div> -->
+						<div class="col-md-12 text-center">
+							<img src="img/tblheadline2.png"  style="width: 75%;" alt="headline" />
 						</div>
-						<div class="col-md-6">
-							
+						<!-- <div class="col-md-3"></div> -->
+					</div>
+					<div class="row">
+						<div class="col-md-3"></div>
+						<div class="col-md-6 text-center">
+							<h4 id="hero-text" class="white">Play along as Nick Viall searches for love...again... as the next Bachelor</h4>
 						</div>
 						
-					</div>
-					<div class="row">
-						<div class="col-md-6">
-							<h4 id="hero-text" class="white">Play along as Nick Viall searches for love as the next Bachelor</h4>
-						</div>
-						<div class="col-md-3"></div>
 						<div class="col-md-3"></div>
 					</div>
 					<div class="row">
-						<div class="col-md-4">
+						<div class="col-md-4"></div>
+						<div class="col-md-4 text-center">
 							<?php if(!$IS_SIGNED_IN){ ?>
 							<button type="button" class="btn-white" data-toggle="modal" data-target="#signupmodal">SIGN UP</button>
 					
@@ -150,7 +150,7 @@ include('header_content.html');
 							}
 							?>
 						</div>
-						<div class="col-md-4"></div>
+						
 						<div class="col-md-4"></div>
 					
 					</div>
@@ -182,6 +182,7 @@ include('header_content.html');
 				</div>
 			</div>
 		</div><!-- end of how it works -->
+		<hr class="style-eight" width="50%">
 		<div id="contestants">
 			<div class="container">
 				<div class="row">
