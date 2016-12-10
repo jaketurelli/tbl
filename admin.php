@@ -208,6 +208,12 @@ include('header_content.html');
 			$this_ceremony_num = $this_ceremony['ceremony_number'];
 			$this_num_picks = $this_ceremony['number_picks'];
 			$this_lock_time = $this_ceremony['lock_time'];
+			$this_is_current = $this_ceremony['is_current'];
+			if ($this_is_current==1){
+				$is_current_text = 'checked';
+			}else{
+				$is_current_text = '';
+			}
 
 			//var_dump($this_lock_time);
 			$this_date = strtotime($this_lock_time);
@@ -386,7 +392,7 @@ include('header_content.html');
 				<input type = "submit" name = "delete" value = "Delete" />
 			</td>
 			<td>
-				
+				<input type = "radio" name = "is_current" value = <?php echo '"'. $this_ceremony_num . '" ' . $is_current_text ?> >Is Current<br>
 			</td>
 		</tr>	
 		</form>	
