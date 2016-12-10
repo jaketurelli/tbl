@@ -75,7 +75,7 @@ if($_POST['login']) {
 			
 	}
 }else {
-	echo "<script>alert('How did you get here?');
+	echo "<script>alert('How did you get here? No login, no fb_id.');
 				 window.location.href='index.php';
 					</script>";
 }
@@ -87,6 +87,7 @@ if($league_id == -1){
 	echo "<script>window.location.href='league.php';
 		</script>";
 }else{
+	// GET SESSION VARIABLES
 	$query = "SELECT * FROM `league` WHERE `league_id` = $league_id";
 	$result = mysqli_query($dbc,$query) or die ("Error in query: $query " . mysqli_error($dbc));
 	$league = mysqli_fetch_array($result);
@@ -108,8 +109,7 @@ if($league_id == -1){
 	}
 
 
-	echo "<script>alert('How did you get here?');
-				 window.location.href='index.php';
+	echo "<script>window.location.href='index.php';
 					</script>";
 }
 ?>
