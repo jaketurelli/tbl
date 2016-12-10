@@ -657,8 +657,11 @@ if(!$IS_MOBILE){
 		    var getLineup = "#lineup_" + activeCeremony + " tr" ;
 
 		    $(getLineup).each(function(row, tr){
+		    	tempString = $(tr).attr('id');
+		    	splitString = tempString.split("-"); // ceremony_number-contestant_id
+		    	contestant_id = splitString[1];
 		        lineupTableData[row]={
-		            "contestant_id" : $(tr).attr('id'),
+		            "contestant_id" : contestant_id,
 		            "ceremony_number": ceremonyNum,
 		        }    
 		    }); 

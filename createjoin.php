@@ -1,3 +1,6 @@
+<?php
+	include('get_SESSION.php');
+?>
 <!DOCTYPE html>
 <html>
 <head>
