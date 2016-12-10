@@ -81,7 +81,7 @@ if(!$IS_MOBILE){
 	<script type="text/javascript" src="jquery.ui.touch-punch.min.js"></script>
 </head>
 <body>
-	<nav class="navbar nonhome">
+	<nav class="navbar nonhome nav-border-bottom">
 		<div class="navbar-header">
 			<a class="navbar-toggle" data-toggle="overlay" data-target=".navbar-collapse" href="#">
 				<span class="icon-bar"></span>

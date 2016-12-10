@@ -10,7 +10,7 @@ include('header_content.html');
 ?>
 </head>
 <body>
-	<nav class="navbar nonhome">
+	<nav class="navbar nonhome nav-border-bottom">
 		<div class="navbar-header">
 			<a class="navbar-toggle" data-toggle="overlay" data-target=".navbar-collapse" href="#">
 				<span class="icon-bar"></span>
@@ -34,11 +34,11 @@ include('header_content.html');
 		</div>
 		<div class=" navbar-collapse overlay navbar-right">
 			<ul class="nav navbar-nav nav-pills">
-				<li><a href="league.php">LEAGUE</a></li>
-				<li><a href="lineup.php">LINEUP</a></li>
-				<li class="active"><a href="trashtalk.php">TRASH TALK</a></li>
-				<li><a href="contestants.php">CONTESTANTS</a></li>
-				<li><a href="blog.php">BLOG</a></li>
+				<li><a href="league.php">League</a></li>
+				<li><a href="lineup.php">Lineup</a></li>
+				<li class="active"><a href="trashtalk.php">Trash Talk</a></li>
+				<li><a href="contestants.php">Contestants</a></li>
+				<li><a href="blog.php">Blog</a></li>
 				<?php
 				if($IS_ADMIN){
 				?>

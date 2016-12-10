@@ -589,9 +589,10 @@ nav.navbar.nonhome {
 	background-color: rgba(65,217,214,0.2);
 }
 .navbar.nonhome .nav > li.active > a {
-	color: #303030;
+	color: #FF918D;
 	background-color: transparent;
-	border-bottom: 2px solid rgba(0,197,213,1);
+	font-weight: 500;
+	/*border-bottom: 2px solid rgba(0,197,213,1);*/
 }
 #banner{
 	width: 100%;
@@ -612,7 +613,7 @@ nav.navbar.nonhome {
 	background-color: rgba(0,0,0,0.01);
 }
 #sidebar {
-	background-color: #657278;
+	background-color: #6E7778;
 	color: #fff;
 	float: left;
 	height: 100vh;
@@ -741,7 +742,7 @@ nav.navbar.nonhome {
 /*===LINEUP===*/
 
 #lineup-bg, .row-bg {
-	background-color: #DAECF3; /*#007E89rgba(226,243,243,1);*/
+	background-color: #fff; /*#007E89rgba(226,243,243,1);*/
 }
 #lineup-content, .tab-content {
 	background-color: #fff;
@@ -776,9 +777,10 @@ nav.navbar.nonhome {
 	text-align: right;
 }
 .lineup-table > thead > tr > th {
-	border: 2px solid white !important;
-	background-color: #022D41;
-	color: rgba(255,255,255,0.9);
+	/*border: 2px solid white !important;*/
+	/*background-color: #022D41;*/
+	border-bottom: thin solid #598CB2;
+	color: #598CB2;
 	font-weight: 400;
 	font-size: 14px;
 	padding: 8px !important;
@@ -899,7 +901,7 @@ nav.navbar.nonhome {
 /*===TRASH TALK===*/
 
 #trashtalk {
-	background-color: #007E89; /*rgba(226,243,243,1);*/
+	/*background-color: #007E89;*/ /*rgba(226,243,243,1);*/
 }
 #trashtalk > .container {
 	background-color: #fff;
