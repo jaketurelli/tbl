@@ -120,14 +120,14 @@ include('header_content.html');
 					<div class="row">
 						<!-- <div class="col-md-3"></div> -->
 						<div class="col-md-12 text-center">
-							<img src="img/tblheadline2.png" alt="headline" />
+							<img src="img/tblheadline2.png" id="tblheadline" class="img-responsive" alt="headline" />
 						</div>
 						<!-- <div class="col-md-3"></div> -->
 					</div>
 					<div class="row">
 						<div class="col-md-3"></div>
 						<div class="col-md-6 text-center">
-							<h3 id="hero-text" class="white">Play along as Nick Viall searches for love...again.</h3>
+							<h4 id="hero-text" class="white">Play along as Nick Viall searches for love...again.</h4>
 						</div>
 						
 						<div class="col-md-3"></div>

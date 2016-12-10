@@ -250,7 +250,7 @@ hr {
 	background-position: center bottom;
 	background-repeat: no-repeat;
 	background-size: cover;
-	padding-top: 20px;
+	padding-top: 5px;
 	width: 100%;
 }
 #home .navbar-brand {
@@ -319,8 +319,8 @@ hr {
 	line-height: 44px!important;
 }
 
-/*---hamburger menu---*/
 
+/*---home jumbotron mobile---*/
 @media (max-width: 840px){
 	.hero-unit-inner {
 		padding-top: 10px!important;
@@ -330,9 +330,27 @@ hr {
 		max-width: 80% !important;
 	}
 	#hero-text {
-		font-size: 16px;
+		font-size: 14px;
 		line-height: 25px;
+		padding: 20px 0px 40px 0px;
 	}
+	#home .jumbotron {
+		height: 300px;
+	}
+	#tblheadline {
+		display: none;
+	}
+	.hero-unit-inner .btn-white {
+		padding: 7px 14px;
+		border-width: 2px;
+		font-size: 14px;
+		letter-spacing: 2px;
+	}
+}
+
+/*---hamburger menu---*/
+
+@media (max-width: 840px){
 	.collapsing {
 		position: absolute!important;
 		z-index: 20;
@@ -412,7 +430,7 @@ hr {
 		background-color: #ff9587;
 	}
 	#howitworks, #contestants, #blog, #app {
-		padding-top: 40px!important;
+		padding: 10px 0px 20px 0px!important;
 	}
 	#howitworks img {
 		height: 50% !important;
@@ -422,14 +440,15 @@ hr {
 		padding: 10px!important;
 	}
 }
-@media(max-width: 500px){
+@media(max-width: 800px){
 	.navbar-brand-centered {
         position: absolute;
         left: 50%;
         display: block;
         text-align: center;
-        margin-left: -80px;
+        margin-left: -70px;
     }
+
 }
 
 /*===sign up login===*/
@@ -482,8 +501,7 @@ a.login:hover, a.signup:hover, a.logout:hover {
 
 /*---how it works---*/
 #howitworks {
-	padding-top: 60px;
-	padding-bottom: 80px;
+	padding: 60px 0px 80px 0px;
 }
 #steps {
 	padding: 20px 20px 20px 0;
@@ -494,6 +512,7 @@ a.login:hover, a.signup:hover, a.logout:hover {
 #steps img {
 	
 }
+
 
 /*---contestants---*/
 #contestants {
@@ -541,6 +560,7 @@ a.login:hover, a.signup:hover, a.logout:hover {
 	margin: 20px 0px;
 }
 
+/*---divider---*/
 hr.style-eight {
     padding: 0;
     border: none;
@@ -556,6 +576,16 @@ hr.style-eight:after {
     font-size: 1.5em;
     padding: 0 0.25em;
     background: white;
+}
+
+/*---rest of home page below jumbotron---*/
+@media (max-width: 840px){
+	#steps {
+		padding: 10px;
+	}
+	#contestants p, #blog p, #app p {
+		padding: 0px;
+	}
 }
 
 /*===HEADER NON-HOME===*/
