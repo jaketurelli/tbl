@@ -225,7 +225,9 @@ if(!$IS_MOBILE){
 												</div>
 												<table><tbody>
 												<tr id=<?php echo '"' . $this_ceremony_num . 'poo"' ?>><td><button>butt</button></td><td><?php echo '"' . $this_ceremony_num . '"' ?></td><td>poop</td></tr>
-							
+												</tbody></table>
+
+												<table><tbody>
 												<tr id=<?php echo '"' . $this_ceremony_num . '1poo"'?>><td><button>butt2</button></td><td>poop</td><td><?php echo '"' . $this_ceremony_num . '"'
 						?></td></tr></tbody></table>
 												<table id= <?php echo '"roster_ceremony' . $this_ceremony_num . '"'?> class="table lineup-table">
@@ -362,7 +364,7 @@ if(!$IS_MOBILE){
 								</div>
 							</div>
 						</div>
-<button id="test-btn">TEST</button>
+
 					</div>
 					<div class="col-md-3 row-bg">
 						<div class="ceremony-schedule">
@@ -471,6 +473,7 @@ if(!$IS_MOBILE){
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
+
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aroa-hidden="true">&times;</span></button>
 					<h4 class="modal-title" id="moveContestantsModal">Adjust Lineup</h4>
 				</div>
@@ -597,7 +600,7 @@ if(!$IS_MOBILE){
 				}
 				var selectedImage = 'img/lineup/'+data[0][6];
 				var selectedName = data[0][1];
-				var htmlString = '<h4>Moving:</h4>'+
+				var htmlString = '<h4>Moving:</h4>'+ '<button id="test-btn">TEST</button>'+
 										'<div id="m-'+ceremony_number+'-'+contestant_id+'" class="contestant-to-move">'+
 											'<div>'+selectedStatus+'</div><div><img class = "lineup-img" src="'+selectedImage+'"/>'+ selectedName+'</div>'+
 										'</div>'
@@ -728,6 +731,7 @@ if(!$IS_MOBILE){
 			$(document).on("click","#test-btn",function(event){
 				alert('pooooooo');
 				var item1=$('#2poo');
+				alert(item1);
 				var item2=$('#21poo');
 				var copy1=item1.clone();
 				var copy2=item2.clone();
@@ -752,10 +756,10 @@ if(!$IS_MOBILE){
 				alert(replacewith_id); // id of replacement
 				var div1=$('#'+move_id); 
 				//var div1=$(div1_id);
-				//alert(div1_id);
+				alert(div1.text());
 				var div2=$('#'+replacewith_id);
 				//var div2=$(div2_id);
-
+				alert(div2.text());
 				var tdiv1=div1.clone();
 				var tdiv2=div2.clone();
 				//var poop=div1.html();
