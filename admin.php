@@ -393,7 +393,7 @@ include('header_content.html');
 				<input type = "submit" name = "delete" value = "Delete" />
 			</td>
 			<td>
-				<input type = "radio" onclick="is_current_update(this, <?php echo $this_ceremony_num;?> )" name = "is_current" value = <?php echo '"'. $this_ceremony_num . '" ' . $is_current_text ?> >Is Current<br>
+				<input type = "radio" onclick="is_current_update(this, <?php echo $this_ceremony_num;?> )" name = "is_current" <?php echo $is_current_text ?> >Is Current<br>
 			</td>
 		</tr>	
 		</form>	
@@ -521,7 +521,7 @@ function is_current_update(elmnt,ceremony_number) {
 		url: "admin_update_current_ceremony.php",
 		data: "current_ceremony=" + ceremony_number,
 		success: function(msg){
-			//
+			console.log(msg);
 		}
 	});
 	location.reload();

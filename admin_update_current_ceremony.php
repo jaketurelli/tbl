@@ -9,4 +9,6 @@ $set_all_to_zero = mysqli_query($dbc, $query);
 $query = "UPDATE ceremony SET is_current = 1 WHERE ceremony_number = $current_ceremony";
 $set_current = mysqli_query($dbc, $query);
 
+echo json_encode("Ceremony " . $current_ceremony . " is the current ceremony.") ;
+ 
 ?>
