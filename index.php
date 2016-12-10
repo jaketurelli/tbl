@@ -127,7 +127,7 @@ include('header_content.html');
 					<div class="row">
 						<div class="col-md-3"></div>
 						<div class="col-md-6 text-center">
-							<h4 id="hero-text" class="white">Play along as Nick Viall searches for love...again... as the next Bachelor</h4>
+							<h3 id="hero-text" class="white">Play along as Nick Viall searches for love...again.</h3>
 						</div>
 						
 						<div class="col-md-3"></div>
