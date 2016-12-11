@@ -784,7 +784,7 @@ nav.navbar.nonhome {
 	font-weight: 600;
 }
 .here {
-	background-color: #FFB59C!important;
+	background-color: #0086AD!important;
 	color: #fff;
 	font-weight: 600;
 }
@@ -793,11 +793,15 @@ nav.navbar.nonhome {
 	box-shadow: none!important;
 	font: rgba(255,255,255,0.7);
 }
+.changes-saved {
+	color: #F2385A;
+	font-weight: 600;
+}
 .changes-hidden {
-	display: none;
+	visibility: hidden;
 }
 .changes-display {
-	display: block!important;
+	visibility: visible;
 }
 
 #lineup-bg, .row-bg {

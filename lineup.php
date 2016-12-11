@@ -55,10 +55,10 @@
 <?php
 include('header_content.html');
 ?>
-	<link rel="stylesheet" href="jquery-ui.css">
+	<!-- <link rel="stylesheet" href="jquery-ui.css">
 	<script type="text/javascript" src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="jquery.json.min.js"></script> 
-	<script type="text/javascript" src="jquery.ui.touch-punch.min.js"></script>
+	<script type="text/javascript" src="jquery.ui.touch-punch.min.js"></script> -->
 </head>
 <body>
 	<nav class="navbar nonhome nav-border-bottom">
@@ -133,7 +133,41 @@ include('header_content.html');
 						<div class="row row-bg">
 							<div class="col-md-12">
 								<nav class="ceremony-nav">
-									<ul class="nav nav-tabs" id="ceremonytabs">
+									<div class="pull-left dropdown">
+									  	<button class="btn btn-default dropdown-toggle" type="button" id="ceremonyDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span id="selected">
+									  	Ceremony <?php echo $CURRENT_CEREMONY ?> </span>
+									    	<span class="caret"></span>
+									  	</button>
+									  	<ul class="dropdown-menu" aria-labelledby="ceremonyDropdown">
+									  	<?php
+											if ($LEAGUE_ID > -1){
+												?>
+												
+												<?php
+												foreach($TABLE_CEREMONY as $this_ceremony){
+													$this_ceremony_num = $this_ceremony['ceremony_number'];
+													if($this_ceremony_num == $CURRENT_CEREMONY){
+														$this_nav_class = 'nav-item active';
+													}else{
+														$this_nav_class = 'nav-item';
+													}?>
+
+													<li class = <?php echo  '"' . $this_nav_class . '"' ?>><a data-target =  <?php echo '#ceremony' . $this_ceremony_num?> data-toggle = "tab" href = "#">Ceremony <?php 
+													if($this_ceremony_num == 1){
+														echo $this_ceremony_num;
+													}else{
+														echo $this_ceremony_num;
+													}
+													?></a></li>
+
+													<?php
+												}
+											}
+										?>
+									  	</ul>
+									</div>
+									<div class="pull-right changes-saved changes-hidden"><p >Changes saved!</p></div>
+									<!-- <ul class="nav nav-tabs" id="ceremonytabs">
 										<?php
 											if ($LEAGUE_ID > -1){
 												?>
@@ -159,8 +193,12 @@ include('header_content.html');
 												}
 											}
 										?>
-									</ul>
+									</ul> -->
 								</nav>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
 								<div class="tab-content" id = "ceremonypages">
 									<?php
 									if ($LEAGUE_ID > -1){
@@ -192,13 +230,13 @@ include('header_content.html');
 								
 											
 											<div class=<?php echo '"'. $this_tab_class. '"'?> id= <?php echo '"ceremony' . $this_ceremony_num . '"'?>>  
-												<div class="row">
+												<!-- <div class="row">
 													<div class="col-md-12">
-														<p id="changes-saved" class="changes-hidden changes-display">Changes saved!</p>
-														<!-- SUBMIT PICKS BUTTON -->
+														
+														
 														<input class="btn btn-pink btn-submit" name = "submitPicks" onclick = "submitPicks()" type = "button"  value = <?php echo $curr_button_text . $curr_button_disable ?> >
 													</div>
-												</div>
+												</div> -->
 												
 												<table id= <?php echo '"roster_ceremony' . $this_ceremony_num . '"'?> class="table lineup-table">
 													<thead>
@@ -423,7 +461,9 @@ include('header_content.html');
 	include('login-signup-content.html');
 	?>
 	<script type="text/javascript">
-	$(document).ready
+	$(document).ready(function() { 
+		// $('#changes-saved').removeClass('changes-hidden');
+		// $('.changes-saved').hide();
 		$('.move-btn').click(function() {
 			if($(this).hasClass('here')){
 				var move_id=$('.grey').prop("id");
@@ -440,7 +480,14 @@ include('header_content.html');
 				div2.replaceWith(tdiv1);
 				$('.move-btn').removeClass('here').text('MOVE');
 				$('.move-btn').removeClass('grey');
+				// $('#changes-saved').removeClass('changes-hidden');
+				$('.changes-saved').addClass('changes-display').delay(1500).fadeTo(500,0, function(){
+					$(this).css('visibility','hidden');
+				});
 				submitPicks();
+				
+		    
+		    // $('#changes-saved').removeClass('changes-display');
 			} else {
 				$(this).addClass('grey');
 				$('.move-btn').not(this).each(function() {
@@ -449,6 +496,8 @@ include('header_content.html');
 				});
 			}
 		});
+		
+	});
 	</script>
 
 	<script type = "text/javascript">
@@ -488,12 +537,14 @@ include('header_content.html');
 		    }); 
 
 		    // alert("Your picks have been submitted.")
-		    $('#changes-saved').addClass('changes-display');
-		    $('#changes-saved').delay(5000).fadeOut('slow');
-		    $('#changes-saved').removeClass('changes-display');
+		    
 
 		    return lineupTableData;
 		}
+
+		$('.dropdown-menu a').click(function(){
+		    $('#selected').text($(this).text());
+		});
 	</script>
 </body>
 </html>
