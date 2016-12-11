@@ -5,40 +5,50 @@ require_once('../includes/connection.php');
 
 
 if($_POST['signup']) {
-	$uname    = $_POST['uname'];
-	$alias    = $_POST['alias'];
-	$pswd     = $_POST['pword'];
-
+	$email      = $_POST['email'];
+	$first_name = trim(addslashes($_POST['first_name']));
+	$last_name  = trim(addslashes($_POST['last_name']));
+	$pswd       = $_POST['pword'];
+	if(!empty($first_name)){
+		$alias = $first_name;
+	}elseif(!empty($last_name)){
+		$alias = $last_name;
+	}else{
+		$split_string = explode("@", $email);
+		$alias = $split_string[0];
+	}
+/*
 	$SPECIAL_CHARACTERS = "/[\'^£$%&*()}{#~?><>,|=_+¬-]/";
 	if(preg_match($SPECIAL_CHARACTERS, $uname) ){
 		echo "<script>alert('No special characters.');
 					 window.location.href='index.php';
 						</script>";
 	}
+*/
 	//echo "testing" ;
-	$query = "SELECT * FROM `user` WHERE `username` LIKE '$uname'";
+	$query = "SELECT * FROM `user` WHERE `email` LIKE '$email'";
 	$result = mysqli_query($dbc,$query) or die ("Error in query: $query " . mysqli_error($dbc));
 	$user = mysqli_fetch_array($result);
 	if (mysqli_num_rows($result)==0){
 
 		$pswd_hash = password_hash($pswd, PASSWORD_DEFAULT);
-		$query = "INSERT INTO `user` (`user_id`, `username`, `alias`,`password`) VALUES (NULL, '$uname', '$alias', '$pswd_hash')";
+		$query = "INSERT INTO `user` (`user_id` ,`email`,`first_name`,`last_name`,`alias`,`password`) VALUES (NULL, '$email', '$first_name', '$last_name', '$alias', '$pswd_hash')";
+		//$query = "INSERT INTO `user` (`user_id`, `email`, `alias`,`password`) VALUES (NULL, '$uname', '$alias', '$pswd_hash')";
 		mysqli_query($dbc,  $query) or die(mysqli_error($dbc));
 		
-
-		$query = "SELECT * FROM `user` WHERE `username` LIKE '$uname' AND `password` LIKE '$pswd_hash'";
+		$query = "SELECT * FROM `user` WHERE `email` LIKE '$email' AND `password` LIKE '$pswd_hash'";
 		$result = mysqli_query($dbc,$query) or die ("Error in query: $query " . mysqli_error($dbc));
 		$user = mysqli_fetch_array($result);
 
 		$_SESSION['USER_ID']      = $user['user_id'];
-		$_SESSION['USERNAME']     = $user['username'];
+		$_SESSION['EMAIL']        = $user['email'];
 		$_SESSION['ALIAS']        = $user['alias'];
 		$_SESSION['LEAGUE_ID']    = $user['league_id'];
 		$_SESSION['IS_ADMIN']     = $user['is_admin'];
 		$_SESSION['IS_SIGNED_IN'] = true;
 		header('Location: index.php');
 	}else{
-		echo "<script>alert('username already exists.');
+		echo "<script>alert('email account already exists for another user.');
 				 window.location.href='index.php';
 					</script>";
 	}

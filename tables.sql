@@ -70,14 +70,18 @@ INSERT INTO `thebachleague`.`contestants` (`contestant_id`, `name`, `aka`, `age`
 VALUES (NULL, 'Will'     ,  'Still TPing Houses'          ,    26  ,   'Civil Engineer'              ,    '6''2"'    ,'img/will.jpg'        , 0, 'Haduch, NJ', 'http://abc.go.com/shows/the-bachelorette/cast/will', 'http://www.google.com/search?q=will+bachelorette', 'Will', 'Haduch');
 
 CREATE TABLE `thebachleague`.`user` ( `user_id` 		INT(11) NOT NULL AUTO_INCREMENT,
-									  `username` 		VARCHAR(25) NOT NULL , 
-									  `alias` 			VARCHAR(25) NOT NULL , 
+									  `email` 		    VARCHAR(100) NOT NULL , 
+									  `first_name` 		VARCHAR(25) NOT NULL , 
+									  `last_name` 		VARCHAR(25) NOT NULL , 
+									  `alias`			VARCHAR(25) NOT NULL ,
 									  `password` 		VARCHAR(255) NOT NULL, 
 									  `league_id` 		INT(11) NOT NULL DEFAULT '-1', 
 									  `is_admin` 		BOOLEAN NOT NULL DEFAULT '0',
 									  `is_logged_in` 	BOOLEAN NOT NULL DEFAULT '1',
 									  `fb_id`			BIGINT(255) UNSIGNED NULL DEFAULT NULL,
-									  `email`			VARCHAR(100) NOT NULL , 
+									  `twit_id`			BIGINT(255) UNSIGNED NULL DEFAULT NULL,
+									  `goog_id`			BIGINT(255) UNSIGNED NULL DEFAULT NULL,
+									  `pwrd_reset_hash` VARCHAR(255) DEFAULT NULL,
 									  PRIMARY KEY (`user_id`) ) ENGINE = InnoDB;
 
 CREATE TABLE `thebachleague`.`ceremony` ( `id` INT(11) NOT NULL AUTO_INCREMENT , 

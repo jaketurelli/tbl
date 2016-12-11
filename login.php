@@ -4,19 +4,20 @@ session_start();
 session_unset ();
 
 $league_id = -1;
-$uname    = $_POST['uname'];
+$email    = $_POST['email'];
 $pswd     = $_POST['pword'];
 
 // .htaccess is preventing $_POST information somehow. Problem open.
+/*
 $SPECIAL_CHARACTERS = "/[\'^£$%&*()}{#~?><>,|=_+¬-]/";
 if(preg_match($SPECIAL_CHARACTERS, $uname) ){
 	echo "<script>alert('No special characters allowed.');
 				 window.location.href='index.php';
 					</script>";
 }
-
+*/
 if($_POST['login']) {
-	$query = "SELECT * FROM `user` WHERE `username` LIKE '$uname'";
+	$query = "SELECT * FROM `user` WHERE `email` LIKE '$email'";
 
 	$result = mysqli_query($dbc,$query) or die ("Error in query: $query " . mysqli_error($dbc));
 	$user = mysqli_fetch_array($result);
@@ -26,7 +27,7 @@ if($_POST['login']) {
 			$user_id = $user['user_id'];
 			$_SESSION['IS_SIGNED_IN'] = TRUE;
 			$_SESSION['USER_ID'] =  $user_id;
-			$_SESSION['USERNAME'] = $user['username'];
+			$_SESSION['EMAIL'] = $user['email'];
 			$_SESSION['ALIAS'] = $user['alias'];
 			$_SESSION['LEAGUE_ID'] = $user['league_id'];
 			$_SESSION['IS_ADMIN'] = $user['is_admin'];
@@ -41,7 +42,7 @@ if($_POST['login']) {
 		}
 
 	}else{	
-		echo "<script>alert('Username does not exist.');
+		echo "<script>alert('User with that email does not exist.');
 					</script>";
 	}
 }elseif(isset($_POST['fb_id'])) {
@@ -63,7 +64,7 @@ if($_POST['login']) {
 
 		$_SESSION['USER_ID']      = $user['user_id'];
 		$_SESSION['fb_id']        = $user['fb_id']; // testing purposes
-		$_SESSION['USERNAME']     = $user['username'];
+		$_SESSION['EMAIL']        = $user['email'];
 		$_SESSION['ALIAS']        = $user['alias'];
 		$_SESSION['LEAGUE_ID']    = $user['league_id'];
 		$_SESSION['IS_ADMIN']     = $user['is_admin'];
@@ -98,7 +99,7 @@ if($league_id == -1){
 	$user = mysqli_fetch_array($result);
 
 	$_SESSION['LEAGUE_NAME']  = $league['name'];
-	$_SESSION['COMMISSIONER'] = $user['username'];
+	$_SESSION['COMMISSIONER'] = $user['alias'];
 	$_SESSION['COMMISH_ID']   = $commish_id;
 
 	$query = "SELECT ceremony_number FROM ceremony WHERE is_current = 1";

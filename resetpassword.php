@@ -10,8 +10,12 @@ include('header_content.html');
 	<h3>Reset Password</h3>
 	<form id="resetpasswordform" role="form" action="resetpassword_database.php" onsubmit="return checkPw()" method="post">
 		<fieldset class="form-group">
-			<label>Username</label>
-			<input type="text" id="username" class="form-control" name="username" value="">
+			<label>Email</label>
+			<input type="email" id="email" class="form-control" name="email" value="">
+		</fieldset>
+		<fieldset class="form-group">
+			<label>Password Reset Code</label>
+			<input type="text" id="reset_code" class="form-control" name="reset_code" value="">
 		</fieldset>
 		<fieldset class="form-group">
 			<label>New Password</label>

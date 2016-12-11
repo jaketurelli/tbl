@@ -1,6 +1,5 @@
 <?php
-// $USER_ID          
-// $USERNAME         
+// $USER_ID               
 // $ALIAS            
 // $LEAGUE_NAME      
 // $LEAGUE_ID        
@@ -18,7 +17,7 @@
 		if ($_SESSION['IS_SIGNED_IN']){
 			$IS_SIGNED_IN     = true;
 			$USER_ID          =	$_SESSION['USER_ID'];
-			$USERNAME         =	$_SESSION['USERNAME'];
+			$EMAIL            =	$_SESSION['EMAIL'];
 			$ALIAS            =	$_SESSION['ALIAS'];
 			$LEAGUE_ID        =	$_SESSION['LEAGUE_ID'];
 			$IS_ADMIN         = $_SESSION['IS_ADMIN'];
@@ -54,7 +53,7 @@
 			
 		}else{
 			$USER_ID          =	NULL;
-			$USERNAME         =	NULL;
+			$EMAIL            =	NULL;
 			$ALIAS            =	NULL;
 			$LEAGUE_NAME      =	NULL;
 			$LEAGUE_ID        =	-1;
@@ -67,7 +66,7 @@
 
 	}else{
 		$USER_ID          =	NULL;
-		$USERNAME         =	NULL;
+		$EMAIL            =	NULL;
 		$ALIAS            =	NULL;
 		$LEAGUE_NAME      =	NULL;
 		$LEAGUE_ID        =	-1;
