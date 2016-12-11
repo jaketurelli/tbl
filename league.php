@@ -490,26 +490,67 @@ include('header_content.html');
 							<div id="rightleaguecol" class="col-md-6">
 								<div class="tile">
 									<h3>eliminations</h3>
-									<p>Ceremony 3:</p>
-									<div class="row">
-										<div class="col-md-6">
-											<img class="contestantimg" src="img/profilesq.png" /><p class="contestantname">Daniel</p>
-										</div>
-										<div class="col-md-6">
-											<img class="contestantimg" src="img/profilesq.png" /><p class="contestantname">Vinny</p>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-md-6">
-											<img class="contestantimg" src="img/profilesq.png" /><p class="contestantname">James F.</p>
-										</div>
-									</div>
+									<?php $previous_ceremony = $CURRENT_CEREMONY-1;?>
+									<p>Ceremony <?php echo $CURRENT_CEREMONY-1;?>:</p>
+								
+									<?php 
+									$query = "SELECT contestant_id, name, image_dir FROM contestants WHERE eliminated = $previous_ceremony";
+									$result = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
+									if(mysqli_num_rows($result)!=0){
+										$count=1;
+										while($loser = mysqli_fetch_array($result)){
+											if(($count)%2==0){
+												echo '<div class="row">';
+											}
+											$curr_loser_name = $loser['name'];
+											$curr_loser_image = 'img/lineup/'.$loser['image_dir'];?>
+											<div class="col-md-6">
+												<img class="contestantimg" src=<?php echo '"'. $curr_loser_image. '"';?>/><p class="contestantname"><?php echo $curr_loser_name?></p>
+											</div>
+									<?php
+											if(($count)%2==0){
+												echo '</div>';
+											}
+											$count=$count+1;
+										}
+									}else{
+										echo '<p>No eliminations yet.</p>';
+									}
+									?>
 								</div>
 								<div class="tile">
 									<h3>league stats</h3>
 									<p class="tabletitle">Latest week:</p>
 									<table>
 										<tbody>
+										<?php
+										// GET CONTESTANT ID ARRAY
+										$query = "SELECT contestant_id FROM contestants ORDER BY contestant_id ASC";
+										$result = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
+										$CONTESTANT_ID_ARRAY = array();
+										while($this_pick = mysqli_fetch_array($result,MYSQLI_NUM)){
+											$CONTESTANT_ID_ARRAY[] = $this_pick[0]; // 0 index because only contestant_id queried
+											$CONTESTANT_ID_NUM_PICKS[] = 0; // intitialize picks array with 0 picks
+										}
+
+										// CALCULATE MOST PICKED FOR LEAGUE IN PREVIOUS WEEK
+										$query = "SELECT contestant_id FROM picks WHERE league_id = $LEAGUE_ID AND ceremony = $previous_ceremony";
+										$result = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
+										if(mysqli_num_rows($result)!=0){
+											$pick_array = array();
+											while($this_pick = mysqli_fetch_array($result,MYSQLI_NUM)){
+												$curr_cont_id = (int)$this_pick[0]; // 0 index because only contestant_id queried
+												$CONTESTANT_ID_NUM_PICKS[$curr_cont_id-1] = $CONTESTANT_ID_NUM_PICKS[$curr_cont_id-1] + 1; // add pick count 
+											}
+											
+											var_dump($CONTESTANT_ID_NUM_PICKS);
+											exit();
+										}
+
+										
+
+
+										?>
 											<tr>
 												<td class="col-md-5 statcategory">MOST PICKED</td>
 												<td class="col-md-3 contestantname">Jordan</td>
