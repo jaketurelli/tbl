@@ -52,6 +52,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!--
+	<link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,300|Lato:400,300' rel='stylesheet' type='text/css'>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>The Bach League</title>
+	<link rel="shortcut icon" href="favicon.ico" type="image">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link href="style.css" rel="stylesheet" type="text/css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+ -->
+
 <?php
 include('header_content.html');
 if(!$IS_MOBILE){
@@ -138,6 +150,14 @@ if(!$IS_MOBILE){
 								
 							</div>
 						</div>
+						<!-- <table>
+							<tbody>
+								<tr id=<?php echo '"' . $LEAGUE_ID . '"' ?>><td><button>butt</button></td><td><?php echo '"' . $LEAGUE_ID . '"' ?></td><td><img src="img/derek.jpg" /></td></tr>
+							
+								<tr id=<?php echo '"' . $LEAGUE_ID . '1"'?>><td><button>butt2</button></td><td><img src="img/grant.jpg" /></td><td><?php echo '"' . $LEAGUE_ID . '"'
+						?></td></tr>
+							</tbody>
+						</table> -->
 						<div class="row row-bg">
 							<div class="col-md-12">
 								<nav class="ceremony-nav">
@@ -200,12 +220,16 @@ if(!$IS_MOBILE){
 											<div class=<?php echo '"'. $this_tab_class. '"'?> id= <?php echo '"ceremony' . $this_ceremony_num . '"'?>>  
 												<div class="row">
 													<div class="col-md-12">
-
-														<!-- SUBMIT PICKS BUTTON -->
 														<input class="btn btn-pink btn-submit" name = "submitPicks" onclick = "submitPicks()" type = "button"  value = <?php echo $curr_button_text . $curr_button_disable ?> >
 													</div>
 												</div>
-												
+												<table><tbody>
+												<tr id=<?php echo '"' . $this_ceremony_num . 'poo"' ?>><td><button>butt</button></td><td><?php echo '"' . $this_ceremony_num . '"' ?></td><td>poop</td></tr>
+												</tbody></table>
+
+												<table><tbody>
+												<tr id=<?php echo '"' . $this_ceremony_num . '1poo"'?>><td><button>butt2</button></td><td>poop</td><td><?php echo '"' . $this_ceremony_num . '"'
+						?></td></tr></tbody></table>
 												<table id= <?php echo '"roster_ceremony' . $this_ceremony_num . '"'?> class="table lineup-table">
 													<thead>
 														<tr>
@@ -254,7 +278,11 @@ if(!$IS_MOBILE){
 
 																			<tr class=<?php echo '"' . $curr_dragDrop_class . '"'?> id = <?php echo '"' . $this_ceremony_num . '-' . $curr_contestant_id . '"'; ?>>
 																				<td class="td-center">
-																					<button class="move-btn" data-toggle="modal" id = <?php echo '"' . $this_ceremony_num . '-' . $curr_contestant_id . '"'; ?> >MOVE</a>
+																				<?php if($IS_MOBILE){ ?>
+																					<button class="move-btn" data-toggle="modal" id = <?php echo '"' . $this_ceremony_num . '-' . $curr_contestant_id . '"'; ?> data-target="#movemodal">MOVE</a>
+																				<?php } else { ?>
+																					<span class="glyphicon glyphicon-menu-hamburger"></span>
+																				<?php } ?>
 																				</td>
 																				<td class="td-center"><?php echo $curr_status ?></td>
 																				<td><img class = "lineup-img" src= <?php echo '"' . $curr_img . '"' ?> /><?php echo $curr_name ?></td> 
@@ -305,9 +333,11 @@ if(!$IS_MOBILE){
 																	?>
 																	<tr class=<?php echo '"' . $curr_dragDrop_class . '"'?> id = <?php echo '"' . $this_ceremony_num . '-' . $curr_contestant_id . '"';?>>
 																		<td class="td-center">
-																
-																			<button class="move-btn" data-toggle="modal" id = <?php echo '"' . $this_ceremony_num . '-' . $curr_contestant_id . '"'; ?> >MOVE</button>
-																		
+																		<?php if($IS_MOBILE){ ?>
+																			<button class="move-btn" data-toggle="modal" id = <?php echo '"' . $this_ceremony_num . '-' . $curr_contestant_id . '"'; ?> data-target="#movemodal">MOVE</button>
+																		<?php } else { ?>
+																			<span class="glyphicon glyphicon-menu-hamburger"></span>
+																		<?php } ?>
 																		</td>
 																			<td class="td-center"><?php echo $curr_status ?></td>
 																			<td><img class = "lineup-img" src= <?php echo '"' . $curr_img . '"' ?> /><?php echo $curr_name ?></td> 
@@ -439,7 +469,7 @@ if(!$IS_MOBILE){
 	include('footer.html');
 	include('login-signup-content.html');
 	?>
-	<!-- <div class="modal fade" id="movemodal" tabindex="-1" role="dialog" aria-labelledby="moveContestantsModal">
+	<div class="modal fade" id="movemodal" tabindex="-1" role="dialog" aria-labelledby="moveContestantsModal">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -454,7 +484,7 @@ if(!$IS_MOBILE){
 				</div>
 			</div>
 		</div>
-	</div> -->
+	</div>
 
 
 
@@ -535,68 +565,6 @@ if(!$IS_MOBILE){
 		
 	</script> --> 
 
-	<script type="text/javascript">
-	$(document).ready
-		$('.move-btn').click(function() {
-			if($(this).hasClass('here')){
-				var move_id=$('.grey').prop("id");
-				alert(move_id); // id
-				
-				var replacewith_id=this.id;
-				alert(replacewith_id); // id of replacement
-				var div1=$('#'+move_id); 
-				//var div1=$(div1_id);
-				alert(div1.text());
-				var div2=$('#'+replacewith_id);
-				//var div2=$(div2_id);
-				alert(div2.text());
-				var tdiv1=div1.clone();
-				var tdiv2=div2.clone();
-				//var poop=div1.html();
-
-
-				//div1.html(tdiv2.html());
-				//div2.html(tdiv1.html());
-				div1.replaceWith(tdiv2);
-				div2.replaceWith(tdiv1);
-				$('.move-btn').removeClass('here').text('MOVE');
-				$('.move-btn').removeClass('grey');
-			} else {
-				$(this).addClass('grey');
-				$('.move-btn').not(this).each(function() {
-					$(this).addClass('here');
-					$(this).text('HERE');
-				});
-			}
-		});
-		// $('.here').click(function() {
-		// 	var move_id=$('.grey').prop("id");
-		// 	alert(move_id); // id
-			
-		// 	var replacewith_id=this.id;
-		// 	alert(replacewith_id); // id of replacement
-		// 	var div1=$('#'+move_id); 
-		// 	//var div1=$(div1_id);
-		// 	alert(div1.text());
-		// 	var div2=$('#'+replacewith_id);
-		// 	//var div2=$(div2_id);
-		// 	alert(div2.text());
-		// 	var tdiv1=div1.clone();
-		// 	var tdiv2=div2.clone();
-		// 	//var poop=div1.html();
-
-
-		// 	//div1.html(tdiv2.html());
-		// 	//div2.html(tdiv1.html());
-		// 	div1.replaceWith(tdiv2);
-		// 	div2.replaceWith(tdiv1);
-		// 	$('.grey').removeClass('grey').addClass('move-btn');
-		// 	$('.here').removeClass('here').addClass('move-btn').text('MOVE');
-
-		// })
-	</script>
-
-	<!-- to delete -->
 	<script>
 	// THIS UPDATES THE MOBILE MODAL LINEUP SELECTION HTML
 		$('#movemodal').on('show.bs.modal', function(e) {
@@ -662,8 +630,6 @@ if(!$IS_MOBILE){
 		 
 	</script>
 
-	<!-- end of to delete -->
-
 	<script type = "text/javascript">
 		// https://www.fourfront.us/blog/store-html-table-data-to-javascript-array
 		function submitPicks()
@@ -704,8 +670,6 @@ if(!$IS_MOBILE){
 		    return lineupTableData;
 		}
 	</script>
-
-	<!-- to delete -->
 	<script type="text/javascript">
 		jQuery.fn.swap = function(b) {
 			b = jQuery(b)[0];
@@ -764,7 +728,6 @@ if(!$IS_MOBILE){
 		
 
 	</script>
-	<!-- end of to delete -->
 
 	<script type="text/javascript">
 	$(document).ready(function(){

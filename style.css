@@ -771,6 +771,23 @@ nav.navbar.nonhome {
 
 /*===LINEUP===*/
 
+/*-- new lineup --*/
+.move-btn {
+	background-color: #599EB2;
+	color: #fff;
+	padding: 4px 8px;
+}
+.grey {
+	background-color: #81BBCB!important;
+	color: #fff;
+	font-weight: 600;
+}
+.here {
+	background-color: #FFB59C!important;
+	color: #fff;
+	font-weight: 600;
+}
+
 #lineup-bg, .row-bg {
 	background-color: #fff; /*#007E89rgba(226,243,243,1);*/
 }
@@ -912,9 +929,7 @@ nav.navbar.nonhome {
 
 /*--- mobile lineup ---*/
 
-.move-btn {
-	padding: 4px 8px;
-}
+
 .move-pressed {
 	background-color: #fff;
 }
