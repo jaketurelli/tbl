@@ -179,6 +179,7 @@ include('header_content.html');
 												$curr_dragDrop_class = 'dragdrop';
 												$curr_button_text = '"Submit Lineup for Ceremony ' . $this_ceremony_num . '" ' ; 
 												$curr_button_disable = '';
+												$curr_disable_class = '';
 											}
 							   											
 											if($this_ceremony_num == $CURRENT_CEREMONY){
@@ -193,7 +194,7 @@ include('header_content.html');
 											<div class=<?php echo '"'. $this_tab_class. '"'?> id= <?php echo '"ceremony' . $this_ceremony_num . '"'?>>  
 												<div class="row">
 													<div class="col-md-12">
-
+														<p id="changes-saved" class="changes-hidden changes-display">Changes saved!</p>
 														<!-- SUBMIT PICKS BUTTON -->
 														<input class="btn btn-pink btn-submit" name = "submitPicks" onclick = "submitPicks()" type = "button"  value = <?php echo $curr_button_text . $curr_button_disable ?> >
 													</div>
@@ -218,7 +219,6 @@ include('header_content.html');
 													</thead>
 													<tbody id=<?php echo '"lineup_ceremony' . $this_ceremony_num . '"'?>>
 
-													
 														<?php
 															$bookkeep_picked= array();
 															foreach($TABLE_PICKS as $this_pick){
@@ -247,7 +247,7 @@ include('header_content.html');
 
 																			<tr class=<?php echo '"' . $curr_dragDrop_class . '"'?> id = <?php echo '"' . $this_ceremony_num . '-' . $curr_contestant_id . '"'; ?>>
 																				<td class="td-center">
-																					<button class="move-btn" data-toggle="modal" id = <?php echo '"' . $this_ceremony_num . '-' . $curr_contestant_id . '"'; ?> >MOVE</a>
+																					<button class=<?php echo '"move-btn btn ' . $curr_disable_class . '"'?> data-toggle="modal" id = <?php echo '"' . $this_ceremony_num . '-' . $curr_contestant_id . '"'; ?> >MOVE</a>
 																				</td>
 																				<td class="td-center"><?php echo $curr_status ?></td>
 																				<td><img class = "lineup-img" src= <?php echo '"' . $curr_img . '"' ?> /><?php echo $curr_name ?></td> 
@@ -261,22 +261,17 @@ include('header_content.html');
 																			<?php 
 																			} ?>
 																			</tr> 
-
 																		<?php
 																	}
-
 																}
 															}
 														?>
 													</tbody>
 
-														
-
 													<tbody id="bench-title"><tr><th>Bench</th></tr></tbody>
 													<tbody id="bench">
 														<?php
 														//var_dump($bookkeep_picked);
-						
 															// show those not seleted by user for this ceremony 
 															foreach($TABLE_CONTESTANTS as $this_contestant){
 
@@ -385,7 +380,6 @@ include('header_content.html');
 						</div>
 					</div>
 				</div>
-				
 			</div>
 		</div>
 	<?php
@@ -393,9 +387,6 @@ include('header_content.html');
 	?>
 		<div class="container-fluid">
 			<div class="container">
-				<!--<div class="row text-center preview-title">
-					<h3>trash talk</h3>
-				</div>-->
 				<div class="row text-center preview-cta">
 					<h1 class="preview-title">Start playing The Bach League with your friends today!</h1>
 					<p>Sign up or login to start playing The Bach League</p>
@@ -424,7 +415,6 @@ include('header_content.html');
 				</div>
 			</div>
 		</div>
-
 	<?php
 	}
 	?>
@@ -432,102 +422,6 @@ include('header_content.html');
 	include('footer.html');
 	include('login-signup-content.html');
 	?>
-	<!-- <div class="modal fade" id="movemodal" tabindex="-1" role="dialog" aria-labelledby="moveContestantsModal">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aroa-hidden="true">&times;</span></button>
-					<h4 class="modal-title" id="moveContestantsModal">Adjust Lineup</h4>
-				</div>
-				<div id = "modal-replace" class="modal-body">
-					
-					This data is replaced by ajax
-					
-				</div>
-			</div>
-		</div>
-	</div> -->
-
-
-
-
-<!-- 	<script>
-		// THIS UPDATES THE MOBILE MODAL LINEUP SELECTION HTML
-		$('#movemodal').on('show.bs.modal', function(e) {
-			//PASSED USER_ID, LEAGUE_ID, CEREMONY, CONTESTANT_ID IN ORDER TO PROPERLY SHOW BENCHED PLAYERS 
-			// https://openenergymonitor.org/emon/node/107
-			var $modal = $(this),
-			contestant_id = e.relatedTarget.id;
-			// QUERY CONTESTANT ID FOR STATUS, IMG, NAME
-			// NEED CONTESTANT ID, USER ID, CEREMONY ID IN ORDER TO SHOW BENCHED
-		    //-----------------------------------------------------------------------
-		    // 2) Send a http request with AJAX http://api.jquery.com/jQuery.ajax/
-		    //-----------------------------------------------------------------------
-		    $.ajax({                                      
-				url: 'lineup_mobile_modal.php',    	//the script to call to get data          
-				type: "GET",
-				data: { contestant_id:  contestant_id,
-					},                        		//you can insert url argumnets here to pass to api.php
-				                               		//for example "id=5&parent=6"
-				dataType: 'json',             		//data format      
-				success: function(data)         	//on recieve of reply
-				{
-
-				// SHOW SELECTED CONTESTANT
-				var selectedStatus = "A"; // default active
-				if (data[0][7] != 0) {
-					selectedStatus = "IR";
-				}
-				var selectedImage = 'img/lineup/'+data[0][6];
-				var selectedName = data[0][1];
-				var htmlString = '<h4>Moving:</h4>'+
-									'<table class="table lineup-table">'+
-										'<tr id="m'+contestant_id+'" class="contestant-to-move">'+
-											'<td class="td-center">'+selectedStatus+'</td><td><img class = "lineup-img" src="'+selectedImage+'"/>'+ selectedName+'</td>'+
-										'</tr>'+
-									'</table>';
-
-				// SHOW BENCHED CONTESTANTS TO REPLACE WITH
-				var status = "A"; // active by default
-				// start at i=1 (2nd index) to start showing contestants other than that seleceted (index = 0)
-				htmlString += 	'<h4>Replace With:</h4>'+
-									'<table class="table lineup-table">';
-				for (i = 1; i <= data.length-1; i++) { 
-					if (data[i][7] != 0) {
-						status = "IR";
-					}
-				    htmlString += 	'<a href="#" >'+
-				    					'<tr class="swap-mobile" >'+
-				    						'<td><button class="swap-mobile btn" id="m'+data[i][0]+'">SELECT</button></td><td class="td-center">'+status+'</td><td><img class = "lineup-img" src="'+'img/lineup/'+data[i][6]+'"/>'+ data[i][1]+'</td>'+
-				    					'</tr>'+
-				    				'</a>';
-				}
-				htmlString += 	"</table>";
-
-				// UPDATE MODAL HTML
-				$('#modal-replace').html(htmlString);
-				}
-		    });
-
-		    $("button.swap-mobile").click(function() {
-
-				move_id=contestant_id.slice(1);
-				replacewith_id=this.id.slice(1);
-				alert(move_id);
-				div1=$('#1');
-				div2=$('#clicked_id');
-
-				tdiv1=div1.clone;
-				tdiv2=div2.clone;
-
-				div1.replaceWith(tdiv2);
-				div2.replaceWith(tdiv1);
-			});
-		});
-		
-	</script> --> 
-
 	<script type="text/javascript">
 	$(document).ready
 		$('.move-btn').click(function() {
@@ -555,100 +449,7 @@ include('header_content.html');
 				});
 			}
 		});
-		// $('.here').click(function() {
-		// 	var move_id=$('.grey').prop("id");
-		// 	alert(move_id); // id
-			
-		// 	var replacewith_id=this.id;
-		// 	alert(replacewith_id); // id of replacement
-		// 	var div1=$('#'+move_id); 
-		// 	//var div1=$(div1_id);
-		// 	alert(div1.text());
-		// 	var div2=$('#'+replacewith_id);
-		// 	//var div2=$(div2_id);
-		// 	alert(div2.text());
-		// 	var tdiv1=div1.clone();
-		// 	var tdiv2=div2.clone();
-		// 	//var poop=div1.html();
-
-
-		// 	//div1.html(tdiv2.html());
-		// 	//div2.html(tdiv1.html());
-		// 	div1.replaceWith(tdiv2);
-		// 	div2.replaceWith(tdiv1);
-		// 	$('.grey').removeClass('grey').addClass('move-btn');
-		// 	$('.here').removeClass('here').addClass('move-btn').text('MOVE');
-
-		// })
 	</script>
-
-	<!-- to delete -->
-	<script>
-	// THIS UPDATES THE MOBILE MODAL LINEUP SELECTION HTML
-		$('#movemodal').on('show.bs.modal', function(e) {
-			//PASSED USER_ID, LEAGUE_ID, CEREMONY, CONTESTANT_ID IN ORDER TO PROPERLY SHOW BENCHED PLAYERS 
-			// https://openenergymonitor.org/emon/node/107
-			var $modal = $(this),
-			//contestant_id = e.relatedTarget.id;
-			contestant_string = e.relatedTarget.id;
-			string_split = contestant_string.split("-"); // ceremony_number-contestant_id
-			ceremony_number = string_split[0];
-			contestant_id = string_split[1];
-
-			// QUERY CONTESTANT ID FOR STATUS, IMG, NAME
-			// NEED CONTESTANT ID, USER ID, CEREMONY ID IN ORDER TO SHOW BENCHED
-		    //-----------------------------------------------------------------------
-		    // 2) Send a http request with AJAX http://api.jquery.com/jQuery.ajax/
-		    //-----------------------------------------------------------------------
-		    $.ajax({                                      
-				url: 'lineup_mobile_modal.php',    	//the script to call to get data          
-				type: "GET",
-				data: { ceremony_number: ceremony_number,
-						contestant_id:  contestant_id,
-					},                        		//you can insert url argumnets here to pass to api.php
-				                               		//for example "id=5&parent=6"
-				dataType: 'json',             		//data format      
-				success: function(data)         	//on recieve of reply
-				{
-
-				// SHOW SELECTED CONTESTANT
-				var selectedStatus = "A"; // default active
-				if (data[0][7] != 0) {
-					selectedStatus = "IR";
-				}
-				var selectedImage = 'img/lineup/'+data[0][6];
-				var selectedName = data[0][1];
-				var htmlString = '<h4>Moving:</h4>'+ '<button id="test-btn">TEST</button>'+
-										'<table><thead><tr><th>Status</th><th>Contestant</th></tr></thead><tbody>'+
-										'<div id="m-'+ceremony_number+'-'+contestant_id+'" class="contestant-to-move">'+
-											'<tr><td><div>'+selectedStatus+'</div></td><td><div><img class = "lineup-img" src="'+selectedImage+'"/>'+ selectedName+'</div></td></tr>'+
-										'</div></tbody></table>'
-									;
-
-				// SHOW BENCHED CONTESTANTS TO REPLACE WITH
-				var status = "A"; // active by default
-				// start at i=1 (2nd index) to start showing contestants other than that seleceted (index = 0)
-				htmlString += 	'<h4>Replace With:</h4><table><thead><tr><th></th><th>Status</th><th>Contestant</th></tr></thead><tbody>';
-				for (i = 1; i <= data.length-1; i++) { 
-					if (data[i][7] != 0) {
-						status = "IR";
-					}
-				    htmlString += 	'<a href="#">'+
-				    						'<tr><td><div><button class="swap-mobile btn" id="m-'+ceremony_number+'-'+data[i][0]+'">SELECT</button></div></td><td><div>'+status+'</div></td><td><div><img class = "lineup-img" src="'+'img/lineup/'+data[i][6]+'"/>'+ data[i][1]+'</div></td></tr>'+
-				    				'</a>';
-				}
-				htmlString += '</tbody></table>';
-				// UPDATE MODAL HTML
-				$('#modal-replace').html(htmlString);
-				}
-		    });
-
-		   
-		});
-		 
-	</script>
-
-	<!-- end of to delete -->
 
 	<script type = "text/javascript">
 		// https://www.fourfront.us/blog/store-html-table-data-to-javascript-array
@@ -686,139 +487,13 @@ include('header_content.html');
 		        }    
 		    }); 
 
-		    alert("Your picks have been submitted.")
+		    // alert("Your picks have been submitted.")
+		    $('#changes-saved').addClass('changes-display');
+		    $('#changes-saved').delay(5000).fadeOut('slow');
+		    $('#changes-saved').removeClass('changes-display');
+
 		    return lineupTableData;
 		}
-	</script>
-
-	<!-- to delete -->
-	<script type="text/javascript">
-		jQuery.fn.swap = function(b) {
-			b = jQuery(b)[0];
-			var a = this[0];
-			var t = a.parentNode.insertBefore(document.createTextNode(''), a);
-			b.parentNode.insertBefore(a, b);
-			t.parentNode.insertBefore(b, t);
-			t.parentNode.removeChild(t);
-			return this;
-		};
-
-		$('tbody').droppable().draggable();
-		$(document).ready(function(){
-			$(".dragdrop").draggable({
-				revert: "invalid",
-				axis: "y",
-				helper: function(event){
-					return $('<div class="drag-row"><table></table></div>').find('table').append($(event.target).closest('tr').clone()).end();
-				}
-			});
-
-			$(".dragdrop").droppable({
-				accept: ".dragdrop",
-				activeClass: "ui-state-hover",
-				hoverClass: "ui-state-active",
-				drop: function( event, ui ) {
-					var draggable = ui.draggable, droppable = $(this), dragPos = draggable.position(), dropPos = droppable.position();
-
-					draggable.css({
-						left: dropPos.left+'px',
-						top: dropPos.top+'px'
-					});
-					droppable.css({
-						left: dragPos.left+'px',
-						top: dragPos.top+'px'
-					});
-					draggable.swap(droppable);
-				}
-			})
-			$('th[data-toggle="tooltip"]').tooltip({'placement': 'top'});
-
-			// $(".move-btn").click(function() {
-			// 	$(".move-btn").removeClass("move-pressed").text("HERE").addClass("here");
-			// 	$(".move-btn").parents("tr").addClass("tr-here");
-			// 	$(this).addClass("move-pressed").removeClass("here").text("MOVE");
-			// 	$(this).parents("tr").removeClass("tr-here").addClass("tr-pressed");
-			// 	$(".here").click(function() {
-			// 		var d = $(this).parents("tr");
-			// 		d.swap($(".move-pressed").parents("tr"));
-			// 		$(".move-btn").removeClass("move-pressed").removeClass("here").text("MOVE");
-			// 		$(".move-btn").parents("tr").removeClass("tr-pressed").removeClass("tr-here");
-			// })
-		// })
-		
-		 });
-		
-
-	</script>
-	<!-- end of to delete -->
-
-	<script type="text/javascript">
-	$(document).ready(function(){
-		$(function(){
-			$(document).on("click","#test-btn",function(event){
-				alert('pooooooo');
-				var item1=$('#2poo');
-				alert(item1);
-				var item2=$('#21poo');
-				var copy1=item1.clone();
-				var copy2=item2.clone();
-				// $("#5poo").replaceWith($("#51"));
-				item1.replaceWith(copy2);
-				item2.replaceWith(copy1);
-			});
-		});
-	});
-
-	</script>
-	<script type="text/javascript">
-		$(function(){
-			$(document).on("click",".swap-mobile",function(event){
-				// alert('boo');
-				// $("#poo1").replaceWith($("#poo2"));
-				var m_move_id=$("div.contestant-to-move").prop("id");
-				alert(m_move_id); // m-id
-				var move_id=m_move_id.split(/-(.+)/)[1];
-				alert(move_id); // id
-				var replacewith_id=this.id.split(/-(.+)/)[1];
-				alert(replacewith_id); // id of replacement
-				var div1=$('#'+move_id); 
-				//var div1=$(div1_id);
-				alert(div1.text());
-				var div2=$('#'+replacewith_id);
-				//var div2=$(div2_id);
-				alert(div2.text());
-				var tdiv1=div1.clone();
-				var tdiv2=div2.clone();
-				//var poop=div1.html();
-
-
-				//div1.html(tdiv2.html());
-				//div2.html(tdiv1.html());
-				div1.replaceWith(tdiv2);
-				div2.replaceWith(tdiv1);
-
-				alert(tdiv1);
-			})
-		});
-			// $(".swap-mobile").click(function() {
-			// 	alert('boo');
-			// 	move_id=contestant_id.slice(1);
-			// 	replacewith_id=this.id.slice(1);
-			// 	alert(move_id);
-			// 	div1=$('#1');
-			// 	div2=$('#clicked_id');
-
-			// 	tdiv1=div1.clone;
-			// 	tdiv2=div2.clone;
-
-			// 	div1.replaceWith(tdiv2);
-			// 	div2.replaceWith(tdiv1);
-			// });
-		// $(function(){
-  //   		$(document).on("click", "#test", function(event){
-  //       		alert( "GO" ); 
-  //   		}); 
-		// });
 	</script>
 </body>
 </html>

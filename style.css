@@ -103,9 +103,10 @@ hr {
 /* ===BUTTONS=== */
 .btn {
 	color: #fff;
-	background-color: #1AA6B7;
-	border-radius: 1.5px;
-	margin: 10px 5px;
+	background-color: #00BED0;
+	border-radius: 2px;
+	box-shadow: 0.7px 0.7px 0.7px 1px rgba(0,0,0,0.1);
+	margin: 8px 5px;
 	padding: 12px 20px;
 }
 .btn:hover, .btn:focus {
@@ -773,7 +774,7 @@ nav.navbar.nonhome {
 
 /*-- new lineup --*/
 .move-btn {
-	background-color: #599EB2;
+	background-color: #00BED0;
 	color: #fff;
 	padding: 4px 8px;
 }
@@ -787,8 +788,16 @@ nav.navbar.nonhome {
 	color: #fff;
 	font-weight: 600;
 }
-.table-col-disabled {
-	display: none!important;
+.disabled {
+	background-color: #7AD4DC;
+	box-shadow: none!important;
+	font: rgba(255,255,255,0.7);
+}
+.changes-hidden {
+	display: none;
+}
+.changes-display {
+	display: block!important;
 }
 
 #lineup-bg, .row-bg {
