@@ -54,14 +54,6 @@
 <head>
 <?php
 include('header_content.html');
-if(!$IS_MOBILE){
-?>
-	<!-- THIS IS NECESSARY FOR DRAGGABLE/DROPPABLE ON DESKTOP BUT DISABLES MODAL STUFF FOR MOBILE.
-		 DO NOT INCLUDE IF ON MOBILE -->
-	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-
-<?php
-}
 ?>
 	<link rel="stylesheet" href="jquery-ui.css">
 	<script type="text/javascript" src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
@@ -182,6 +174,7 @@ if(!$IS_MOBILE){
 												$curr_dragDrop_class = '';
 												$curr_button_text = '"Ceremony ' . $this_ceremony_num . ' locked" ' ; 
 												$curr_button_disable = ' disabled';
+												$curr_disable_class = 'disabled';
 											}else{
 												$curr_dragDrop_class = 'dragdrop';
 												$curr_button_text = '"Submit Lineup for Ceremony ' . $this_ceremony_num . '" ' ; 
@@ -540,27 +533,20 @@ if(!$IS_MOBILE){
 		$('.move-btn').click(function() {
 			if($(this).hasClass('here')){
 				var move_id=$('.grey').prop("id");
-				alert(move_id); // id
-				
+				//alert(move_id); // id
 				var replacewith_id=this.id;
-				alert(replacewith_id); // id of replacement
+				//alert(replacewith_id); // id of replacement
 				var div1=$('#'+move_id); 
-				//var div1=$(div1_id);
-				alert(div1.text());
+				//alert(div1.text());
 				var div2=$('#'+replacewith_id);
-				//var div2=$(div2_id);
-				alert(div2.text());
+				//alert(div2.text());
 				var tdiv1=div1.clone();
 				var tdiv2=div2.clone();
-				//var poop=div1.html();
-
-
-				//div1.html(tdiv2.html());
-				//div2.html(tdiv1.html());
 				div1.replaceWith(tdiv2);
 				div2.replaceWith(tdiv1);
 				$('.move-btn').removeClass('here').text('MOVE');
 				$('.move-btn').removeClass('grey');
+				submitPicks();
 			} else {
 				$(this).addClass('grey');
 				$('.move-btn').not(this).each(function() {

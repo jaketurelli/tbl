@@ -787,6 +787,9 @@ nav.navbar.nonhome {
 	color: #fff;
 	font-weight: 600;
 }
+.table-col-disabled {
+	display: none!important;
+}
 
 #lineup-bg, .row-bg {
 	background-color: #fff; /*#007E89rgba(226,243,243,1);*/
