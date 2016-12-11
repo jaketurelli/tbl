@@ -9,6 +9,7 @@
 // $IS_SIGNED_IN  
 // $IS_ADMIN
 // $IS_MOBILE
+// $IS_COMMISH
 // $CURRENT_TIME 
 	session_start();
 	$CURRENT_TIME = time();
@@ -26,28 +27,33 @@
 				$LEAGUE_NAME      =	NULL;
 				$COMMISSIONER     =	NULL;
 				$COMMISH_ID       = NULL;
+				$IS_COMMISH       = false;
 
 			}else{
 				$LEAGUE_NAME      =	$_SESSION['LEAGUE_NAME'];
 				$COMMISH_ID       = $_SESSION['COMMISH_ID'];
 				$COMMISSIONER     =	$_SESSION['COMMISSIONER'];
+				if($COMMISH_ID===$USER_ID){
+					$_SESSION['IS_COMMISH'] = true;
+					$IS_COMMISH = true;
+				}else{
+					$_SESSION['IS_COMMISH'] = false;
+					$IS_COMMISH = false;
+				}
 			}
 			
-			if(!isset($_SESSION['CURRENT_CEREMONY']) || is_null($_SESSION['CURRENT_CEREMONY'])){
-				$query = "SELECT ceremony_number FROM ceremony WHERE is_current";
-				$result = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
-				if(mysqli_num_rows($result)==1){
-					$curr_ceremony = mysqli_fetch_array($result);
-					$_SESSION['CURRENT_CEREMONY'] = $curr_ceremony['ceremony_number'];
-					$CURRENT_CEREMONY =	$_SESSION['CURRENT_CEREMONY'];
-				}else{
-					$_SESSION['CURRENT_CEREMONY'] = NULL;
-					$CURRENT_CEREMONY =	$_SESSION['CURRENT_CEREMONY'];
-				}
-				
+			
+			$query = "SELECT ceremony_number FROM ceremony WHERE is_current";
+			$result = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
+			if(mysqli_num_rows($result)==1){
+				$curr_ceremony = mysqli_fetch_array($result);
+				$_SESSION['CURRENT_CEREMONY'] = $curr_ceremony['ceremony_number'];
+				$CURRENT_CEREMONY =	$_SESSION['CURRENT_CEREMONY'];
 			}else{
+				$_SESSION['CURRENT_CEREMONY'] = 1;
 				$CURRENT_CEREMONY =	$_SESSION['CURRENT_CEREMONY'];
 			}
+				
 			
 			
 			
@@ -62,6 +68,7 @@
 			$CURRENT_CEREMONY =	NULL;
 			$IS_SIGNED_IN     = false;	
 			$IS_ADMIN         = false;
+			$IS_COMMISH       = false;
 		}
 
 	}else{
@@ -75,6 +82,7 @@
 		$CURRENT_CEREMONY =	NULL;
 		$IS_SIGNED_IN     = false;	
 		$IS_ADMIN         = false;
+		$IS_COMMISH       = false;
 	}
 
 	$useragent=$_SERVER['HTTP_USER_AGENT'];

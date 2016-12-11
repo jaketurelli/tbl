@@ -168,7 +168,8 @@ if(isset($_POST['submit'])){
 
 	$query = "UPDATE contestants SET eliminated = 0 WHERE eliminated = $ceremony_num";
 	$update_contestants = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
-	//header('Location: admin.php');
+	header('Location: admin_calculate_score.php');
+	exit();
 }elseif(isset($_POST['is_current'])){
 	$ceremony_num = $_POST['is_current'];
 	$query = "UPDATE ceremony SET is_current = 1 WHERE ceremony_number = $ceremony_num";
