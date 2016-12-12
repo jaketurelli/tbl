@@ -59,6 +59,7 @@ include('header_content.html');
 	<script type="text/javascript" src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="jquery.json.min.js"></script> 
 	<script type="text/javascript" src="jquery.ui.touch-punch.min.js"></script> -->
+	<script type="text/javascript" src="bootstrap-tabcollapse.js"></script>
 </head>
 <body>
 	<nav class="navbar nonhome nav-border-bottom">
@@ -93,7 +94,7 @@ include('header_content.html');
 				<?php
 				if($IS_ADMIN){
 				?>
-					<li><a href="admin.php">Admin</a></li>
+					<li><a href="admin.php">ADMIN</a></li>
 				<?php
 				}
 				?>
@@ -102,12 +103,12 @@ include('header_content.html');
 				<?php 
 				if($IS_SIGNED_IN){
 				?>
-					<li><a class="logout" href="logout.php">Logout</a></li>
+					<li><a class="logout" href="logout.php">LOGOUT</a></li>
 				<?php
 				}else{
 				?>
-					<li style="border-right: 1px solid rgba(255,255,255,0.5); text-align: right"><a class="signup"  data-toggle="modal" data-target="#signupmodal" href="#">Sign up</a></li>
-					<li style="text-align:right!important"><a class="login" data-toggle="modal" data-target="#loginmodal" href="#">Login</a></li>
+					<li style="border-right: 1px solid rgba(255,255,255,0.5); text-align: right"><a class="signup"  data-toggle="modal" data-target="#signupmodal" href="#">SIGN UP</a></li>
+					<li style="text-align:right!important"><a class="login" data-toggle="modal" data-target="#loginmodal" href="#">LOGIN</a></li>
 				<?php
 				}
 				?>
@@ -128,78 +129,77 @@ include('header_content.html');
 									<p>Select the ceremony tab you'd like to set your lineup for. Drag and drop the contestants you want to put in the lineup and who you want to sit on the bench for that ceremony. You can also set your lineup ahead of time for future ceremonies.</p>
 								</div>
 								
+
+<!--  <div class="container" style="margin-top: 50px;">
+    <ul id="myTab" class="nav nav-tabs" style="margin-bottom: 15px;">
+        <li><a href="#home" data-toggle="tab">Home</a></li>
+        <li class="active"><a href="#profile" data-toggle="tab">Profile</a></li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                <li><a href="#ceremony2" data-toggle="tab">@fat</a></li>
+                <li><a href="#ceremony1" data-toggle="tab">@mdo</a></li>
+
+            </ul>
+        </li>
+    </ul>
+    <div id="myTabContent" class="tab-content" >
+        <div class="tab-pane fade" id="home">
+            <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+        </div>
+        <div class="tab-pane fade in active" id="profile">
+            <p>Light Blue - is a next generation admin template based on the latest Metro design. There are few reasons we want to tell you, why we have created it:
+                We didn't like the darkness of most of admin templates, so we created this light one. We didn't like the high contrast of most of admin templates, so we created this unobtrusive one.
+                We searched for a solution of how to make widgets look like real widgets, so we decided that deep background - is what makes widgets look real.</p>
+            <button class="btn btn-lg btn-primary">Button with click event attached</button>
+        </div>
+        <div class="tab-pane fade" id="dropdown3">
+            <p>Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+        </div>
+        <div class="tab-pane fade" id="dropdown4">
+            <p>They sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
+        </div>
+    </div>
+</div> -->
 							</div>
 						</div>
 						<div class="row row-bg">
-							<div class="col-md-12">
-								<nav class="ceremony-nav">
-									<div class="pull-left dropdown">
-									  	<button class="btn btn-default dropdown-toggle" type="button" id="ceremonyDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span id="selected">
-									  	Ceremony <?php echo $CURRENT_CEREMONY ?> </span>
-									    	<span class="caret"></span>
-									  	</button>
-									  	<ul class="dropdown-menu" aria-labelledby="ceremonyDropdown">
-									  	<?php
-											if ($LEAGUE_ID > -1){
-												?>
-												
-												<?php
-												foreach($TABLE_CEREMONY as $this_ceremony){
-													$this_ceremony_num = $this_ceremony['ceremony_number'];
-													if($this_ceremony_num == $CURRENT_CEREMONY){
-														$this_nav_class = 'nav-item active';
-													}else{
-														$this_nav_class = 'nav-item';
-													}?>
+							<div class="col-xs-8">
+								<ul id="myTab" class="nav nav-tabs">
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="selected">Ceremony <?php echo $CURRENT_CEREMONY ?></span> <b class="caret"></b></a>
+										<ul class="dropdown-menu" id="ceremonytabs">
+											
+                							<!--<li><a href="#ceremony1" data-toggle="tab">@mdo</a></li>-->
+											<?php
+												if ($LEAGUE_ID > -1){
+													foreach($TABLE_CEREMONY as $this_ceremony){
+														$this_ceremony_num = $this_ceremony['ceremony_number'];
+														if($this_ceremony_num == $CURRENT_CEREMONY){
+															$this_nav_class = ' = "active"';
 
-													<li class = <?php echo  '"' . $this_nav_class . '"' ?>><a data-target =  <?php echo '#ceremony' . $this_ceremony_num?> data-toggle = "tab" href = "#">Ceremony <?php 
-													if($this_ceremony_num == 1){
-														echo $this_ceremony_num;
-													}else{
-														echo $this_ceremony_num;
-													}
-													?></a></li>
-
+														}else{
+															$this_nav_class = '';
+														}?>
+														<li class <?php echo $this_nav_class ?>><a href = <?php echo '"#ceremony' . $this_ceremony_num . '"'?> data-toggle="tab">Ceremony <?php echo $this_ceremony_num;?></a></li>
 													<?php
-												}
-											}
-										?>
-									  	</ul>
-									</div>
-									<div class="pull-right changes-saved changes-hidden"><p >Changes saved!</p></div>
-									<!-- <ul class="nav nav-tabs" id="ceremonytabs">
-										<?php
-											if ($LEAGUE_ID > -1){
-												?>
-												<li><a id = "ceremony-tab">Ceremony</a></li>
-												<?php
-												foreach($TABLE_CEREMONY as $this_ceremony){
-													$this_ceremony_num = $this_ceremony['ceremony_number'];
-													if($this_ceremony_num == $CURRENT_CEREMONY){
-														$this_nav_class = 'nav-item active';
-													}else{
-														$this_nav_class = 'nav-item';
-													}?>
-
-													<li class = <?php echo  '"' . $this_nav_class . '"' ?>><a data-target =  <?php echo '#ceremony' . $this_ceremony_num?> data-toggle = "tab" href = "#"><?php 
-													if($this_ceremony_num == 1){
-														echo $this_ceremony_num;
-													}else{
-														echo $this_ceremony_num;
 													}
-													?></a></li>
-
-													<?php
 												}
-											}
-										?>
-									</ul> -->
-								</nav>
+											?>
+										</ul>
+									</li>
+								</ul> -->
+							</div>
+							<div class="col-xs-4">
+								<div class="pull-right changes-saved changes-hidden"><p >Changes saved!</p></div>
+
+							
+								
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-12">
-								<div class="tab-content" id = "ceremonypages">
+								<div class="tab-content" id="ceremonypages">
 									<?php
 									if ($LEAGUE_ID > -1){
 										foreach($TABLE_CEREMONY as $this_ceremony){
@@ -212,7 +212,7 @@ include('header_content.html');
 												$curr_dragDrop_class = '';
 												$curr_button_text = '"Ceremony ' . $this_ceremony_num . ' locked" ' ; 
 												$curr_button_disable = ' disabled';
-												$curr_disable_class = 'disabled';
+												$curr_disable_class = ' disabled';
 											}else{
 												$curr_dragDrop_class = 'dragdrop';
 												$curr_button_text = '"Submit Lineup for Ceremony ' . $this_ceremony_num . '" ' ; 
@@ -230,14 +230,6 @@ include('header_content.html');
 								
 											
 											<div class=<?php echo '"'. $this_tab_class. '"'?> id= <?php echo '"ceremony' . $this_ceremony_num . '"'?>>  
-												<!-- <div class="row">
-													<div class="col-md-12">
-														
-														
-														<input class="btn btn-pink btn-submit" name = "submitPicks" onclick = "submitPicks()" type = "button"  value = <?php echo $curr_button_text . $curr_button_disable ?> >
-													</div>
-												</div> -->
-												
 												<table id= <?php echo '"roster_ceremony' . $this_ceremony_num . '"'?> class="table lineup-table">
 													<thead>
 														<tr>
@@ -256,7 +248,6 @@ include('header_content.html');
 														</tr>
 													</thead>
 													<tbody id=<?php echo '"lineup_ceremony' . $this_ceremony_num . '"'?>>
-
 														<?php
 															$bookkeep_picked= array();
 															foreach($TABLE_PICKS as $this_pick){
@@ -282,10 +273,9 @@ include('header_content.html');
 																			$curr_status = 'IR';
 																		}
 																		?>
-
 																			<tr class=<?php echo '"' . $curr_dragDrop_class . '"'?> id = <?php echo '"' . $this_ceremony_num . '-' . $curr_contestant_id . '"'; ?>>
 																				<td class="td-center">
-																					<button class=<?php echo '"move-btn btn ' . $curr_disable_class . '"'?> data-toggle="modal" id = <?php echo '"' . $this_ceremony_num . '-' . $curr_contestant_id . '"'; ?> >MOVE</a>
+																					<button class=<?php echo '"move-btn btn' . $curr_disable_class . '"'?> id = <?php echo '"' . $this_ceremony_num . '-' . $curr_contestant_id . '"'; ?> >MOVE</button>
 																				</td>
 																				<td class="td-center"><?php echo $curr_status ?></td>
 																				<td><img class = "lineup-img" src= <?php echo '"' . $curr_img . '"' ?> /><?php echo $curr_name ?></td> 
@@ -305,7 +295,6 @@ include('header_content.html');
 															}
 														?>
 													</tbody>
-
 													<tbody id="bench-title"><tr><th>Bench</th></tr></tbody>
 													<tbody id="bench">
 														<?php
@@ -331,9 +320,7 @@ include('header_content.html');
 																	?>
 																	<tr class=<?php echo '"' . $curr_dragDrop_class . '"'?> id = <?php echo '"' . $this_ceremony_num . '-' . $curr_contestant_id . '"';?>>
 																		<td class="td-center">
-																
-																			<button class="move-btn" data-toggle="modal" id = <?php echo '"' . $this_ceremony_num . '-' . $curr_contestant_id . '"'; ?> >MOVE</button>
-																		
+																			<button class=<?php echo '"move-btn btn' . $curr_disable_class . '"'?> id = <?php echo '"' . $this_ceremony_num . '-' . $curr_contestant_id . '"'; ?> >MOVE</button>
 																		</td>
 																			<td class="td-center"><?php echo $curr_status ?></td>
 																			<td><img class = "lineup-img" src= <?php echo '"' . $curr_img . '"' ?> /><?php echo $curr_name ?></td> 
@@ -462,41 +449,104 @@ include('header_content.html');
 	?>
 	<script type="text/javascript">
 	$(document).ready(function() { 
-		// $('#changes-saved').removeClass('changes-hidden');
-		// $('.changes-saved').hide();
-		$('.move-btn').click(function() {
-			if($(this).hasClass('here')){
-				var move_id=$('.grey').prop("id");
-				//alert(move_id); // id
-				var replacewith_id=this.id;
-				//alert(replacewith_id); // id of replacement
-				var div1=$('#'+move_id); 
-				//alert(div1.text());
-				var div2=$('#'+replacewith_id);
-				//alert(div2.text());
-				var tdiv1=div1.clone();
-				var tdiv2=div2.clone();
-				div1.replaceWith(tdiv2);
-				div2.replaceWith(tdiv1);
-				$('.move-btn').removeClass('here').text('MOVE');
-				$('.move-btn').removeClass('grey');
-				// $('#changes-saved').removeClass('changes-hidden');
-				$('.changes-saved').addClass('changes-display').delay(1500).fadeTo(500,0, function(){
-					$(this).css('visibility','hidden');
-				});
-				submitPicks();
-				
-		    
-		    // $('#changes-saved').removeClass('changes-display');
-			} else {
-				$(this).addClass('grey');
-				$('.move-btn').not(this).each(function() {
-					$(this).addClass('here');
-					$(this).text('HERE');
-				});
-			}
+		$('.dropdown-menu > li > a').click(function(){
+			$('.dropdown-menu > li > a').not(this).each(function() {
+		 		$(this).closest('li').removeClass("active");
+		 	});
+		});
+
+
+		$('#myTab').tabCollapse();
+
+		$(function(){
+			$(document).on('click','.move-btn',function(){
+				if($(this).hasClass('here')){
+					var move_id=$('.grey').prop("id");
+					var replacewith_id=this.id;
+
+					var div1=$('#'+move_id); 
+					var div2=$('#'+replacewith_id);
+
+					var tdiv1=div1.clone();
+					var tdiv2=div2.clone();
+
+					div1.replaceWith(tdiv2);
+					div2.replaceWith(tdiv1);
+
+					$('.move-btn').each(function(){
+						$(this).removeClass('here').text('MOVE');
+						$(this).removeClass('grey');
+					})
+
+					//$('.move-btn').removeClass('here').text('MOVE');
+					//$('.move-btn').removeClass('grey');
+					//$(this).removeClass('here');
+					submitPicks();
+					$('.changes-saved').addClass('changes-display').delay(1500).fadeTo(500,0, function(){
+						$(this).css('visibility','hidden');
+					});
+					
+
+				} 
+				else {
+					$(this).addClass('grey');
+					$('.move-btn').not(this).each(function() {
+						$(this).addClass('here');
+						$(this).text('HERE');
+					});
+				}
+			});
 		});
 		
+			
+
+
+		// $('.move-btn').click(function() {
+		// 	if($(this).hasClass('here')){
+		// 		var move_id=$('.grey').prop("id");
+		// 		var replacewith_id=this.id;
+
+		// 		var div1=$('#'+move_id); 
+		// 		var div2=$('#'+replacewith_id);
+
+		// 		var tdiv1=div1.clone();
+		// 		var tdiv2=div2.clone();
+
+		// 		div1.replaceWith(tdiv2);
+		// 		div2.replaceWith(tdiv1);
+
+		// 		$('.move-btn').each(function(){
+		// 			$(this).removeClass('here').text('MOVE');
+		// 			$(this).removeClass('grey');
+		// 		})
+
+		// 		//$('.move-btn').removeClass('here').text('MOVE');
+		// 		//$('.move-btn').removeClass('grey');
+		// 		//$(this).removeClass('here');
+		// 		submitPicks();
+		// 		$('.changes-saved').addClass('changes-display').delay(1500).fadeTo(500,0, function(){
+		// 			$(this).css('visibility','hidden');
+		// 		});
+				
+
+		// 	} 
+		// 	else {
+		// 		$(this).addClass('grey');
+		// 		$('.move-btn').not(this).each(function() {
+		// 			$(this).addClass('here');
+		// 			$(this).text('HERE');
+		// 		});
+		// 	}
+		// });
+		// $('.dropdown-menu > li > a').click(function(){
+		// 	$(this).closest('li').addClass("active");
+		//	$('.dropdown-menu > li > a').not(this).each(function() {
+		// 		$(this).closest('li').removeClass("active");
+		// 	});
+		// });
+		$('.dropdown-menu a').click(function(){
+		    $('#selected').text($(this).text());
+		});
 	});
 	</script>
 
@@ -505,7 +555,8 @@ include('header_content.html');
 		function submitPicks()
 		{
 			var lineupTableData;
-			lineupTableData = $.toJSON(storeLineupTblValues());
+			//lineupTableData = $.toJSON(storeLineupTblValues());
+			lineupTableData = JSON.stringify(storeLineupTblValues());
 
 			$.ajax({
 				type: "POST",
@@ -537,14 +588,10 @@ include('header_content.html');
 		    }); 
 
 		    // alert("Your picks have been submitted.")
-		    
-
 		    return lineupTableData;
 		}
 
-		$('.dropdown-menu a').click(function(){
-		    $('#selected').text($(this).text());
-		});
+		
 	</script>
 </body>
 </html>
