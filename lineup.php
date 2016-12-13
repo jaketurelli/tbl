@@ -476,7 +476,7 @@ include('header_content.html');
 					$('.move-btn').each(function(){
 						$(this).removeClass('here').text('MOVE');
 						$(this).removeClass('grey');
-					})
+					});
 
 					//$('.move-btn').removeClass('here').text('MOVE');
 					//$('.move-btn').removeClass('grey');
@@ -488,6 +488,12 @@ include('header_content.html');
 					
 
 				} 
+				else if($(this).hasClass('grey')){
+					$('.move-btn').each(function(){
+						$(this).removeClass('here').text('MOVE');
+						$(this).removeClass('grey').blur();
+					});
+				}
 				else {
 					$(this).addClass('grey');
 					$('.move-btn').not(this).each(function() {
