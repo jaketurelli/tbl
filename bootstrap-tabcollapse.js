@@ -10,17 +10,17 @@
         this.$tabs  = $(el);
 
         this._accordionVisible = false; //content is attached to tabs at first
-        this._initAccordion();
-        this._checkStateOnResize();
+        // this._initAccordion();
+        // this._checkStateOnResize();
 
 
         // checkState() has gone to setTimeout for making it possible to attach listeners to
         // shown-accordion.bs.tabcollapse event on page load.
         // See https://github.com/flatlogic/bootstrap-tabcollapse/issues/23
-        var that = this;
-        setTimeout(function() {
-          that.checkState();
-        }, 0);
+        // var that = this;
+        // setTimeout(function() {
+        //   that.checkState();
+        // }, 0);
     };
 
     TabCollapse.DEFAULTS = {
@@ -41,15 +41,15 @@
         }
     };
 
-    TabCollapse.prototype.checkState = function(){
-        if (this.$tabs.is(':visible') && this._accordionVisible){
-            this.showTabs();
-            this._accordionVisible = false;
-        } else if (this.$accordion.is(':visible') && !this._accordionVisible){
-            this.showAccordion();
-            this._accordionVisible = true;
-        }
-    };
+    // TabCollapse.prototype.checkState = function(){
+    //     if (this.$tabs.is(':visible') && this._accordionVisible){
+    //         this.showTabs();
+    //         this._accordionVisible = false;
+    //     } else if (this.$accordion.is(':visible') && !this._accordionVisible){
+    //         this.showAccordion();
+    //         this._accordionVisible = true;
+    //     }
+    // };
 
     TabCollapse.prototype.showTabs = function(){
         var view = this;
@@ -117,104 +117,104 @@
         return $tabContents;
     };
 
-    TabCollapse.prototype.showAccordion = function(){
-        this.$tabs.trigger($.Event('show-accordion.bs.tabcollapse'));
+    // TabCollapse.prototype.showAccordion = function(){
+    //     this.$tabs.trigger($.Event('show-accordion.bs.tabcollapse'));
 
-        var $headings = this.$tabs.find('li:not(.dropdown) [data-toggle="tab"], li:not(.dropdown) [data-toggle="pill"]'),
-            view = this;
-        $headings.each(function(){
-            var $heading = $(this),
-                $parentLi = $heading.parent();
-            $heading.data('bs.tabcollapse.parentLi', $parentLi);
-            view.$accordion.append(view._createAccordionGroup(view.$accordion.attr('id'), $heading.detach()));
-        });
+    //     var $headings = this.$tabs.find('li:not(.dropdown) [data-toggle="tab"], li:not(.dropdown) [data-toggle="pill"]'),
+    //         view = this;
+    //     $headings.each(function(){
+    //         var $heading = $(this),
+    //             $parentLi = $heading.parent();
+    //         $heading.data('bs.tabcollapse.parentLi', $parentLi);
+    //         view.$accordion.append(view._createAccordionGroup(view.$accordion.attr('id'), $heading.detach()));
+    //     });
 
-        if(this.options.updateLinks) {
-            var parentId = this.$accordion.attr('id');
-            var $selector = this.$accordion.find('.js-tabcollapse-panel-body');
-            $selector.find('[data-toggle="tab"], [data-toggle="pill"]').each(function() {
-                var $el = $(this);
-                var href = $el.attr('href') + '-collapse';
-                $el.attr({
-                    'data-toggle-was': $el.attr('data-toggle'),
-                    'data-toggle': 'collapse',
-                    'data-parent': '#' + parentId,
-                    href: href
-                });
-            });
-        }
+    //     if(this.options.updateLinks) {
+    //         var parentId = this.$accordion.attr('id');
+    //         var $selector = this.$accordion.find('.js-tabcollapse-panel-body');
+    //         $selector.find('[data-toggle="tab"], [data-toggle="pill"]').each(function() {
+    //             var $el = $(this);
+    //             var href = $el.attr('href') + '-collapse';
+    //             $el.attr({
+    //                 'data-toggle-was': $el.attr('data-toggle'),
+    //                 'data-toggle': 'collapse',
+    //                 'data-parent': '#' + parentId,
+    //                 href: href
+    //             });
+    //         });
+    //     }
 
-        this.$tabs.trigger($.Event('shown-accordion.bs.tabcollapse'));
-    };
+    //     this.$tabs.trigger($.Event('shown-accordion.bs.tabcollapse'));
+    // };
 
-    TabCollapse.prototype._panelHeadingToTabHeading = function($heading) {
-        var href = $heading.attr('href').replace(/-collapse$/g, '');
-        $heading.attr({
-            'data-toggle': 'tab',
-            'href': href,
-            'data-parent': ''
-        });
-        return $heading;
-    };
+    // TabCollapse.prototype._panelHeadingToTabHeading = function($heading) {
+    //     var href = $heading.attr('href').replace(/-collapse$/g, '');
+    //     $heading.attr({
+    //         'data-toggle': 'tab',
+    //         'href': href,
+    //         'data-parent': ''
+    //     });
+    //     return $heading;
+    // };
 
-    TabCollapse.prototype._tabHeadingToPanelHeading = function($heading, groupId, parentId, active) {
-        $heading.addClass('js-tabcollapse-panel-heading ' + (active ? '' : 'collapsed'));
-        $heading.attr({
-            'data-toggle': 'collapse',
-            'data-parent': '#' + parentId,
-            'href': '#' + groupId
-        });
-        return $heading;
-    };
+    // TabCollapse.prototype._tabHeadingToPanelHeading = function($heading, groupId, parentId, active) {
+    //     $heading.addClass('js-tabcollapse-panel-heading ' + (active ? '' : 'collapsed'));
+    //     $heading.attr({
+    //         'data-toggle': 'collapse',
+    //         'data-parent': '#' + parentId,
+    //         'href': '#' + groupId
+    //     });
+    //     return $heading;
+    // };
 
-    TabCollapse.prototype._checkStateOnResize = function(){
-        var view = this;
-        $(window).resize(function(){
-            clearTimeout(view._resizeTimeout);
-            view._resizeTimeout = setTimeout(function(){
-                view.checkState();
-            }, 100);
-        });
-    };
+    // TabCollapse.prototype._checkStateOnResize = function(){
+    //     var view = this;
+    //     $(window).resize(function(){
+    //         clearTimeout(view._resizeTimeout);
+    //         view._resizeTimeout = setTimeout(function(){
+    //             view.checkState();
+    //         }, 100);
+    //     });
+    // };
 
 
-    TabCollapse.prototype._initAccordion = function(){
-        var randomString = function() {
-            var result = "",
-                possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-            for( var i=0; i < 5; i++ ) {
-                result += possible.charAt(Math.floor(Math.random() * possible.length));
-            }
-            return result;
-        };
+    // TabCollapse.prototype._initAccordion = function(){
+    //     var randomString = function() {
+    //         var result = "",
+    //             possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    //         for( var i=0; i < 5; i++ ) {
+    //             result += possible.charAt(Math.floor(Math.random() * possible.length));
+    //         }
+    //         return result;
+    //     };
 
-        var srcId = this.$tabs.attr('id'),
-            accordionId = (srcId ? srcId : randomString()) + '-accordion';
+    //     var srcId = this.$tabs.attr('id'),
+    //         accordionId = (srcId ? srcId : randomString()) + '-accordion';
 
-        this.$accordion = $('<div class="panel-group ' + this.options.accordionClass + '" id="' + accordionId +'"></div>');
-        this.$tabs.after(this.$accordion);
-        this.$tabs.addClass(this.options.tabsClass);
-        this.getTabContentElement().addClass(this.options.tabsClass);
-    };
+    //     this.$accordion = $('<div class="panel-group ' + this.options.accordionClass + '" id="' + accordionId +'"></div>');
+    //     this.$tabs.after(this.$accordion);
+    //     this.$tabs.addClass(this.options.tabsClass);
+    //     this.getTabContentElement().addClass(this.options.tabsClass);
+    // };
 
-    TabCollapse.prototype._createAccordionGroup = function(parentId, $heading){
-        var tabSelector = $heading.attr('data-target'),
-            active = $heading.data('bs.tabcollapse.parentLi').is('.active');
+    // TabCollapse.prototype._createAccordionGroup = function(parentId, $heading){
+    //     var tabSelector = $heading.attr('data-target'),
+    //         active = $heading.data('bs.tabcollapse.parentLi').is('.active');
 
-        if (!tabSelector) {
-            tabSelector = $heading.attr('href');
-            tabSelector = tabSelector && tabSelector.replace(/.*(?=#[^\s]*$)/, ''); //strip for ie7
-        }
+    //     if (!tabSelector) {
+    //         tabSelector = $heading.attr('href');
+    //         tabSelector = tabSelector && tabSelector.replace(/.*(?=#[^\s]*$)/, ''); //strip for ie7
+    //     }
 
-        var $tabPane = $(tabSelector),
-            groupId = $tabPane.attr('id') + '-collapse',
-            $panel = $(this.options.accordionTemplate($heading, groupId, parentId, active));
-        $panel.find('.panel-heading > .panel-title').append(this._tabHeadingToPanelHeading($heading, groupId, parentId, active));
-        $panel.find('.panel-body').append($tabPane.contents().detach())
-            .data('bs.tabcollapse.tabpane', $tabPane);
+    //     var $tabPane = $(tabSelector),
+    //         groupId = $tabPane.attr('id') + '-collapse',
+    //         $panel = $(this.options.accordionTemplate($heading, groupId, parentId, active));
+    //     $panel.find('.panel-heading > .panel-title').append(this._tabHeadingToPanelHeading($heading, groupId, parentId, active));
+    //     $panel.find('.panel-body').append($tabPane.contents().detach())
+    //         .data('bs.tabcollapse.tabpane', $tabPane);
 
-        return $panel;
-    };
+    //     return $panel;
+    // };
 
 
 
