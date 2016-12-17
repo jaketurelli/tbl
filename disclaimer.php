@@ -1,5 +1,6 @@
 <?php
 include('get_SESSION.php');
+$_SESSION['CURRENT_PAGE'] = 'disclaimer.php';
 ?>
 
 <!DOCTYPE html>

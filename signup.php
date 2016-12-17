@@ -1,8 +1,8 @@
 <?php
 session_start();
-session_unset ();
+//session_unset ();
 require_once('../includes/connection.php');
-
+$redirectPage = $_SESSION['CURRENT_PAGE'];
 
 if($_POST['signup']) {
 	$email      = $_POST['email'];
@@ -46,11 +46,13 @@ if($_POST['signup']) {
 		$_SESSION['LEAGUE_ID']    = $user['league_id'];
 		$_SESSION['IS_ADMIN']     = $user['is_admin'];
 		$_SESSION['IS_SIGNED_IN'] = true;
-		header('Location: index.php');
+		echo '<script>window.location.href="' . $redirectPage . '";</script>';
 	}else{
-		echo "<script>alert('email account already exists for another user.');
-				 window.location.href='index.php';
-					</script>";
+		echo '<script>alert("email account already exists for another user.");
+				 window.location.href="' . $redirectPage . '";
+					</script>';
+
+		
 	}
 	
 }elseif(isset($_POST['fb_id'])) {
@@ -84,19 +86,20 @@ if($_POST['signup']) {
 		$_SESSION['IS_ADMIN']     = $user['is_admin'];
 		$_SESSION['IS_SIGNED_IN'] = true;
 		
-		echo "<script>window.location.reload();</script>";
+		echo '<script>window.location.href="' . $redirectPage . '";
+					</script>;';
 		//echo "<script>window.location.href='index.php';</script>";
 
 	}else{
 		// ERROR: EMAIL HAS BEEN USED AND USER ACCOUNT
-		"<script>alert('This email has already been used to create a user.');
-				 window.location.href='index.php';
-					</script>";
+		echo '<script>alert("This email has already been used to create a user.");
+				 window.location.href="' . $redirectPage . '";
+					</script>';
 	}
 }else {
-	echo "<script>alert('Please fill out the form.');
-				 window.location.href='index.php';
-					</script>";
+	echo '<script>alert("Please fill out the form.");
+				 window.location.href="' . $redirectPage . '";
+					</script>';
 	
 }
 ?>

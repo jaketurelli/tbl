@@ -1,5 +1,6 @@
 <?php
 include('get_SESSION.php');
+$_SESSION['CURRENT_PAGE'] = 'about.php';
 ?>
 
 <!DOCTYPE html>

@@ -1,11 +1,12 @@
 <?php
 require_once( '../includes/connection.php');
 session_start();
-session_unset ();
-
+//session_unset ();
+$redirectPage = $_SESSION['CURRENT_PAGE'];
 $league_id = -1;
 $email    = $_POST['email'];
 $pswd     = $_POST['pword'];
+//$redirect_page = $_POST['redirect_page'];
 
 // .htaccess is preventing $_POST information somehow. Problem open.
 /*
@@ -71,8 +72,9 @@ if($_POST['login']) {
 		$_SESSION['IS_SIGNED_IN'] = true;
 		$league_id = $user['league_id'];
 
-		echo "<script>window.location.reload();</script>";
-
+		//echo "<script>window.location.reload();</script>";
+		echo '<script>window.location.href="' . $redirectPage . '";
+					</script>;';
 			
 	}
 }else {
@@ -84,9 +86,8 @@ if($_POST['login']) {
 
 // GET SESSION VARIABLES FOR LEAGUE INFO IF IN A LEAGUE
 if($league_id == -1){
-	// SEND TO LEAGUE PAGE TO SIGNUP OR CREATE A LEAGUE
-	echo "<script>window.location.href='league.php';
-		</script>";
+	echo '<script>window.location.href="' . $redirectPage . '";
+					</script>;';
 }else{
 	// GET SESSION VARIABLES
 	$query = "SELECT * FROM `league` WHERE `league_id` = $league_id";
@@ -108,9 +109,7 @@ if($league_id == -1){
 		$current_ceremony = mysqli_fetch_array($result);
 		$_SESSION['current_ceremony']   = $current_ceremony['ceremony_number'];
 	}
-
-
-	echo "<script>window.location.href='index.php';
-					</script>";
+	echo '<script>window.location.href="' . $redirectPage . '";
+					</script>;';
 }
 ?>

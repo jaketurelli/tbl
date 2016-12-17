@@ -112,7 +112,26 @@
 		</div><!-- modal-content -->
 	</div><!-- modal-dialog -->
 </div><!-- loginmodal -->
+<script>
 
+function login_test(elmnt) {
+	user_email = $(elmnt);
+    $.ajax({
+		type: "POST",
+		url: "login.php",
+		data: {email: user_email,
+
+			 },
+		success: function(msg){
+			console.log(msg);
+		}
+	});
+	location.reload();
+
+
+}
+
+</script>
 <script>
 
 // ########################################################### 

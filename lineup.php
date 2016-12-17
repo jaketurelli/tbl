@@ -1,6 +1,7 @@
 <?php
 
 	include('get_SESSION.php');
+	$_SESSION['CURRENT_PAGE'] = 'lineup.php';
 	
 	if($LEAGUE_ID != -1){
 		$query_ceremony    = "SELECT * FROM ceremony ORDER BY ceremony_number ASC";
