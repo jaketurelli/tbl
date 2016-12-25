@@ -16,31 +16,31 @@
 
 		$TABLE_CONTESTANTS_ELIM_ARRAY   = array();
 		$TABLE_CONTESTANTS_NAME_ARRAY   = array();
-		$TABLE_CONTESTANTS_AKA_ARRAY    = array();
+		$TABLE_CONTESTANTS_OCCUPATION_ARRAY = array();
 		$TABLE_CONTESTANTS_AGE_ARRAY    = array();
 		$TABLE_CONTESTANTS_HEIGHT_ARRAY = array();
 		$TABLE_CONTESTANTS_IMG_ARRAY = array();
 
-		while ($row = mysqli_fetch_array($TABLE_CONTESTANTS, MYSQL_NUM)) {
-			$ind =  $row[0];
-		    $TABLE_CONTESTANTS_ELIM_ARRAY[$ind]   = $row[7];  
-		    $TABLE_CONTESTANTS_NAME_ARRAY[$ind]   = $row[1];  
-		    $TABLE_CONTESTANTS_AKA_ARRAY[$ind]    = $row[2];  
-		    $TABLE_CONTESTANTS_AGE_ARRAY[$ind]    = $row[3];  
-		    $TABLE_CONTESTANTS_HEIGHT_ARRAY[$ind] = $row[5];  
-		    $TABLE_CONTESTANTS_IMG_ARRAY[$ind]    = 'img/lineup/' . $row[6];  
+		while ($row = mysqli_fetch_array($TABLE_CONTESTANTS, MYSQL_ASSOC)) {
+			$ind =  $row['contestant_id'];
+		    $TABLE_CONTESTANTS_ELIM_ARRAY[$ind]   = $row['eliminated'];  
+		    $TABLE_CONTESTANTS_NAME_ARRAY[$ind]   = $row['name'];  
+		    $TABLE_CONTESTANTS_OCCUPATION_ARRAY[$ind]    = $row['occupation'];  
+		    $TABLE_CONTESTANTS_AGE_ARRAY[$ind]    = $row['age'];  
+		    $TABLE_CONTESTANTS_HEIGHT_ARRAY[$ind] = $row['height'];  
+		    $TABLE_CONTESTANTS_IMG_ARRAY[$ind]    = 'img/lineup/' . $row['image_dir'];  
 		}
 		$TABLE_CEREMONY_ARRAY = array();
 		if(mysqli_num_rows($TABLE_CEREMONY)==0){
 
 		}else{
-			while ($row = mysqli_fetch_array($TABLE_CEREMONY, MYSQL_NUM)) {
-				$ind =  $row[1]; // ceremony number, NOT index
-			    $TABLE_CEREMONY_ARRAY[$ind][0] =  $row[2];
-			    $this_lockout_time = $row[3];
+			while ($row = mysqli_fetch_array($TABLE_CEREMONY, MYSQL_ASSOC)) {
+				$ind =  $row['ceremony_number']; // ceremony number, NOT index
+			    $TABLE_CEREMONY_ARRAY[$ind][0] =  $row['number_picks'];
+			    $this_lockout_time = $row['lock_time'];
 			    $this_lockout_time_unix = strtotime($this_lockout_time);
 			    $TABLE_CEREMONY_ARRAY[$ind][1] =  $this_lockout_time_unix;
-			    $TABLE_CEREMONY_ARRAY[$ind][2] =  $row[4];
+			    $TABLE_CEREMONY_ARRAY[$ind][2] =  $row['is_current'];
 			}
 		}
 		/*var_dump($TABLE_CEREMONY_ARRAY);
@@ -239,7 +239,7 @@ include('header_content.html');
 															<th>Player</th>
 														<?php
 														if(!$IS_MOBILE){ ?>
-															<th>AKA</th>
+															<th>Occupation</th>
 															<th class="td-right">Age</th>
 															<th class="td-center">Height</th>
 															<th class="td-center" data-html="true" data-toggle="tooltip" title="Number of times the contestant has been picked all season.">Picked</th>
@@ -263,7 +263,7 @@ include('header_content.html');
 																	if(count($bookkeep_picked) <= $TABLE_CEREMONY_ARRAY[$this_ceremony_num][1]){
 																		$curr_is_elim = $TABLE_CONTESTANTS_ELIM_ARRAY[$curr_contestant_id];
 																		$curr_name    = $TABLE_CONTESTANTS_NAME_ARRAY[$curr_contestant_id];
-																		$curr_aka     = $TABLE_CONTESTANTS_AKA_ARRAY[$curr_contestant_id] ;
+																		$curr_occupation     = $TABLE_CONTESTANTS_OCCUPATION_ARRAY[$curr_contestant_id] ;
 							    										$curr_age     = $TABLE_CONTESTANTS_AGE_ARRAY[$curr_contestant_id]  ;
 							   											$curr_height  = $TABLE_CONTESTANTS_HEIGHT_ARRAY[$curr_contestant_id] ; 
 							   											$curr_img     = $TABLE_CONTESTANTS_IMG_ARRAY[$curr_contestant_id];
@@ -282,7 +282,7 @@ include('header_content.html');
 																				<td><img class = "lineup-img" src= <?php echo '"' . $curr_img . '"' ?> /><?php echo $curr_name ?></td> 
 																			<?php
 																			if(!$IS_MOBILE){ ?>
-																				<td><?php echo $curr_aka ?></td>
+																				<td><?php echo $curr_occupation ?></td>
 																				<td class="td-right"><?php echo $curr_age  ?></td>
 																				<td class="td-right"><?php echo $curr_height  ?></td>
 																				<td class="td-right"><?php echo '109'  ?></td>
@@ -307,7 +307,7 @@ include('header_content.html');
 																if(!in_array($curr_contestant_id, $bookkeep_picked)){
 
 																	$curr_name   = $this_contestant['name'];
-																	$curr_aka    = $this_contestant['aka'];
+																	$curr_occupation    = $this_contestant['occupation'];
 																	$curr_age    = $this_contestant['age'];
 																	$curr_height = $this_contestant['height'];
 																	$curr_img    = 'img/lineup/' . $this_contestant['image_dir'];
@@ -327,7 +327,7 @@ include('header_content.html');
 																			<td><img class = "lineup-img" src= <?php echo '"' . $curr_img . '"' ?> /><?php echo $curr_name ?></td> 
 																		<?php
 																		if(!$IS_MOBILE){ ?>
-																			<td><?php echo $curr_aka ?></td>
+																			<td><?php echo $curr_occupation ?></td>
 																			<td class="td-right"><?php echo $curr_age  ?></td>
 																			<td class="td-right"><?php echo $curr_height  ?></td>
 																			<td class="td-right"><?php echo '109'  ?></td>
