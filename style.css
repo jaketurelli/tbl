@@ -99,6 +99,14 @@ hr {
 .light-grey {
 	color: #acacac;
 }
+@media (max-width: 850px){
+	h2 {
+		font-size: 24px!important;
+	}
+	.section-title {
+		line-height: 36px!important;
+	}
+}
 
 /* ===BUTTONS=== */
 .btn {
@@ -118,6 +126,11 @@ hr {
 	color: #fff;
 	border-radius: 1.5px;
 	margin: 10px 5px;
+}
+@media (max-width: 840px){
+	.center-button-mobile {
+		text-align: center;
+	}
 }
 /*.btn-link {
 	color: #5A6063;
@@ -317,7 +330,7 @@ hr {
 	border-color: rgba(255,255,255,0.5);
 }
 .section-title {
-	line-height: 44px!important;
+	line-height: 44px;
 }
 
 

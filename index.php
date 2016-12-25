@@ -190,7 +190,7 @@ include('header_content.html');
 					<div class="col-md-6">
 						<h2 class="section-title">Get to know this season's contestants</h2>
 						<p>This season's bachelor, Nick Viall, has 25 eligible women to choose from. See what these ladies are all about.</p>
-						<a href="contestants.php"><button type="button" class="btn btn-pink">SEE CONTESTANTS</button></a>
+						<div class="center-button-mobile"><a href="contestants.php"><button type="button" class="btn btn-pink">SEE CONTESTANTS</button></a></div>
 					</div>
 					<div class="col-md-6">
 						<img class="img-responsive" src="img/nickwcontestants.jpg" alt="bachelorettecontestants" />
@@ -208,7 +208,7 @@ include('header_content.html');
 					<div class="col-md-6">
 						<h2 class="section-title">Your witty commentary could be featured on The Bach League Blog</h2>
 						<p>Do your friends like watching The Bachelor with you because you give great commentary and make awesome jokes? Write up your commentary for The Bach League Blog.</p>
-						<a href="blog.php"><button type="button" class="btn btn-pink">SEE OUR BLOG</button></a>
+						<div class="center-button-mobile"><a href="blog.php"><button type="button" class="btn btn-pink">SEE OUR BLOG</button></a></div>
 					</div>
 				</div>
 			</div>
@@ -228,7 +228,7 @@ include('header_content.html');
 			</div>
 		</div><!-- end of app -->
 		<hr class="style-eight" width="50%">
-		<div id="bottom-home-cta">
+		<!--<div id="bottom-home-cta">
 			<div class="row">
 				<div class="col-md-3"></div>
 				<div class="col-md-6 text-center">
@@ -237,7 +237,7 @@ include('header_content.html');
 				</div>
 				<div class="col-md-3"></div>
 			</div>
-		</div>
+		</div>-->
 	</div><!-- home -->
 	<?php
 	include('footer.html');
