@@ -12,6 +12,8 @@ CREATE TABLE `thebachleague`.`contestants` ( `contestant_id` INT(11) NOT NULL AU
 											 `search` VARCHAR(150) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
 											 `first_name` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
 											 `last_name` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+											 `pick_count` INT(11) NOT NULL DEFAULT '0' , 
+											 `pick_percent` INT(11) NOT NULL DEFAULT '0' , 
 											 PRIMARY KEY (`contestant_id`)) ENGINE = InnoDB;                                                                              
 
 

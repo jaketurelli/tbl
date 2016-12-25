@@ -20,6 +20,9 @@
 		$TABLE_CONTESTANTS_AGE_ARRAY    = array();
 		$TABLE_CONTESTANTS_HEIGHT_ARRAY = array();
 		$TABLE_CONTESTANTS_IMG_ARRAY = array();
+		$TABLE_CONTESTANTS_PICKCOUNT_ARRAY = array();
+		$TABLE_CONTESTANTS_PICKPERCENT_ARRAY = array();
+
 
 		while ($row = mysqli_fetch_array($TABLE_CONTESTANTS, MYSQL_ASSOC)) {
 			$ind =  $row['contestant_id'];
@@ -29,6 +32,8 @@
 		    $TABLE_CONTESTANTS_AGE_ARRAY[$ind]    = $row['age'];  
 		    $TABLE_CONTESTANTS_HEIGHT_ARRAY[$ind] = $row['height'];  
 		    $TABLE_CONTESTANTS_IMG_ARRAY[$ind]    = 'img/lineup/' . $row['image_dir'];  
+		    $TABLE_CONTESTANTS_PICKCOUNT_ARRAY[$ind] = $row['pick_count'];  
+		    $TABLE_CONTESTANTS_PICKPERCENT_ARRAY[$ind] = $row['pick_percent'];  
 		}
 		$TABLE_CEREMONY_ARRAY = array();
 		if(mysqli_num_rows($TABLE_CEREMONY)==0){
@@ -261,12 +266,14 @@ include('header_content.html');
 																	//var_dump($this_pick);
 																	$bookkeep_picked[] = $curr_contestant_id;
 																	if(count($bookkeep_picked) <= $TABLE_CEREMONY_ARRAY[$this_ceremony_num][1]){
-																		$curr_is_elim = $TABLE_CONTESTANTS_ELIM_ARRAY[$curr_contestant_id];
-																		$curr_name    = $TABLE_CONTESTANTS_NAME_ARRAY[$curr_contestant_id];
-																		$curr_occupation     = $TABLE_CONTESTANTS_OCCUPATION_ARRAY[$curr_contestant_id] ;
-							    										$curr_age     = $TABLE_CONTESTANTS_AGE_ARRAY[$curr_contestant_id]  ;
-							   											$curr_height  = $TABLE_CONTESTANTS_HEIGHT_ARRAY[$curr_contestant_id] ; 
-							   											$curr_img     = $TABLE_CONTESTANTS_IMG_ARRAY[$curr_contestant_id];
+																		$curr_is_elim      = $TABLE_CONTESTANTS_ELIM_ARRAY[$curr_contestant_id];
+																		$curr_name         = $TABLE_CONTESTANTS_NAME_ARRAY[$curr_contestant_id];
+																		$curr_occupation   = $TABLE_CONTESTANTS_OCCUPATION_ARRAY[$curr_contestant_id] ;
+							    										$curr_age          = $TABLE_CONTESTANTS_AGE_ARRAY[$curr_contestant_id]  ;
+							   											$curr_height       = $TABLE_CONTESTANTS_HEIGHT_ARRAY[$curr_contestant_id] ; 
+							   											$curr_img          = $TABLE_CONTESTANTS_IMG_ARRAY[$curr_contestant_id];
+							   											$curr_pick_count   = $TABLE_CONTESTANTS_PICKCOUNT_ARRAY[$curr_contestant_id]; 
+		    															$curr_pick_percent = $TABLE_CONTESTANTS_PICKPERCENT_ARRAY[$curr_contestant_id]; 
 
 																		if($curr_is_elim == 0 || $curr_is_elim > $this_ceremony_num){ 
 																			$curr_status = 'A';
@@ -283,10 +290,10 @@ include('header_content.html');
 																			<?php
 																			if(!$IS_MOBILE){ ?>
 																				<td><?php echo $curr_occupation ?></td>
-																				<td class="td-right"><?php echo $curr_age  ?></td>
-																				<td class="td-right"><?php echo $curr_height  ?></td>
-																				<td class="td-right"><?php echo '109'  ?></td>
-																				<td class="td-right"><?php echo '78%'  ?></td>
+																				<td class="td-right"><?php echo $curr_age;?></td>
+																				<td class="td-right"><?php echo $curr_height;?></td>
+																				<td class="td-right"><?php echo $curr_pick_count;?></td>
+																				<td class="td-right"><?php echo $curr_pick_percent . '%';?></td>
 																			<?php 
 																			} ?>
 																			</tr> 
@@ -311,6 +318,8 @@ include('header_content.html');
 																	$curr_age    = $this_contestant['age'];
 																	$curr_height = $this_contestant['height'];
 																	$curr_img    = 'img/lineup/' . $this_contestant['image_dir'];
+																	$curr_pick_count = $this_contestant['pick_count'];
+																	$curr_pick_percent = $this_contestant['pick_percent'];
 
 																	$curr_is_elim = $this_contestant['eliminated'];
 																	if($curr_is_elim == 0 || $curr_is_elim > $this_ceremony_num){ 
@@ -330,8 +339,8 @@ include('header_content.html');
 																			<td><?php echo $curr_occupation ?></td>
 																			<td class="td-right"><?php echo $curr_age  ?></td>
 																			<td class="td-right"><?php echo $curr_height  ?></td>
-																			<td class="td-right"><?php echo '109'  ?></td>
-																			<td class="td-right"><?php echo '78%'  ?></td>
+																			<td class="td-right"><?php echo $curr_pick_count;?></td>
+																			<td class="td-right"><?php echo $curr_pick_percent . '%';?></td>
 																		<?php
 																		} ?>
 																	</tr> <?php
