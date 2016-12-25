@@ -87,15 +87,15 @@ include('header_content.html');
 		</div>
 		<div class=" navbar-collapse overlay navbar-right">
 			<ul class="nav navbar-nav nav-pills">
-				<li><a href="league.php">LEAGUE</a></li>
-				<li class="active"><a href="lineup.php">LINEUP</a></li>
-				<li><a href="trashtalk.php">TRASH TALK</a></li>
-				<li><a href="contestants.php">CONTESTANTS</a></li>
-				<li><a href="blog.php">BLOG</a></li>
+				<li><a href="league.php">League</a></li>
+				<li class="active"><a href="lineup.php">Lineup</a></li>
+				<li><a href="trashtalk.php">Trash Talk</a></li>
+				<li><a href="contestants.php">Contestants</a></li>
+				<li><a href="blog.php">Blog</a></li>
 				<?php
 				if($IS_ADMIN){
 				?>
-					<li><a href="admin.php">ADMIN</a></li>
+					<li><a href="admin.php">Admin</a></li>
 				<?php
 				}
 				?>
@@ -104,12 +104,12 @@ include('header_content.html');
 				<?php 
 				if($IS_SIGNED_IN){
 				?>
-					<li><a class="logout" href="logout.php">LOGOUT</a></li>
+					<li><a class="logout" href="logout.php">Logout</a></li>
 				<?php
 				}else{
 				?>
-					<li style="border-right: 1px solid rgba(255,255,255,0.5); text-align: right"><a class="signup"  data-toggle="modal" data-target="#signupmodal" href="#">SIGN UP</a></li>
-					<li style="text-align:right!important"><a class="login" data-toggle="modal" data-target="#loginmodal" href="#">LOGIN</a></li>
+					<li style="border-right: 1px solid rgba(255,255,255,0.5); text-align: right"><a class="signup"  data-toggle="modal" data-target="#signupmodal" href="#">Sign up</a></li>
+					<li style="text-align:right!important"><a class="login" data-toggle="modal" data-target="#loginmodal" href="#">Login</a></li>
 				<?php
 				}
 				?>
