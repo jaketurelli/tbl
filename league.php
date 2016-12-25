@@ -35,25 +35,29 @@ include('header_content.html');
 		</div>
 		<div class=" navbar-collapse overlay navbar-right">
 			<ul class="nav navbar-nav nav-pills">
-				<li class="active"><a href="league.php">League</a></li>
 				<?php
-				if($IS_COMMISH){
+				if($IS_SIGNED_IN){
 				?>
-					<li><a href="commissioner.php">Commissioner Tools</a></li>
-				<?php
-				}
-				?>
-				<li><a href="lineup.php">Lineup</a></li>
-				<li><a href="trashtalk.php">Trash Talk</a></li>
-				<li><a href="contestants.php">Contestants</a></li>
-				<li><a href="blog.php">Blog</a></li>
-				<?php
-				if($IS_ADMIN){
-				?>
-					<li><a href="admin.php">Admin</a></li>
-				<?php
-				}
-				?>
+					<li class="active"><a href="league.php">League</a></li>
+					<?php
+					if($IS_COMMISH){
+					?>
+						<li><a href="commissioner.php">Commissioner Tools</a></li>
+					<?php
+					}
+					?>
+					<li><a href="lineup.php">Lineup</a></li>
+					<li><a href="trashtalk.php">Trash Talk</a></li>
+					<li><a href="contestants.php">Contestants</a></li>
+					<li><a href="blog.php">Blog</a></li>
+					<?php
+					if($IS_ADMIN){
+					?>
+						<li><a href="admin.php">Admin</a></li>
+					<?php
+					}
+				}?>
+				
 			</ul>
 			<ul class="nav navbar-nav pull-right">
 				<?php 
@@ -680,12 +684,7 @@ include('header_content.html');
 		?>
 		<div class="container-fluid">
 			<div class="container">
-				<div class="row text-center preview-cta">
-					<h1 class="preview-title">Start playing today!</h1>
-					<p>Sign up or login to start playing The Bach League</p>
-					<a class="signup"  data-toggle="modal" data-target="#signupmodal" href="#"><button class="btn btn-pink preview-btn">SIGN UP</button></a>
-					<a class="login" data-toggle="modal" data-target="#loginmodal" href="#"><button class="btn btn-pinkoutline preview-btn">LOGIN</button></a>
-				</div>
+				
 				<div class="row">
 					<h2 class="how-title text-center">How does the league dashboard work?</h2>
 					<div class="col-md-3">
@@ -718,6 +717,12 @@ include('header_content.html');
 						<img class="preview-img" src="" alt="league preview" style="width: 90%;"/>
 					</div>
 				</div>
+				<div class="row text-center preview-cta">
+					<h1 class="preview-title">Start playing today!</h1>
+					<p>Sign up or login to start playing The Bach League</p>
+					<a class="signup"  data-toggle="modal" data-target="#signupmodal" href="#"><button class="btn btn-pink preview-btn">SIGN UP</button></a>
+					<a class="login" data-toggle="modal" data-target="#loginmodal" href="#"><button class="btn btn-pinkoutline preview-btn">LOGIN</button></a>
+				</div>
 			</div>
 		</div>
 		<?php 
@@ -726,12 +731,7 @@ include('header_content.html');
 
 		<div class="container-fluid">
 			<div class="container">
-				<div class="row text-center preview-cta">
-					<h1 class="preview-title">Start playing today!</h1>
-					<p>Sign up or login to start playing The Bach League</p>
-					<a class="signup"  data-toggle="modal" data-target="#signupmodal" href="#"><button class="btn btn-pink preview-btn">SIGN UP</button></a>
-					<a class="login" data-toggle="modal" data-target="#loginmodal" href="#"><button class="btn btn-pinkoutline preview-btn">LOGIN</button></a>
-				</div>
+				
 				<div class="row">
 					<h2 class="how-title text-center">How does the league dashboard work?</h2>
 					<div class="col-md-3">
@@ -751,6 +751,12 @@ include('header_content.html');
 					<div class="col-md-9">
 						<img class="preview-img" src="img/previewleague.svg" alt="league preview" style="width: 90%;"/>
 					</div>
+				</div>
+				<div class="row text-center preview-cta">
+					<h1 class="preview-title">Start playing today!</h1>
+					<p>Sign up or login to start playing The Bach League</p>
+					<a class="signup"  data-toggle="modal" data-target="#signupmodal" href="#"><button class="btn btn-pink preview-btn">SIGN UP</button></a>
+					<a class="login" data-toggle="modal" data-target="#loginmodal" href="#"><button class="btn btn-pinkoutline preview-btn">LOGIN</button></a>
 				</div>
 			</div>
 		</div>

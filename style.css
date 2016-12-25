@@ -256,6 +256,15 @@ hr {
 	margin: 20px 0 10px 0;
 }
 
+@media(max-width: 840px) {
+	.preview-title {
+		padding: 10px;
+	}
+	.how-title {
+		padding: 20px 0px 20px 0px;
+	}
+}
+
 /* ===HOME===*/
 
 #home .jumbotron {
@@ -264,7 +273,7 @@ hr {
 	background-position: center bottom;
 	background-repeat: no-repeat;
 	background-size: cover;
-	padding-top: 5px;
+	padding-top: 0px;
 	width: 100%;
 }
 #home .navbar-brand {
@@ -386,7 +395,7 @@ hr {
 	}
 	.loginnav {
 		display: block!important;
-		padding-top: 10px;
+		padding-top: 5px;
 	}
 	.login, .signup, .logout, .greeting {
 		text-align: left;
@@ -419,11 +428,11 @@ hr {
 		border-bottom: 0!important;
 	}
 	.navbar.nonhome > .navbar-collapse > .navbar-nav > li.active > a {
-		color: #ff757e!important;
+		color: #fff!important;
 		font-weight: 400;
 		border-bottom: 0!important;
-		background-color: transparent;
-		padding: 5px;
+		background-color: #41D9D6;
+		padding: 15px;
 	}
 	.navbar-collapse > .navbar-nav > li > a:hover {
 		background-color: transparent!important;
@@ -441,7 +450,7 @@ hr {
 		background-color: #fff;
 	}
 	.icon-bar {
-		background-color: #ff9587;
+		background-color: #41D9D6;
 	}
 	#howitworks, #contestants, #blog, #app {
 		padding: 10px 0px 20px 0px!important;
@@ -616,7 +625,7 @@ nav.navbar.nonhome {
 	margin-bottom: 0;
 }
 .navbar .nav > li {
-	padding-top: 10px;
+	/*padding-top: 10px;*/
 }
 .navbar .nav > li > a {
 	font-size: 14px;
@@ -650,6 +659,11 @@ nav.navbar.nonhome {
 #contain {
 	width: 100%;
 	margin-right: auto;
+}
+
+/*===CREATE JOIN===*/
+.createjoin-panel {
+	padding: 20px 0px;
 }
 
 /*===LEAGUE===*/

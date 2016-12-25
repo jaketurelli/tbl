@@ -21,6 +21,7 @@ include('header_content.html');
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</a>
+
 					<a class="navbar-brand navbar-brand-centered" href="index.php"><img src="img/logowhite.png" alt="logo" /></a>
 					<ul class="nav pull-right" style="text-align:right">
 						<?php 
@@ -38,13 +39,21 @@ include('header_content.html');
 				</div>
 				<div class="navbar-collapse overlay navbar-right">
 					<ul class="nav navbar-nav">
-						<li><a href="league.php">League</a></li>
-						<li><a href="lineup.php">Lineup</a></li>
-						<li><a href="trashtalk.php">Trash Talk</a></li>
-						<li><a href="contestants.php">Contestants</a></li>
-						<li><a href="blog.php">Blog</a></li>
+						<?php
+						if($IS_SIGNED_IN){
+						?>
+							<li><a href="league.php">League</a></li>
+							<li><a href="lineup.php">Lineup</a></li>
+							<li><a href="trashtalk.php">Trash Talk</a></li>
+							<li><a href="contestants.php">Contestants</a></li>
+							<li><a href="blog.php">Blog</a></li>
 						
 						<?php
+						}else{
+						?>
+							<li><a href="createjoin.php">Create/Join League</a></li>
+						<?php
+						}
 						/*
 						// test facebook login stuff:
 						if($IS_SIGNED_IN){
