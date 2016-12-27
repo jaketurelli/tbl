@@ -11,6 +11,7 @@ if(isset($_POST['user_list'])) {
     }
 }
 
+$_SESSION['COMMISSIONER_TAB'] = 4; // remove user is tab 4
 header('Location: commissioner.php');
 exit();
 

@@ -7,5 +7,6 @@ $query = "INSERT INTO commissioner_announcements(id, league_id, commissioner_id,
 $add_announcement = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
 
 // RELOCATE TO COMMISSIONER PAGE
+$_SESSION['COMMISSIONER_TAB'] = 2; // league announcement is the second tab
 echo "<script>window.location.href='commissioner.php';</script>";
 ?>

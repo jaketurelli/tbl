@@ -1,6 +1,11 @@
 <?php
 	include('get_SESSION.php');
 	$_SESSION['CURRENT_PAGE'] = 'commissioner.php';
+	if(!isset($_SESSION['COMMISSIONER_TAB'])){
+		$_SESSION['COMMISSIONER_TAB'] = 1;
+	}else{
+	}
+
 ?>
 
 <!DOCTYPE html>
@@ -140,11 +145,11 @@ include('header_content.html');
 				<div class="col-md-1"></div>
 				<div class="col-md-3 col-sm-3 tabbable sidebar-nav">
 					<ul class="nav nav-pills nav-stacked">
-						<li class="active"><a href="#a" data-toggle="tab">Email league members</a></li>
-						<li><a href="#b" data-toggle="tab">Write league announcement</a></li>
-						<li><a href="#c" data-toggle="tab">Adjust scoring</a></li>
-						<li><a href="#d" data-toggle="tab">Remove league members</a></li>
-						<li><a href="#e" data-toggle="tab">Add league members</a></li>
+						<li <?php if($_SESSION['COMMISSIONER_TAB']==1){echo 'class = "active"';}?>><a href="#a" data-toggle="tab">Email league members</a></li>
+						<li <?php if($_SESSION['COMMISSIONER_TAB']==2){echo 'class = "active"';}?>><a href="#b" data-toggle="tab">Write league announcement</a></li>
+						<li <?php if($_SESSION['COMMISSIONER_TAB']==3){echo 'class = "active"';}?>><a href="#c" data-toggle="tab">Adjust scoring</a></li>
+						<li <?php if($_SESSION['COMMISSIONER_TAB']==4){echo 'class = "active"';}?>><a href="#d" data-toggle="tab">Remove league members</a></li>
+						<li <?php if($_SESSION['COMMISSIONER_TAB']==5){echo 'class = "active"';}?>><a href="#e" data-toggle="tab">Add league members</a></li>
 
 						<!-- <li role="presentation" class="active"><a class="item" data-target="1" href="#">Email league members</a></li>
 						<li role="presentation"><a class="item" data-target="2" href="#">Write league announcement</a></li>
@@ -154,7 +159,8 @@ include('header_content.html');
 					</ul>
 				</div>
 				<div id="commissioner-tab-content" class="tab-content col-md-7 col-sm-9">
-					<div id="a" class="tab-pane active">
+				<!--<div id="a" class = "tab-pane active">-->
+					<div id="a" <?php if($_SESSION['COMMISSIONER_TAB']==1){echo 'class = "tab-pane active"';}else{echo 'class = "tab-pane"';}?>> 
 						<form method="post" action="email-league.php">
 							<label style="display:none;">To</label>
 							<input id="email-group" name="email-group" style="display:none;">
@@ -167,7 +173,8 @@ include('header_content.html');
 							<input class="btn btn-secondary pull-right text-center" value="CANCEL"></input>
 						</form>
 					</div>
-					<div id="b" class="tab-pane">
+				<!--<div id="b" class="tab-pane">-->
+					<div id="b" <?php if($_SESSION['COMMISSIONER_TAB']==2){echo 'class = "tab-pane active"';}else{echo 'class = "tab-pane"';}?>> 
 						<form id="addannouncementform" role="form" method="post" action="commissioner_announcement.php">
 							<p>Upon posting, this league announcement will replace the previous one if there is one.</p>
 		        			<input type="text" id="announcement" class="form-control" name="announcement" value="">
@@ -194,7 +201,7 @@ include('header_content.html');
 
 							?>
 					</div>
-					<div id="c" class="tab-pane">
+					<div id="c" <?php if($_SESSION['COMMISSIONER_TAB']==3){echo 'class = "tab-pane active"';}else{echo 'class = "tab-pane"';}?>> 
 						<p>Select league member:</p>
 						<p>Select ceremony number:</p>
 						<p>Ceremony 1 (Week 1 Date)</p>
@@ -204,7 +211,7 @@ include('header_content.html');
 						<input class="btn pull-right text-center" value="SAVE"></input>
 						<input class="btn btn-secondary pull-right text-center" value="CANCEL"></input>
 					</div>
-					<div id="d" class="tab-pane">
+					<div id="d" <?php if($_SESSION['COMMISSIONER_TAB']==4){echo 'class = "tab-pane active"';}else{echo 'class = "tab-pane"';}?>> 
 						<form method="post" action="commisioner_remove_user.php">
 					<!--<form id = "remove_user" name = "remove_user" onsubmit = "removeUser()">-->
 							<label>List of current league members:</label>
@@ -231,7 +238,7 @@ include('header_content.html');
 
 						</form>
 					</div>
-					<div id="e" class="tab-pane">
+					<div id="e" <?php if($_SESSION['COMMISSIONER_TAB']==5){echo 'class = "tab-pane active"';}else{echo 'class = "tab-pane"';}?>> 
 						<form method="post" action="contact-us-send.php">
 							<label>Enter email address of the user you'd like to invite:</label>
 							<br>
