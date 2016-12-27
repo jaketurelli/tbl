@@ -58,17 +58,18 @@
 					<li><a href="lineup.php">Lineup</a></li>
 					<li><a href="trashtalk.php">Trash Talk</a></li>
 				<?php
-				}
+				}else{
 				?>
 					<li><a href="contestants.php">Contestants</a></li>
 					<li><a href="blog.php">Blog</a></li>
-					<?php
-					if($IS_ADMIN){
-					?>
-						<li><a href="admin.php">Admin</a></li>
-					<?
-					}
-					?>
+				<?php
+				}
+				if($IS_ADMIN){
+				?>
+					<li><a href="admin.php">Admin</a></li>
+				<?php
+				}
+				?>
 			</ul>
 			<ul class="nav navbar-nav pull-right">
 				<?php 
@@ -104,9 +105,9 @@
 									<form action="createleague.php" method="post">
 										<fieldset>
 											<label>Enter a name for your league:</label>
-											<input type="text" class="form-control" name="leaguename" autocomplete="off" value="" />
+											<input type="text" class="form-control" name="leaguename" value="" />
 											<label>Create a password for your league that users will enter to join:</label>
-											<input type="password" class="form-control" name="leaguepassword" autocomplete="off" value="" />
+											<input type="password" class="form-control" name="leaguepassword" value="" />
 											<label>Enter the email addresses of friends you want to add to your league. (Separate email addresses with commas.)</label>
 											<input type="text" class="form-control" name="emailaddresses" value="">
 											<div class="text-center">
@@ -128,9 +129,9 @@
 					            	<form action="joinleague.php" method="post">
 										<fieldset>
 											<label>League name:</label>
-											<input type="text" class="form-control" name="leaguename" autocomplete="off" value="" />
+											<input type="text" class="form-control" name="leaguename" value="" />
 											<label>League's password:</label>
-											<input type="password" class="form-control" name="leaguepassword" autocomplete="off" value="" />
+											<input type="password" class="form-control" name="leaguepassword" value="" />
 											<div class="text-center">
 												<input type="submit" class="btn" name="joinleague" value="JOIN">
 											</div>

@@ -37,31 +37,37 @@ include('header_content.html');
 						?>
 					</ul>
 				</div>
+				<!-- NAVIGATION PANE START -->
 				<div class="navbar-collapse overlay navbar-right">
 					<ul class="nav navbar-nav">
 						<?php
 						if($IS_SIGNED_IN){
+							if($LEAGUE_ID > 0){
+								if($IS_COMMISH){
 						?>
-							<li><a href="league.php">League</a></li>
-							<li><a href="lineup.php">Lineup</a></li>
-							<li><a href="trashtalk.php">Trash Talk</a></li>
+									<li><a href="commissioner.php">Commissioner Tools</a></li>
+						<?php
+								}
+						?>
+								<li><a href="league.php">League</a></li>
+								<li><a href="lineup.php">Lineup</a></li>
+								<li><a href="trashtalk.php">Trash Talk</a></li>
+						<?php
+							}else{
+						?>
+								<li><a href="createjoin.php">Create/Join League</a></li>
+						<?php
+							}
+						?>
 							<li><a href="contestants.php">Contestants</a></li>
 							<li><a href="blog.php">Blog</a></li>
-						
 						<?php
 						}else{
 						?>
-							<li><a href="createjoin.php">Create/Join League</a></li>
+							<li><a href="contestants.php">Contestants</a></li>
+							<li><a href="blog.php">Blog</a></li>
 						<?php
 						}
-						/*
-						// test facebook login stuff:
-						if($IS_SIGNED_IN){
-							$fb_id = $_SESSION['fb_id'];
-						?>
-							<li><a href="admin.php"><?php echo $fb_id ?></a></li>
-						<?php
-						}*/
 						if($IS_ADMIN){
 						?>
 							<li><a href="admin.php">Admin</a></li>
@@ -85,6 +91,7 @@ include('header_content.html');
 					?>
 					</ul>
 				</div>
+				<!-- NAVIGATION PANE END -->
 			</nav>
 <!-- TEMP for $_SESSION testing 
 			<?php
@@ -149,7 +156,7 @@ include('header_content.html');
 							<button type="button" class="btn-white" data-toggle="modal" data-target="#signupmodal">SIGN UP</button>
 					
 							<?php 
-							}elseif($LEAGUE_ID == -1){
+							}elseif($LEAGUE_ID < 0){
 							?>
 								<button type="button" class="btn-white"><a href='createjoin.php'>JOIN LEAGUE</a></button>
 							<?php
