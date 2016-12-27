@@ -45,7 +45,7 @@ include('header_content.html');
 				<?php
 						}
 				?>
-						<li><a href="league.php">League</a></li>
+						<li class = "active"><a href="league.php">League</a></li>
 						<li><a href="lineup.php">Lineup</a></li>
 						<li><a href="trashtalk.php">Trash Talk</a></li>
 				<?php
