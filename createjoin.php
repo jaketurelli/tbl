@@ -107,6 +107,8 @@
 											<input type="text" class="form-control" name="leaguename" autocomplete="off" value="" />
 											<label>Create a password for your league that users will enter to join:</label>
 											<input type="password" class="form-control" name="leaguepassword" autocomplete="off" value="" />
+											<label>Enter the email addresses of friends you want to add to your league. (Separate email addresses with commas.)</label>
+											<input type="text" class="form-control" name="emailaddresses" value="">
 											<div class="text-center">
 												<input type="submit" class="btn" name="createleague" value="CREATE">
 											</div>
