@@ -48,16 +48,18 @@ include('header_content.html');
 					?>
 					<li><a href="lineup.php">Lineup</a></li>
 					<li><a href="trashtalk.php">Trash Talk</a></li>
+				<?php
+				}
+				?>
 					<li><a href="contestants.php">Contestants</a></li>
 					<li><a href="blog.php">Blog</a></li>
 					<?php
 					if($IS_ADMIN){
 					?>
 						<li><a href="admin.php">Admin</a></li>
-					<?php
+					<?
 					}
-				}?>
-				
+					?>
 			</ul>
 			<ul class="nav navbar-nav pull-right">
 				<?php 

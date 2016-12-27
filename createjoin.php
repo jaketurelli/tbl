@@ -5,9 +5,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<?php
-include('header_content.html');
-?>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Raleway:700,500,400,300,200,100|Roboto:700,500,400,300,100|Merriweather:300,400|Cabin:400' rel='stylesheet' type='text/css'>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1">
+	<title>The Bach League</title>
+	<link rel="shortcut icon" href="favicon.ico?" type="image">
+	<link rel="stylesheet" href="bootstrap.min.css">
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous"> -->
+	<link href="style.css" rel="stylesheet" type="text/css">
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
+	 <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+	<!--<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>-->
+	<script src="bootstrap.min.js"></script>
 </head>
 <body>
 	<nav class="navbar nonhome nav-border-bottom">
@@ -17,22 +26,12 @@ include('header_content.html');
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</a>
-			<?php
-			if($IS_MOBILE){
-			?>
-				<a class="navbar-brand navbar-brand-centered" href="index.php"><img src="img/logo-mobile.png" alt="brand-image" /></a>
-			<?php
-			}else{
-			?>
-				<a class="navbar-brand navbar-brand-centered" href="index.php"><img src="img/logo.png" alt="brand-image" /></a>
-			<?php
-			}
-			?>
+			<a class="navbar-brand navbar-brand-centered" href="index.php"><img src="img/logo.png" alt="brand-image" /></a>
 			<ul class="nav pull-right" style="text-align:right">
 				<?php 
 				if($IS_SIGNED_IN){
 				?>
-					<li><a class="logout" href="logout.php">Logout</a></li>
+					<li style="display:none" class="loginnav"><a class="logout" href="logout.php">Logout</a></li>
 				<?php
 				}else{
 				?>
@@ -47,25 +46,29 @@ include('header_content.html');
 				<?php
 				if($IS_SIGNED_IN){
 				?>
+					<li class="active"><a href="createjoin.php">Create/Join League</a></li>
 					<li><a href="league.php">League</a></li>
+					<?php
+					if($IS_COMMISH){
+					?>
+						<li><a href="commissioner.php">Commissioner Tools</a></li>
+					<?php
+					}
+					?>
 					<li><a href="lineup.php">Lineup</a></li>
 					<li><a href="trashtalk.php">Trash Talk</a></li>
+				<?php
+				}
+				?>
 					<li><a href="contestants.php">Contestants</a></li>
 					<li><a href="blog.php">Blog</a></li>
-				
-				<?php
-				}else{
-				?>
-					<li><a href="createjoin.php">Create/Join League</a></li>
-				<?php
-				}
-				
-				if($IS_ADMIN){
-				?>
-					<li><a href="admin.php">Admin</a></li>
-				<?php
-				}
-				?>
+					<?php
+					if($IS_ADMIN){
+					?>
+						<li><a href="admin.php">Admin</a></li>
+					<?
+					}
+					?>
 			</ul>
 			<ul class="nav navbar-nav pull-right">
 				<?php 
@@ -87,60 +90,64 @@ include('header_content.html');
 	<div class="container-fluid">
 		<div class="container">
 			<div class="row">
-				<div id="accordion" class="createjoin-panel panel-group">
-				    <div class="panel panel-default">
-				        <div class="panel-heading">
-				            <h4 class="panel-title">
-				                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Create a New League</a>
-				            </h4>
-				        </div>
-				        <div id="collapseOne" class="panel-collapse collapse">
-				            <div class="panel-body">
-				                <h3>Create a new league</h3>
-								<form action="createleague.php" method="post">
-									<fieldset>
-										<label>Enter a name for your league:</label>
-										<input type="text" class="form-control" name="leaguename" autocomplete="off" value="" />
-										<label>Create a password for your league that users will enter to join:</label>
-										<input type="password" class="form-control" name="leaguepassword" autocomplete="off" value="" />
-										<div class="text-center">
-											<input type="submit" class="btn" name="createleague" value="CREATE">
-										</div>
-									</fieldset>
-								</form>
-				            </div>
-				        </div>
-				    </div>
-				    <div class="panel panel-default">
-				        <div class="panel-heading">
-				            <h4 class="panel-title">
-				                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Join an Existing League</a>
-				            </h4>
-				        </div>
-				        <div id="collapseTwo" class="panel-collapse collapse">
-				            <div class="panel-body">
-				                <h3>Join a league</h3>
-								<form action="joinleague.php" method="post">
-									<fieldset>
-										<label>League name:</label>
-										<input type="text" class="form-control" name="leaguename" autocomplete="off" value="" />
-										<label>League's password:</label>
-										<input type="password" class="form-control" name="leaguepassword" autocomplete="off" value="" />
-										<div class="text-center">
-											<input type="submit" class="btn" name="joinleague" value="JOIN">
-										</div>
-									</fieldset>
-								</form>
-				            </div>
-				        </div>
-				    </div>
-				</div><!-- end of accordion -->
+				<div class="col-md-3"></div>
+				<div class="col-md-6">
+					<div id="accordion" class="createjoin-panel panel-group">
+					    <div class="panel panel-default">
+					        <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#collapseOne">
+					            <h4 class="panel-title">
+					                <a href="#">Create a New League</a>
+					            </h4>
+					        </div>
+					        <div id="collapseOne" class="panel-collapse collapse">
+					            <div class="panel-body">
+									<form action="createleague.php" method="post">
+										<fieldset>
+											<label>Enter a name for your league:</label>
+											<input type="text" class="form-control" name="leaguename" autocomplete="off" value="" />
+											<label>Create a password for your league that users will enter to join:</label>
+											<input type="password" class="form-control" name="leaguepassword" autocomplete="off" value="" />
+											<div class="text-center">
+												<input type="submit" class="btn" name="createleague" value="CREATE">
+											</div>
+										</fieldset>
+									</form>
+					            </div>
+					        </div>
+					    </div>
+					    <div class="panel panel-default">
+					        <div class="panel-heading">
+					            <h4 class="panel-title" data-toggle="collapse" data-parent="#accordion" data-target="#collapseTwo">
+					                <a href="#">Join an Existing League</a>
+					            </h4>
+					        </div>
+					        <div id="collapseTwo" class="panel-collapse collapse">
+					            <div class="panel-body">
+					            	<form action="joinleague.php" method="post">
+										<fieldset>
+											<label>League name:</label>
+											<input type="text" class="form-control" name="leaguename" autocomplete="off" value="" />
+											<label>League's password:</label>
+											<input type="password" class="form-control" name="leaguepassword" autocomplete="off" value="" />
+											<div class="text-center">
+												<input type="submit" class="btn" name="joinleague" value="JOIN">
+											</div>
+										</fieldset>
+									</form>
+					            </div>
+					        </div>
+					    </div>
+					</div><!-- end of accordion -->
+				</div>
+				<div class="col-md-6"></div>
+				
 			</div>
 		</div><!-- end of container -->
 	</div><!-- end of container-fluid -->
 
 	<?php
 	include('footer.html');
+	include('login-signup-content.html');
 	?>
 </body>
 </html>
