@@ -51,9 +51,27 @@ if($_POST['signup']) {
 		echo '<script>alert("email account already exists for another user.");
 				 window.location.href="' . $redirectPage . '";
 					</script>';
-
-		
 	}
+
+	/* NOT SURE WHERE TO PUT EMAIL STUFF */
+	$to = "admin@thebachleague.com";
+	$subject = "New user";
+	$subject2 = "Thank you for joining The Bach League!";
+	$message = $first_name . $last_name . $email;
+	$message2 = "Hi " . $first_name . "! ";
+	$message2 =  '<html>';
+    $message2 .= '  <head>';
+    $message2 .= '    <title>Sign up</title>';
+    $message2 .= '  </head>';
+    $message2 .= '  <body>';
+    $message2 .= '    <p>Hi '. $first_name . '!<p>';
+    $message2 .= '    <p>Thank you for signing up for The Bach League! <a href="thebachleague.com">Login</a> to create a new league or join an existing league if you have not done so already.<p>';
+    $message2 .= '  </body>';
+    $message2 .= '</html>';
+    $headers[] = 'MIME-Version: 1.0';
+    $headers[] = 'Content-type: text/html; charset=iso-8859-1';
+	mail($to,$subject,$message, implode("\r\n", $headers));
+	mail($email,$subject2,$message2, implode("\r\n", $headers));
 	
 }elseif(isset($_POST['fb_id'])) {
 	$fb_id	 	= $_POST['fb_id'];
