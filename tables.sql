@@ -1,4 +1,8 @@
--- For Harrison/localhost:
+-- ALTERS:
+ALTER TABLE `thebachleague`.`contestants` ADD  `pick_count` INT(11) NOT NULL DEFAULT '0'
+ALTER TABLE `thebachleague`.`contestants` ADD  `pick_percent` INT(11) NOT NULL DEFAULT '0'  
+
+-- COPY/PASTA TO GENERATE ALL NECESSARY TABLES 
 CREATE TABLE `thebachleague`.`contestants` ( `contestant_id` INT(11) NOT NULL AUTO_INCREMENT ,  
 											 `name` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
 											 `aka` TEXT NOT NULL , 

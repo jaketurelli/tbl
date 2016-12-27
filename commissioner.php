@@ -205,12 +205,28 @@ include('header_content.html');
 						<input class="btn btn-secondary pull-right text-center" value="CANCEL"></input>
 					</div>
 					<div id="d" class="tab-pane">
-						<form method="post" action="contact-us-send.php">
+						<form method="post" action="commisioner_remove_user.php">
+					<!--<form id = "remove_user" name = "remove_user" onsubmit = "removeUser()">-->
 							<label>List of current league members:</label>
 							<br>
-							<label><input type="checkbox"> Name of league member</input></label><!-- JAKE list each league member -->
-							<p>By clicking Remove, you will remove the user from the league and all of their saved ceremonies.</p>
-							<input class="btn pull-right text-center" value="REMOVE"></input>
+							<label>
+								<?php
+									$query = "SELECT user_id, first_name, last_name, alias FROM user WHERE league_id = $LEAGUE_ID";
+									$getUsers = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
+									if(mysqli_num_rows($getUsers)>0){
+										while($curr_user = mysqli_fetch_array($getUsers)){
+											$display_name = $curr_user['first_name'] . ' ' . $curr_user['last_name'] ;
+											$curr_user_id = $curr_user['user_id']
+											?>
+											<input type="checkbox" name = "user_list[]" value = <?php echo '"' . $curr_user_id . '"'?> id = <?php echo '"' . $curr_user_id . '"'?>><?php echo $display_name?></input><br>
+											<?php
+										}
+									}
+									
+								?>
+							</label>
+							<p>By clicking Remove, you will remove the user from the league. The user can always be added back to your league.</p>
+							<input class="btn pull-right text-center" type = 'submit' value="REMOVE"></input>
 							<input class="btn btn-secondary pull-right text-center" value="CANCEL"></input>
 
 						</form>
@@ -289,7 +305,6 @@ include('header_content.html');
 	?>
 	
 	<script type="text/javascript">
-		
 	</script>
 </body>
 </html>
