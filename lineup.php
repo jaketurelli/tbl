@@ -90,6 +90,62 @@ include('header_content.html');
 				?>
 			</ul>
 		</div>
+		<!-- NAVIGATION PANE START -->
+		<div class="navbar-collapse overlay navbar-right">
+			<ul class="nav navbar-nav">
+				<?php
+				if($IS_SIGNED_IN){
+					if($LEAGUE_ID > 0){
+						if($IS_COMMISH){
+				?>
+							<li><a href="commissioner.php">Commissioner Tools</a></li>
+				<?php
+						}
+				?>
+						<li><a href="league.php">League</a></li>
+						<li class="active"><a href="lineup.php">Lineup</a></li>
+						<li><a href="trashtalk.php">Trash Talk</a></li>
+				<?php
+					}else{
+				?>
+						<li><a href="createjoin.php">Create/Join League</a></li>
+				<?php
+					}
+				?>
+					<li><a href="contestants.php">Contestants</a></li>
+					<li><a href="blog.php">Blog</a></li>
+				<?php
+				}else{
+				?>
+					<li><a href="contestants.php">Contestants</a></li>
+					<li><a href="blog.php">Blog</a></li>
+				<?php
+				}
+				if($IS_ADMIN){
+				?>
+					<li><a href="admin.php">Admin</a></li>
+				<?php
+				}
+				?>
+			</ul>
+			<ul class="nav navbar-nav pull-right" style="text-align:right">
+			<?php 
+			if($IS_SIGNED_IN){
+			?>
+				<li><a class="greeting">Hi <?php echo $ALIAS . '!'?></a></li>
+				<li><a class="logout" href="logout.php">Logout</a></li>
+			<?php
+			}else{
+			?>
+				<li style="border-right: 1px solid rgba(255,255,255,0.5)"><a class="signup"data-toggle="modal" data-target="#signupmodal" href="#">Sign up</a></li>
+				<li><a class="login" data-toggle="modal" data-target="#loginmodal" href="#">Login</a></li>
+			<?php
+			}
+			?>
+			</ul>
+		</div>
+		<!-- NAVIGATION PANE END -->
+<!-- 
 		<div class=" navbar-collapse overlay navbar-right">
 			<ul class="nav navbar-nav nav-pills">
 				<li><a href="league.php">League</a></li>
@@ -120,6 +176,7 @@ include('header_content.html');
 				?>
 			</ul>
 		</div>
+-->
 	</nav>
 	<?php 
 		if($IS_SIGNED_IN){

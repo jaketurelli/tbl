@@ -93,45 +93,7 @@ include('header_content.html');
 				</div>
 				<!-- NAVIGATION PANE END -->
 			</nav>
-<!-- TEMP for $_SESSION testing 
-			<?php
-			if($IS_ADMIN){
-			?>
-			<div style="color:#FFFFFF">
-				<table >
-					<thead>
 
-						<tr>
-							<th>USER_ID______</th>
-							<th>USERNAME______</th>
-							<th>ALIAS______</th>
-							<th>LEAGUE_ID______</th>
-							<th>LEAGUE_NAME______</th>
-							<th>COMMISSIONER______</th>
-							<th>COMMISH_ID______</th>
-							<th>CURRENT_CEREMONY______</th>
-							<th>IS_SIGNED_IN______</th>
-							<th>IS_ADMIN______</th>
-						</tr>
-						<tr>
-							<th><?php echo $USER_ID; ?></th>
-							<th><?php echo $USERNAME; ?></th>
-							<th><?php echo $ALIAS; ?></th>
-							<th><?php echo $LEAGUE_ID; ?></th>
-							<th><?php echo $LEAGUE_NAME; ?></th>
-							<th><?php echo $COMMISSIONER; ?></th>
-							<th><?php echo $COMMISH_ID; ?></th>
-							<th><?php echo $CURRENT_CEREMONY; ?></th>
-							<th><?php echo $IS_SIGNED_IN; ?></th>
-							<th><?php echo $IS_ADMIN; ?></th>
-						</tr>
-					</thead>
-				</table>
-			</div>	
-			<?php
-			}
-			?>
- TEMP for $_SESSION testing -->
 			<div class="hero-unit-inner">
 				<div class="container">
 					<div class="row">
