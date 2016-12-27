@@ -74,23 +74,24 @@ include('header_content.html');
 	</nav>
 	<div ><!-- removed id="blog-bg" class="container-fluid" -->
 		<div class="container"><!-- removed id="blog-content" -->
-			<div class="blog-header">
-				<h4 class="blog-title">THE BACH LEAGUE BLOG</h4>
-				<h5 class="blog-description">Snark, sarcasm, and drama analysis. There may be spoilers.</h5>
-				<hr>
+			<div class="row">
+				<div class="blog-header">
+					<h4 class="blog-title">THE BACH LEAGUE BLOG</h4>
+					<h5 class="blog-description">The drama broken down. There may be spoilers.</h5>
+					<hr>
+				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-12">
+				<p>Stay tuned for the first post after the season premiere on January 2nd, 2017!</p>
+				<!--<div class="col-md-12">
 					<div class="blog-preview">
-						<!--<div class="panel">
-							<div class="panel-heading">-->
 								<div class="row">
 									<div class="col-sm-12">
 										<h2 class="post-title">The guys go to Argentina</h2>
 										<h5>6/28/2016 by KLM</h5>
 									</div>
 								</div>
-							<!--</div>-->
+						
 							<div class="row">
 								<div class="col-sm-6">
 									<p>A recap of the episode in Argentina. Wells gets the first one-on-one in Argentina. It's also HIS first one-on-one. The ENTIRE one-on-one commentary focuses on how Wells hasn't kissed Jojo yet. It all feels juvenile with the other guys teasing him about breath mints and epic kissing. The man wanted their first kiss to be extra special. Ain't nothing wrong with that. In fact, America probably fell in love with him a little more. But fast forward past their first kiss and a sweaty dinner date...</p>
@@ -100,18 +101,14 @@ include('header_content.html');
 									<img class="img-responsive img-smaller" src="img/jojotango.jpg" />
 								</div>
 							</div>
-						<!--</div>-->
 					</div>
 					<div class="blog-preview">
-						<!--<div class="panel">
-							<div class="panel-heading">-->
 								<div class="row">
 									<div class="col-sm-12">
 										<h2 class="post-title">The group goes to Uruguay and Alex gets annoying</h2>
 										<h5>6/14/2016 by KLM</h5>
 									</div>
 								</div>
-							<!--</div>-->
 							<div class="row">
 								<div class="col-sm-6">
 									<p>A recap of the episode where the mini-Chads emerge. The episode opens with James T. playing guitar while the boys spread his "protein ashes" interspliced with shots of Chad walking in the dark and whistling like a creepy weirdo. We all fall in love with Wells a little more for his light-hearted, witty speech during the protein ashes scene. Cue Daniel welcoming Chad back in the house with a casual "how was your date" with his big bowl of cereal. Chad then gets into another argument...</p> 
@@ -121,7 +118,6 @@ include('header_content.html');
 									<img class="img-responsive" src="img/sandboarding.jpg" />
 								</div>
 							</div>
-						<!--</div>-->
 					</div>
 					<div class="blog-preview">
 						<div class="row">
@@ -140,7 +136,7 @@ include('header_content.html');
 							</div>
 						</div>
 					</div>
-				</div>
+				</div>-->
 			</div>
 		</div>
 	</div>
