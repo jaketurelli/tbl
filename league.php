@@ -151,14 +151,14 @@ include('header_content.html');
 						<div class="row">
 							<div class="col-md-12">
 								<div class="tile">
-									<h3>site announcement</h3><p> Hi friends and family! You are using the beta version of The Bach League so it's the bare minimum of features and functionality. Jake and Kacy are in the process of adding features and will let you all know when new changes are pushed to the website! If you have any questions, comments, or feedback, feel free to email/text us.</p>
+									<h3>Site Announcement</h3><p> Hi friends and family! You are using the beta version of The Bach League so it's the bare minimum of features and functionality. Jake and Kacy are in the process of adding features and will let you all know when new changes are pushed to the website! If you have any questions, comments, or feedback, feel free to email/text us.</p>
 								</div>
 							</div>
 						</div>
 						<div class="row">
 							<div id="leftleaguecol" class="col-md-6">
 								<div class="tile">
-									<h3>league announcement</h3>
+									<h3>League Announcement</h3>
 									<?php 
 										// DISPLAY LATEST ANNOUNCEMENT
 										$query = "SELECT * FROM commissioner_announcements WHERE league_id = $LEAGUE_ID ORDER BY id DESC";
@@ -175,14 +175,15 @@ include('header_content.html');
 
 								</div>
 								<div class="tile">
-									<h3>blog</h3>
-									<h4>Latest article: "BYE CHAD"</h4>
+									<h3>Blog</h3>
+									<p>Stay tuned for a post after the first episode!</p>
+									<!-- <h4>Latest article: "BYE CHAD"</h4>
 									<p>by Admin 6/14/16</p>
 									<p>This week’s episode was epic. We saw Alex take down Chad and Jojo give a rock solid speech to Chad telling him to leave. It reminded me of Emily Maynard’s season when she told Kalen to get the eff out. If you haven’t seen it, you must see it now. And then see the follow-up on her Men Tell All episode.</p>
-									<a href="chad-goes-home.php"><button class="btn btn-pink">READ MORE</button></a>
+									<a href="chad-goes-home.php"><button class="btn btn-pink">READ MORE</button></a> -->
 								</div>
 								<div class="tile">
-									<h3>site stats</h3>
+									<h3>Site Stats</h3>
 									<p class="tabletitle">Latest week:</p>
 									<table>
 										<tbody>
@@ -287,7 +288,7 @@ include('header_content.html');
 												<td class="col-md-3 contestantname">Luke</td>
 												<td class="col-md-4">122 picks</td>
 											</tr>
-											-->
+											
 											<tr>
 												<td class="col-md-5 statcategory">LEAST PICKED</td>
 												<td class="col-md-3 contestantname">Chad</td>
@@ -297,7 +298,7 @@ include('header_content.html');
 												<td class="col-md-5 statcategory">DARK HORSE</td>
 												<td class="col-md-3 contestantname">Evan</td>
 												<td class="col-md-4"></td>
-											</tr>
+											</tr>-->
 										</tbody>
 									</table>
 									<p class="tabletitle">All-time:</p>
@@ -406,7 +407,7 @@ include('header_content.html');
 							</div>
 							<div id="rightleaguecol" class="col-md-6">
 								<div class="tile">
-									<h3>eliminations</h3>
+									<h3>Eliminations</h3>
 									<p>Ceremony <?php echo $CURRENT_CEREMONY-1;?>:</p>
 								
 									<?php 
@@ -440,7 +441,7 @@ include('header_content.html');
 									?>
 								</div>
 								<div class="tile">
-									<h3>league stats</h3>
+									<h3>League Stats</h3>
 									<p class="tabletitle">Latest week:</p>
 									<table>
 										<tbody>
@@ -539,7 +540,7 @@ include('header_content.html');
 												<td class="col-md-3 contestantname">Chad</td>
 												<td class="col-md-4">2 picks</td>
 											</tr>
-											-->
+											
 											<tr>
 												<td class="col-md-5 statcategory">DARK HORSE</td>
 												<td class="col-md-3 contestantname">Evan</td>
@@ -549,7 +550,7 @@ include('header_content.html');
 												<td class="col-md-5 statcategory">PERFECT LINEUP</td>
 												<td class="col-md-3 contestantname">Julia</td>
 												<td class="col-md-4"></td>
-											</tr>
+											</tr>-->
 											
 										</tbody>
 									</table>
@@ -652,7 +653,7 @@ include('header_content.html');
 												<td class="col-md-3 contestantname">Coley</td>
 												<td class="col-md-4">2 picks</td>
 											</tr>
-											-->
+											
 											<tr>
 												<td class="col-md-5 statcategory">PERFECT LINEUP</td>
 												<td class="col-md-3 contestantname">Jacob</td>
@@ -667,7 +668,7 @@ include('header_content.html');
 												<td class="col-md-5"></td>
 												<td class="col-md-3 contestantname">Terence</td>
 												<td class="col-md-4"></td>
-											</tr>
+											</tr>-->
 										</tbody>
 									</table>
 								</div>
@@ -772,5 +773,9 @@ include('header_content.html');
 	include('login-signup-content.html');
 	?>
 	
+	<script type="text/javascript">
+		var height = $('#tiledcontent').height();
+		$('#sidebar').height(height);
+	</script>
 </body>
 </html>
