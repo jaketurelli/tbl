@@ -1,15 +1,12 @@
 <?php
-
 	include('get_SESSION.php');
 	$_SESSION['CURRENT_PAGE'] = 'lineup.php';
 	
-	if($LEAGUE_ID != -1){
+	if($LEAGUE_ID > 0){
 		$query_ceremony    = "SELECT * FROM ceremony ORDER BY ceremony_number ASC";
 		$query_contestants = "SELECT * FROM contestants ORDER BY eliminated ASC";
 		$query_picks       = "SELECT * FROM picks WHERE user_id = $USER_ID AND league_id = $LEAGUE_ID ORDER BY pick_order ASC";
 		
-		//var_dump($query_picks);
-		//exit();
 		$TABLE_CEREMONY    = mysqli_query($dbc, $query_ceremony) or die ("Error in query: $query_ceremony " . mysqli_error($dbc));
 		$TABLE_CONTESTANTS = mysqli_query($dbc, $query_contestants) or die ("Error in query: $query_contestants " . mysqli_error($dbc));
 		$TABLE_PICKS       = mysqli_query($dbc, $query_picks) or die ("Error in query: $query_picks " . mysqli_error($dbc));
@@ -37,7 +34,7 @@
 		}
 		$TABLE_CEREMONY_ARRAY = array();
 		if(mysqli_num_rows($TABLE_CEREMONY)==0){
-
+			
 		}else{
 			while ($row = mysqli_fetch_array($TABLE_CEREMONY, MYSQL_ASSOC)) {
 				$ind =  $row['ceremony_number']; // ceremony number, NOT index
@@ -48,10 +45,6 @@
 			    $TABLE_CEREMONY_ARRAY[$ind][2] =  $row['is_current'];
 			}
 		}
-		/*var_dump($TABLE_CEREMONY_ARRAY);
-		var_dump($CURRENT_TIME);
-		exit();
-		*/
 	}
 ?>
 
@@ -189,7 +182,7 @@ include('header_content.html');
 							<div class="col-md-12">
 								<div id="lineup-instructions">
 									<h3>Set your lineup</h3>
-									<p>Select the ceremony tab you'd like to set your lineup for. Drag and drop the contestants you want to put in the lineup and who you want to sit on the bench for that ceremony. You can also set your lineup ahead of time for future ceremonies.</p>
+									
 								</div>
 								
 
@@ -235,7 +228,7 @@ include('header_content.html');
 											
                 							<!--<li><a href="#ceremony1" data-toggle="tab">@mdo</a></li>-->
 											<?php
-												if ($LEAGUE_ID > -1){
+												if ($LEAGUE_ID > 0){
 													foreach($TABLE_CEREMONY as $this_ceremony){
 														$this_ceremony_num = $this_ceremony['ceremony_number'];
 														if($this_ceremony_num == $CURRENT_CEREMONY){
@@ -251,7 +244,7 @@ include('header_content.html');
 											?>
 										</ul>
 									</li>
-								</ul> -->
+								</ul>
 							</div>
 							<div class="col-xs-4">
 								<div class="pull-right changes-saved changes-hidden"><p >Changes saved!</p></div>
@@ -264,7 +257,7 @@ include('header_content.html');
 							<div class="col-md-12">
 								<div class="tab-content" id="ceremonypages">
 									<?php
-									if ($LEAGUE_ID > -1){
+									if ($LEAGUE_ID > 0){
 										foreach($TABLE_CEREMONY as $this_ceremony){
 											$this_ceremony_num = $this_ceremony['ceremony_number'];
 
@@ -320,8 +313,8 @@ include('header_content.html');
 																if($curr_picks_ceremony == $this_ceremony_num){
 																	$curr_contestant_id = $this_pick['contestant_id'];
 
-																	//var_dump($this_pick);
 																	$bookkeep_picked[] = $curr_contestant_id;
+																	$test = (count($bookkeep_picked) <= $TABLE_CEREMONY_ARRAY[$this_ceremony_num][1]);
 																	if(count($bookkeep_picked) <= $TABLE_CEREMONY_ARRAY[$this_ceremony_num][1]){
 																		$curr_is_elim      = $TABLE_CONTESTANTS_ELIM_ARRAY[$curr_contestant_id];
 																		$curr_name         = $TABLE_CONTESTANTS_NAME_ARRAY[$curr_contestant_id];
@@ -333,9 +326,9 @@ include('header_content.html');
 		    															$curr_pick_percent = $TABLE_CONTESTANTS_PICKPERCENT_ARRAY[$curr_contestant_id]; 
 
 																		if($curr_is_elim == 0 || $curr_is_elim > $this_ceremony_num){ 
-																			$curr_status = 'A';
+																			$curr_status = 'IN';
 																		}else{
-																			$curr_status = 'IR';
+																			$curr_status = 'OUT';
 																		}
 																		?>
 																			<tr class=<?php echo '"' . $curr_dragDrop_class . '"'?> id = <?php echo '"' . $this_ceremony_num . '-' . $curr_contestant_id . '"'; ?>>
@@ -363,7 +356,6 @@ include('header_content.html');
 													<tbody id="bench-title"><tr><th>Bench</th></tr></tbody>
 													<tbody id="bench">
 														<?php
-														//var_dump($bookkeep_picked);
 															// show those not seleted by user for this ceremony 
 															foreach($TABLE_CONTESTANTS as $this_contestant){
 
@@ -380,9 +372,9 @@ include('header_content.html');
 
 																	$curr_is_elim = $this_contestant['eliminated'];
 																	if($curr_is_elim == 0 || $curr_is_elim > $this_ceremony_num){ 
-																		$curr_status = 'A';
+																		$curr_status = 'IN';
 																	}else{
-																		$curr_status = 'IR';
+																		$curr_status = 'OUT';
 																	}
 																	?>
 																	<tr class=<?php echo '"' . $curr_dragDrop_class . '"'?> id = <?php echo '"' . $this_ceremony_num . '-' . $curr_contestant_id . '"';?>>
