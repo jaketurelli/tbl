@@ -197,7 +197,7 @@ include('header_content.html');
 														<tr>
 															<th class="td-center">Move</th>
 															<th class="td-center" data-html="true" data-toggle="tooltip" title="Contestants still on the show have an Active status. The contestants who have been sent home are on the IR.">Status</th>
-															<th>Player</th>
+															<th>Contestant</th>
 														<?php
 														if(!$IS_MOBILE){ ?>
 															<th>Occupation</th>

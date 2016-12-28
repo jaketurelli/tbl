@@ -127,12 +127,16 @@ include('header_content.html');
 				}
 				xmlhttp.open('GET','chat_insert.php?msg='+msg,true);
 				xmlhttp.send();
-				$("#chatlogs").animate({ scrollTop: $('#chatlogs')[0].scrollHeight },"fast");
+				var chatBox = document.getElementById('chatlogs');
+				chatBox.scrollTop = chatBox.scrollHeight;
+				//$("#chatlogs").animate({ scrollTop: $('#chatlogs')[0].scrollHeight },"fast");
 			}
 		}
 
 		$(document).ready(function() {
-			$("#chatlogs").animate({ scrollTop: $('#chatlogs')[0].scrollHeight }, "fast");
+			var chatBox = document.getElementById('chatlogs');
+			chatBox.scrollTop = chatBox.scrollHeight;
+			//$("#chatlogs").animate({ scrollTop: $('#chatlogs')[0].scrollHeight }, "fast");
 			$.ajaxSetup({cache:false}); // doesn't reload
 			setInterval(function() 	{ $('#chatlogs').load('chat_show.php'); 
 									  $('#online-offline-lists').load('chat-online-offline.php');

@@ -117,7 +117,7 @@ include('header_content.html');
 							<button type="button" class="btn-white" data-toggle="modal" data-target="#signupmodal">SIGN UP</button>
 					
 							<?php 
-							}elseif($LEAGUE_ID < 0){
+							}elseif($LEAGUE_ID <= 0){
 							?>
 								<button type="button" class="btn-white"><a href='createjoin.php'>JOIN LEAGUE</a></button>
 							<?php

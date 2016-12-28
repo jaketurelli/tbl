@@ -19,7 +19,7 @@ if (isset($_POST['invite'])) {
 	$message_html .= '  <body>';
 	$message_html .= '    <p>You have been invited to join <b>'. $LEAGUE_NAME. '</b> by the commissioner, <b>' . $COMMISSIONER. '</b>.<p>';
 	$message_html .= '    <p>Please use the following League Code to join:<br>';
-	$message_html .=        'League Code: ' . '<b>' . $league_invite_code . '<b></p>';
+	$message_html .=        'League Code: ' . '<b>' . strval($league_invite_code) . '<b></p>';
 	$message_html .= '  </body>';
 	$message_html .= '</html>';
 
