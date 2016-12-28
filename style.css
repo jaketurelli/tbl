@@ -673,7 +673,7 @@ nav.navbar.nonhome {
 	background-color: rgba(0,0,0,0.01);
 }
 #sidebar {
-	background-color: #6E7778;
+	background-color: #0086AD;
 	color: #fff;
 	float: left;
 	height: 100vh;
@@ -693,6 +693,9 @@ nav.navbar.nonhome {
 #standings tr td:nth-child(4) {
 	width: 30%;
 }*/
+#league-sidebar-hr {
+	border-color: #fff;
+}
 .white-text {
 	color: #fff!important;
 	font-weight: 500;

@@ -153,7 +153,7 @@ include('header_content.html');
 									</tr>
 								</tbody>
 							</table>
-							<hr>
+							<hr id="league-sidebar-hr">
 							
 							<h3 class="standingsheader white-text">Standings</h3>
 							<table id="standings">
@@ -503,8 +503,8 @@ include('header_content.html');
 										echo '<p>No eliminations yet.</p>';
 									}
 									?>
-									</div>
 								</div>
+								
 								<div class="tile">
 									<h3>League Stats</h3>
 								<?php
