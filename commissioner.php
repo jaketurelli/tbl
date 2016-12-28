@@ -16,150 +16,22 @@ include('header_content.html');
 ?>
 </head>
 <body>
-	<nav class="navbar nonhome nav-border-bottom">
-	 	<!-- <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"></button>
-  			<div class="collapse navbar-toggleable-md" id="navbarResponsive">
-    			<a class="navbar-brand" href="#">Navbar</a>
-    			<ul class="nav navbar-nav">
-      				<li class="nav-item active">
-        				<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      				</li>
-      				<li class="nav-item">
-        				<a class="nav-link" href="#">Link</a>
-      				</li>
-      				<li class="nav-item">
-        				<a class="nav-link" href="#">Link</a>
-      				</li>
-      				<li class="nav-item dropdown">
-        				<a class="nav-link dropdown-toggle" href="http://example.com" id="responsiveNavbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-        				<div class="dropdown-menu" aria-labelledby="responsiveNavbarDropdown">
-          					<a class="dropdown-item" href="#">Action</a>
-          					<a class="dropdown-item" href="#">Another action</a>
-          					<a class="dropdown-item" href="#">Something else here</a>
-        				</div>
-      				</li>
-    			</ul>
-    			<form class="form-inline float-lg-right">
-      				<input class="form-control" type="text" placeholder="Search">
-  					<button class="btn btn-outline-success" type="submit">Search</button>
-    			</form>
-  			</div> -->
-		<div class="navbar-header">
-			<a class="navbar-toggle" data-toggle="overlay" data-target=".navbar-collapse" href="#">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</a>
-			<a class="navbar-brand navbar-brand-centered" href="index.php"><img src="img/logo.png" alt="brand-image" /></a>
-			<ul class="nav pull-right" style="text-align:right">
-				<?php 
-				if($IS_SIGNED_IN){
-				?>
-					<li style="display:none" class="loginnav"><a class="logout" href="logout.php">Logout</a></li>
-				<?php
-				}else{
-				?>
-					<li style="display:none" class="loginnav"><a data-toggle="modal" data-target="#loginmodal" href="#">Login</a></li>
-				<?php
-				}
-				?>
-			</ul>
-		</div>
-		<!-- NAVIGATION PANE START -->
-		<div class="navbar-collapse overlay navbar-right">
-			<ul class="nav navbar-nav">
-				<?php
-				if($IS_SIGNED_IN){
-					if($LEAGUE_ID > 0){
-						if($IS_COMMISH){
-				?>
-							<li class = "active"><a href="commissioner.php">Commissioner Tools</a></li>
-				<?php
-						}
-				?>
-						<li><a href="league.php">League</a></li>
-						<li><a href="lineup.php">Lineup</a></li>
-						<li><a href="trashtalk.php">Trash Talk</a></li>
-				<?php
-					}else{
-				?>
-						<li><a href="createjoin.php">Create/Join League</a></li>
-				<?php
-					}
-				?>
-					<li><a href="contestants.php">Contestants</a></li>
-					<li><a href="blog.php">Blog</a></li>
-				<?php
-				}else{
-				?>
-					<li><a href="contestants.php">Contestants</a></li>
-					<li><a href="blog.php">Blog</a></li>
-				<?php
-				}
-				if($IS_ADMIN){
-				?>
-					<li><a href="admin.php">Admin</a></li>
-				<?php
-				}
-				?>
-			</ul>
-			<ul class="nav navbar-nav pull-right" style="text-align:right">
-			<?php 
-			if($IS_SIGNED_IN){
-			?>
-				<li><a class="greeting">Hi <?php echo $ALIAS . '!'?></a></li>
-				<li><a class="logout" href="logout.php">Logout</a></li>
-			<?php
-			}else{
-			?>
-				<li style="border-right: 1px solid rgba(255,255,255,0.5)"><a class="signup"data-toggle="modal" data-target="#signupmodal" href="#">Sign up</a></li>
-				<li><a class="login" data-toggle="modal" data-target="#loginmodal" href="#">Login</a></li>
-			<?php
-			}
-			?>
-			</ul>
-		</div>
-		<!-- NAVIGATION PANE END -->
-<!--
-		<div class=" navbar-collapse overlay navbar-right">
-			<ul class="nav navbar-nav nav-pills">
-				<li><a href="league.php">LEAGUE</a></li>
-				<?php
-				if($COMMISSIONER){
-				?>
-					<li class="active"><a href="commissioner.php">COMMISSIONER TOOLS</a></li>
-				<?php
-				}
-				?>
-				<li><a href="lineup.php">LINEUP</a></li>
-				<li><a href="trashtalk.php">TRASH TALK</a></li>
-				<li><a href="contestants.php">CONTESTANTS</a></li>
-				<li><a href="blog.php">BLOG</a></li>
-				<?php
-				if($IS_ADMIN){
-				?>
-					<li><a href="admin.php">Admin</a></li>
-				<?php
-				}
-				?>
-			</ul>
-			<ul class="nav navbar-nav pull-right">
-				<?php 
-				if($IS_SIGNED_IN){
-				?>
-					<li><a class="logout" href="logout.php">Logout</a></li>
-				<?php
-				}else{
-				?>
-					<li style="border-right: 1px solid rgba(255,255,255,0.5); text-align: right"><a class="signup"  data-toggle="modal" data-target="#signupmodal" href="#">Sign up</a></li>
-					<li style="text-align:right!important"><a class="login" data-toggle="modal" data-target="#loginmodal" href="#">Login</a></li>
-				<?php
-				}
-				?>
-			</ul>
-		</div>
--->
-	</nav>
+	<!-- NAVIGATION PANE START -->
+	<?php
+	//  $nav_page_id index:
+	//  1: commisioner.php
+	//  2: league.php
+	//  3: lineup.php
+	//  4: trashtalk.php
+	//  5: createjoin.php
+	//  6: contestants.php
+	//  7: blog.php
+	//  8: admin.php
+	$nav_page_id = 1;
+	include('navbar_content.php');
+	?>
+	<!-- NAVIGATION PANE END -->
+	
 	<?php 
 	if($IS_SIGNED_IN){
 	?>
@@ -218,15 +90,15 @@ include('header_content.html');
 				<div id="commissioner-tab-content" class="tab-content col-md-7 col-sm-9">
 				<!--<div id="a" class = "tab-pane active">-->
 					<div id="a" <?php if($_SESSION['COMMISSIONER_TAB']==1){echo 'class = "tab-pane active"';}else{echo 'class = "tab-pane"';}?>> 
-						<form method="post" action="email-league.php">
+						<form method="post" action="commissioner_email_league.php">
 							<label style="display:none;">To</label>
 							<input id="email-group" name="email-group" style="display:none;">
 							<label>Email Subject</label><br>
-							<input id="email" name="email" type="email"><br>
+							<input id="subject" name="subject" type="text"><br>
 							<label>Message</label><br>
 							<textarea id="message" rows="4" class="message" name="message" type="text"></textarea>
 							<!-- <label><input type="checkbox"> Send me a copy of the email</input></label> -->
-							<input class="btn pull-right text-center" value="SEND"></input>
+							<input type = "submit" name = "submit" class="btn pull-right text-center" value="SEND"></input>
 							<input class="btn btn-secondary pull-right text-center" value="CANCEL"></input>
 						</form>
 					</div>
@@ -242,16 +114,16 @@ include('header_content.html');
 							$query = "SELECT * FROM commissioner_announcements WHERE league_id = $LEAGUE_ID ORDER BY id DESC";
 							$result = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
 							if(mysqli_num_rows($result)!=0){
-								$announcement_number = 1;
 								while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
-									$curr_announcement =  $row['announcement'];?>
+									$curr_announcement =  $row['announcement'];
+									$curr_time_stamp =  $row['time_stamp'];
+									?>
 									<tr>
 										<td>
-											<?php echo $announcement_number . ":" . $curr_announcement;?>
+											<?php echo $curr_time_stamp . ":" . $curr_announcement;?>
 										</td><br>
 									</tr>
-								    <?php
-								    $announcement_number = $announcement_number+1;
+									<?php
 								}
 							}
 
@@ -259,7 +131,8 @@ include('header_content.html');
 							?>
 					</div>
 					<div id="c" <?php if($_SESSION['COMMISSIONER_TAB']==3){echo 'class = "tab-pane active"';}else{echo 'class = "tab-pane"';}?>> 
-						<p>Select league member:</p>
+						<p>This feature is coming soon. If you would like to modify a league member's score, please email admin@thebachleague.com</p>
+<!--
 						<p>Select ceremony number:</p>
 						<p>Ceremony 1 (Week 1 Date)</p>
 						<p>Number of points: 10</p>
@@ -267,41 +140,79 @@ include('header_content.html');
 						<input class="text"></input><br>
 						<input class="btn pull-right text-center" value="SAVE"></input>
 						<input class="btn btn-secondary pull-right text-center" value="CANCEL"></input>
+-->
 					</div>
 					<div id="d" <?php if($_SESSION['COMMISSIONER_TAB']==4){echo 'class = "tab-pane active"';}else{echo 'class = "tab-pane"';}?>> 
-						<form method="post" action="commisioner_remove_user.php">
-					<!--<form id = "remove_user" name = "remove_user" onsubmit = "removeUser()">-->
-							<label>List of current league members:</label>
-							<br>
-							<label>
-								<?php
-									$query = "SELECT user_id, first_name, last_name, alias FROM user WHERE league_id = $LEAGUE_ID";
-									$getUsers = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
-									if(mysqli_num_rows($getUsers)>0){
-										while($curr_user = mysqli_fetch_array($getUsers)){
-											$display_name = $curr_user['first_name'] . ' ' . $curr_user['last_name'] ;
-											$curr_user_id = $curr_user['user_id']
-											?>
-											<input type="checkbox" name = "user_list[]" value = <?php echo '"' . $curr_user_id . '"'?> id = <?php echo '"' . $curr_user_id . '"'?>><?php echo $display_name?></input><br>
-											<?php
-										}
-									}
-									
-								?>
-							</label>
-							<p>By clicking Remove, you will remove the user from the league. The user can always be added back to your league.</p>
-							<input class="btn pull-right text-center" type = 'submit' value="REMOVE"></input>
-							<input class="btn btn-secondary pull-right text-center" value="CANCEL"></input>
+						<div class = "tile">
+							<form method="post" action="commisioner_remove_user.php">
+								<label><b>List of current league members:</b></label>
+								<br>
+								<label>
+									<?php
+										$query = "SELECT user_id, first_name, last_name, alias FROM user WHERE league_id = $LEAGUE_ID AND user_id != $USER_ID";
+										$getUsers = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
+										if(mysqli_num_rows($getUsers)>0){
+											while($curr_user = mysqli_fetch_array($getUsers)){
+												$display_name = $curr_user['first_name'] . ' ' . $curr_user['last_name'] ;
+												$curr_user_id = $curr_user['user_id'];
+												?>
+												<input type="checkbox" name = "user_list[]" value = <?php echo '"' . $curr_user_id . '"'?> id = <?php echo '"' . $curr_user_id . '"'?>> <?php echo $display_name?></input><br>
+												<?php
+											}
 
-						</form>
+										}else{
+											echo '<p>You currently have no league members</p>';
+										}
+										
+									?>
+								</label>
+								<p>By clicking Remove, you will remove the user from the league. The user can always be added back to your league.</p>
+							<!--<input class="btn pull-right text-center" type = 'submit' value="REMOVE"></input>
+								<input class="btn btn-secondary pull-right text-center" value="CANCEL"></input>
+							-->
+								<input class="btn " type = 'submit' value="REMOVE"></input>
+								<input class="btn btn-secondary " value="CANCEL"></input>
+
+							</form>
+						</div>
+						<div class = "tile">
+							<form method="post" action="commisioner_return_removed_user.php">
+								<label><b>List of removed league members:</b></label>
+								<br>
+								<label>
+									<?php
+										$removed_league_id = -$LEAGUE_ID;
+										$query = "SELECT user_id, first_name, last_name, alias FROM user WHERE league_id = $removed_league_id";
+										$getUsers = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
+										if(mysqli_num_rows($getUsers)>0){
+											while($curr_user = mysqli_fetch_array($getUsers)){
+												$display_name = $curr_user['first_name'] . ' ' . $curr_user['last_name'] ;
+												$curr_user_id = $curr_user['user_id'];
+												?>
+												<input type="checkbox" name = "user_list[]" value = <?php echo '"' . $curr_user_id . '"'?> id = <?php echo '"' . $curr_user_id . '"'?>> <?php echo $display_name?></input><br>
+												<?php
+											}
+										}else{
+											echo '<p>There are currently no removed users.</p>';
+										}
+										
+									?>
+								</label>
+								<p>By clicking Add, you will return the removed user to your league.</p>
+								<input class="btn " type = 'submit' value="ADD"></input>
+								<input class="btn btn-secondary " value="CANCEL"></input>
+
+							</form>
+						</div>
+
 					</div>
 					<div id="e" <?php if($_SESSION['COMMISSIONER_TAB']==5){echo 'class = "tab-pane active"';}else{echo 'class = "tab-pane"';}?>> 
-						<form method="post" action="contact-us-send.php">
+						<form method="post" action="commissioner_invite_user.php">
 							<label>Enter email address of the user you'd like to invite:</label>
 							<br>
-							<input type="email" value=""></input>
+							<input type="email" name = "email" value=""></input>
 							<p>The user will be sent an email containing information on joining your league.</p>
-							<input class="btn pull-right text-center" value="INVITE"></input>
+							<input type = "submit" class="btn pull-right text-center" name = "invite" value="INVITE"></input>
 							<input class="btn btn-secondary pull-right text-center" value="CANCEL"></input>
 						</form>
 					</div>

@@ -135,10 +135,10 @@
 
 					mail($email_dev,    $subject_dev,     $message_dev,     implode("\r\n", $headers));
 					mail($email_commish,$subject_commish, $message_commish, implode("\r\n", $headers));
-					echo "<script>window.location.href='league.php';</script>";
+					
 				}
 			}
-
+			echo "<script>window.location.href='league.php';</script>";
 		}else{
 			echo "<script>alert('This league name already exists.');
 					 window.location.href='createjoin.php';

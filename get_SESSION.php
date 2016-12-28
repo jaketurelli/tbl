@@ -23,7 +23,7 @@
 			$LEAGUE_ID        =	$_SESSION['LEAGUE_ID'];
 			$IS_ADMIN         = $_SESSION['IS_ADMIN'];
 
-			if ($LEAGUE_ID == -1){
+			if ($LEAGUE_ID <= 0){
 				$LEAGUE_NAME      =	NULL;
 				$COMMISSIONER     =	NULL;
 				$COMMISH_ID       = NULL;
@@ -62,7 +62,7 @@
 			$EMAIL            =	NULL;
 			$ALIAS            =	NULL;
 			$LEAGUE_NAME      =	NULL;
-			$LEAGUE_ID        =	-1;
+			$LEAGUE_ID        =	0;
 			$COMMISSIONER     =	NULL;
 			$COMMISH_ID       = NULL;
 			$CURRENT_CEREMONY =	NULL;
@@ -76,7 +76,7 @@
 		$EMAIL            =	NULL;
 		$ALIAS            =	NULL;
 		$LEAGUE_NAME      =	NULL;
-		$LEAGUE_ID        =	-1;
+		$LEAGUE_ID        =	0;
 		$COMMISSIONER     =	NULL;
 		$COMMISH_ID       = NULL;
 		$CURRENT_CEREMONY =	NULL;

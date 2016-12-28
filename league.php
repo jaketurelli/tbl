@@ -11,131 +11,22 @@ include('header_content.html');
 ?>
 </head>
 <body>
-	<nav class="navbar nonhome nav-border-bottom">
-		<div class="navbar-header">
-			<div class="navbar-brand-centered navbar-brand"><a href="index.php"><img src="img/logo.png" alt="brand-image" /></a></div>
-			<a class="navbar-toggle" data-toggle="overlay" data-target=".navbar-collapse" href="#">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</a>
-			
-			<ul class="nav pull-right" style="text-align:right">
-				<?php 
-				if($IS_SIGNED_IN){
-				?>
-					<li style="display:none" class="loginnav"><a class="logout" href="logout.php">Logout</a></li>
-				<?php
-				}else{
-				?>
-					<li style="display:none" class="loginnav"><a data-toggle="modal" data-target="#loginmodal" href="#">Login</a></li>
-				<?php
-				}
-				?>
-			</ul>
-		</div>
-		<!-- NAVIGATION PANE START -->
-		<div class="navbar-collapse overlay navbar-right">
-			<ul class="nav navbar-nav">
-				<?php
-				if($IS_SIGNED_IN){
-					if($LEAGUE_ID > 0){
-						if($IS_COMMISH){
-				?>
-							<li><a href="commissioner.php">Commissioner Tools</a></li>
-				<?php
-						}
-				?>
-						<li class = "active"><a href="league.php">League</a></li>
-						<li><a href="lineup.php">Lineup</a></li>
-						<li><a href="trashtalk.php">Trash Talk</a></li>
-				<?php
-					}else{
-				?>
-						<li><a href="createjoin.php">Create/Join League</a></li>
-				<?php
-					}
-				?>
-					<li><a href="contestants.php">Contestants</a></li>
-					<li><a href="blog.php">Blog</a></li>
-				<?php
-				}else{
-				?>
-					<li><a href="contestants.php">Contestants</a></li>
-					<li><a href="blog.php">Blog</a></li>
-				<?php
-				}
-				if($IS_ADMIN){
-				?>
-					<li><a href="admin.php">Admin</a></li>
-				<?php
-				}
-				?>
-			</ul>
-			<ul class="nav navbar-nav pull-right" style="text-align:right">
-			<?php 
-			if($IS_SIGNED_IN){
-			?>
-				<li><a class="greeting">Hi <?php echo $ALIAS . '!'?></a></li>
-				<li><a class="logout" href="logout.php">Logout</a></li>
-			<?php
-			}else{
-			?>
-				<li style="border-right: 1px solid rgba(255,255,255,0.5)"><a class="signup"data-toggle="modal" data-target="#signupmodal" href="#">Sign up</a></li>
-				<li><a class="login" data-toggle="modal" data-target="#loginmodal" href="#">Login</a></li>
-			<?php
-			}
-			?>
-			</ul>
-		</div>
-		<!-- NAVIGATION PANE END -->
+	<!-- NAVIGATION PANE START -->
+	<?php
+	//  $nav_page_id index:
+	//  1: commisioner.php
+	//  2: league.php
+	//  3: lineup.php
+	//  4: trashtalk.php
+	//  5: createjoin.php
+	//  6: contestants.php
+	//  7: blog.php
+	//  8: admin.php
+	$nav_page_id = 2;
+	include('navbar_content.php');
+	?>
+	<!-- NAVIGATION PANE END -->
 
-<!--
-		<div class=" navbar-collapse overlay navbar-right">
-			<ul class="nav navbar-nav nav-pills">
-				<?php
-				if($IS_SIGNED_IN){
-				?>
-					<li class="active"><a href="league.php">League</a></li>
-					<?php
-					if($IS_COMMISH){
-					?>
-						<li><a href="commissioner.php">Commissioner Tools</a></li>
-					<?php
-					}
-					?>
-					<li><a href="lineup.php">Lineup</a></li>
-					<li><a href="trashtalk.php">Trash Talk</a></li>
-				<?php
-				}
-				?>
-					<li><a href="contestants.php">Contestants</a></li>
-					<li><a href="blog.php">Blog</a></li>
-					<?php
-					if($IS_ADMIN){
-					?>
-						<li><a href="admin.php">Admin</a></li>
-					<?php
-					}
-					?>
-			</ul>
-			<ul class="nav navbar-nav pull-right">
-				<?php 
-				if($IS_SIGNED_IN){
-				?>
-					<li><a class="logout" href="logout.php">Logout</a></li>
-				<?php
-				}else{
-				?>
-					<li style="border-right: 1px solid rgba(255,255,255,0.5); text-align: right"><a class="signup"  data-toggle="modal" data-target="#signupmodal" href="#">Sign up</a></li>
-					<li style="text-align:right!important"><a class="login" data-toggle="modal" data-target="#loginmodal" href="#">Login</a></li>
-				<?php
-				}
-				?>
-			</ul>
-		</div>
--->
-	</nav>
 	<?php 
 	if($IS_SIGNED_IN){
 	?>
@@ -171,7 +62,14 @@ include('header_content.html');
 									$query = "SELECT user_id, total_score FROM score WHERE league_id = $LEAGUE_ID ORDER BY total_score DESC";
 									$scores = mysqli_query($dbc,$query) or die ("Error in query: $query " . mysqli_error($dbc));
 									if (mysqli_num_rows($scores)==0){
-										// do nothing
+										foreach($TABLE_USER_ALIAS_ARRAY as $curr_alias){
+									?>
+											<tr>
+												<td class="col-md-2 place">--</td><td class="col-md-2"><img src="img/profile.png" /></td><td class="col-md-4"><?php echo $curr_alias ?></td><td class="col-md-4">--</td>
+											</tr>
+									<?php
+
+										}
 									}else{
 										// CALCULATE STANDINGS
 										$standing_counter=1;
@@ -293,77 +191,49 @@ include('header_content.html');
 												$least_picks_ids[] = $key;
 												$least_picks_vals[] = $val;
 											}
-										}
+									
 
-										// DISPLAY TOP 3 MOST PICKED
-										for($i=0;$i<3;$i++){
-											if($i===0){
-												$statcat = ' statcategory';
-												$identifier = 'MOST PICKED';
-											}else{
-												$statcat = '';
-												$identifier = '';
+											// DISPLAY TOP 3 MOST PICKED
+											for($i=0;$i<3;$i++){
+												if($i===0){
+													$statcat = ' statcategory';
+													$identifier = 'MOST PICKED';
+												}else{
+													$statcat = '';
+													$identifier = '';
+												}
+												$ind = $most_picks_ids[$i]-1;
+												?>
+												<tr>
+													<td class=<?php echo '"col-md-5' .$statcat. '"';?>><?php echo $identifier;?></td>
+													<td class="col-md-3 contestantname"><?php echo $CONTESTANT_NAME_ARRAY[$ind];?></td>
+													<td class="col-md-4"><?php echo $most_picks_vals[$i]?> picks</td>
+												</tr>
+											<?php
 											}
-											$ind = $most_picks_ids[$i]-1;
-											?>
-											<tr>
-												<td class=<?php echo '"col-md-5' .$statcat. '"';?>><?php echo $identifier;?></td>
-												<td class="col-md-3 contestantname"><?php echo $CONTESTANT_NAME_ARRAY[$ind];?></td>
-												<td class="col-md-4"><?php echo $most_picks_vals[$i]?> picks</td>
-											</tr>
+
+											// DISPLAY 1 LEAST PICKED
+											for($i=0;$i<1;$i++){
+												if($i===0){
+													$statcat = ' statcategory';
+													$identifier = 'LEAST PICKED';
+
+												}else{
+													$statcat = '';
+													$identifier = '';
+												}
+												$ind = $least_picks_ids[$i]-1;
+												?>
+												<tr>
+													<td class=<?php echo '"col-md-5' .$statcat. '"';?>><?php echo $identifier;?></td>
+													<td class="col-md-3 contestantname"><?php echo $CONTESTANT_NAME_ARRAY[$ind];?></td>
+													<td class="col-md-4"><?php echo $least_picks_vals[$i]?> picks</td>
+												</tr>
 										<?php
-										}
-
-										// DISPLAY 1 LEAST PICKED
-										for($i=0;$i<1;$i++){
-											if($i===0){
-												$statcat = ' statcategory';
-												$identifier = 'LEAST PICKED';
-
-											}else{
-												$statcat = '';
-												$identifier = '';
 											}
-											$ind = $least_picks_ids[$i]-1;
-											?>
-											<tr>
-												<td class=<?php echo '"col-md-5' .$statcat. '"';?>><?php echo $identifier;?></td>
-												<td class="col-md-3 contestantname"><?php echo $CONTESTANT_NAME_ARRAY[$ind];?></td>
-												<td class="col-md-4"><?php echo $least_picks_vals[$i]?> picks</td>
-											</tr>
-										<?php
-
-
 										}
 				
 										?>
-										<!--
-											<tr>
-												<td class="col-md-5 statcategory">MOST PICKED</td>
-												<td class="col-md-3 contestantname">Jordan</td>
-												<td class="col-md-4">128 picks</td>
-											</tr>
-											<tr>
-												<td class="col-md-5"></td>
-												<td class="col-md-3 contestantname">James T.</td>
-												<td class="col-md-4">126 picks</td>
-											</tr>
-											<tr>
-												<td class="col-md-5"></td>
-												<td class="col-md-3 contestantname">Luke</td>
-												<td class="col-md-4">122 picks</td>
-											</tr>
-											
-											<tr>
-												<td class="col-md-5 statcategory">LEAST PICKED</td>
-												<td class="col-md-3 contestantname">Chad</td>
-												<td class="col-md-4">43 picks</td>
-											</tr>
-											<tr>
-												<td class="col-md-5 statcategory">DARK HORSE</td>
-												<td class="col-md-3 contestantname">Evan</td>
-												<td class="col-md-4"></td>
-											</tr>-->
 										</tbody>
 									</table>
 									<p class="tabletitle">All-time:</p>
@@ -399,10 +269,7 @@ include('header_content.html');
 												$least_picks_ids[] = $key;
 												$least_picks_vals[] = $val;
 											}
-										}
-										?>
-											
-											<?php
+										
 											// DISPLAY TOP 3 MOST PICKED
 											for($i=0;$i<3;$i++){
 												if($i===0){
@@ -443,29 +310,8 @@ include('header_content.html');
 
 
 											}
+										}
 											?>
-											<!--
-											<tr>
-												<td class="col-md-5 statcategory">MOST PICKED</td>
-												<td class="col-md-3 contestantname">Jordan</td>
-												<td class="col-md-4"></td>
-											</tr>
-											<tr>
-												<td class="col-md-5"></td>
-												<td class="col-md-3 contestantname">Luke</td>
-												<td class="col-md-4"></td>
-											</tr>
-											<tr>
-												<td class="col-md-5"></td>
-												<td class="col-md-3 contestantname">Derek</td>
-												<td class="col-md-4"></td>
-											</tr>
-											<tr>
-												<td class="col-md-5 statcategory">LEAST PICKED</td>
-												<td class="col-md-3 contestantname">Coley</td>
-												<td class="col-md-4"></td>
-											</tr>
-											-->
 										</tbody>
 									</table>
 								</div>
@@ -544,122 +390,8 @@ include('header_content.html');
 													$least_picks_ids[] = $key;
 													$least_picks_vals[] = $val;
 												}
-											}
+											
 
-											// DISPLAY TOP 3 MOST PICKED
-											for($i=0;$i<3;$i++){
-												if($i===0){
-													$statcat = ' statcategory';
-													$identifier = 'MOST PICKED';
-												}else{
-													$statcat = '';
-													$identifier = '';
-												}
-												$ind = $most_picks_ids[$i]-1;
-												?>
-												<tr>
-													<td class=<?php echo '"col-md-5' .$statcat. '"';?>><?php echo $identifier;?></td>
-													<td class="col-md-3 contestantname"><?php echo $CONTESTANT_NAME_ARRAY[$ind];?></td>
-													<td class="col-md-4"><?php echo $most_picks_vals[$i]?> picks</td>
-												</tr>
-											<?php
-											}
-
-											// DISPLAY 1 LEAST PICKED
-											for($i=0;$i<1;$i++){
-												if($i===0){
-													$statcat = ' statcategory';
-													$identifier = 'LEAST PICKED';
-
-												}else{
-													$statcat = '';
-													$identifier = '';
-												}
-												$ind = $least_picks_ids[$i]-1;
-												?>
-												<tr>
-													<td class=<?php echo '"col-md-5' .$statcat. '"';?>><?php echo $identifier;?></td>
-													<td class="col-md-3 contestantname"><?php echo $CONTESTANT_NAME_ARRAY[$ind];?></td>
-													<td class="col-md-4"><?php echo $least_picks_vals[$i]?> picks</td>
-												</tr>
-											<?php
-
-
-											}
-
-											?>
-											<!--
-												<tr>
-													<td class="col-md-5 statcategory">MOST PICKED</td>
-													<td class="col-md-3 contestantname">Jordan</td>
-													<td class="col-md-4">7 picks</td>
-												</tr>
-												<tr>
-													<td class="col-md-5"></td>
-													<td class="col-md-3 contestantname">James T.</td>
-													<td class="col-md-4">7 picks</td>
-												</tr>
-												<tr>
-													<td class="col-md-5"></td>
-													<td class="col-md-3 contestantname">Luke</td>
-													<td class="col-md-4">6 picks</td>
-												</tr>
-												<tr>
-													<td class="col-md-5 statcategory">LEAST PICKED</td>
-													<td class="col-md-3 contestantname">Chad</td>
-													<td class="col-md-4">2 picks</td>
-												</tr>
-												
-												<tr>
-													<td class="col-md-5 statcategory">DARK HORSE</td>
-													<td class="col-md-3 contestantname">Evan</td>
-													<td class="col-md-4"></td>
-												</tr>
-												<tr>
-													<td class="col-md-5 statcategory">PERFECT LINEUP</td>
-													<td class="col-md-3 contestantname">Julia</td>
-													<td class="col-md-4"></td>
-												</tr>-->
-												
-											</tbody>
-										</table>
-										<p class="tabletitle">All-time:</p>
-										<table>
-											<tbody>
-											<?php
-											// CALCULATE MOST PICKED FOR LEAGUE IN ALL WEEKS
-											$query = "SELECT contestant_id FROM picks WHERE league_id = $LEAGUE_ID AND league_id > 0";
-											$result = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
-											if(mysqli_num_rows($result)!=0){
-												$pick_array = array();
-												while($this_pick = mysqli_fetch_array($result,MYSQLI_NUM)){
-													//$curr_cont_id = (int)$this_pick[0]; // 0 index for contestant_id queried
-													//$CONTESTANT_ID_NUM_PICKS[$curr_cont_id-1] = $CONTESTANT_ID_NUM_PICKS[$curr_cont_id-1] + 1; // add pick count 
-													$pick_array[] = (int)$this_pick[0];
-												}
-												$CountedValues = array_count_values($pick_array);
-												
-												// GET MOST PICKS
-												arsort($CountedValues, SORT_NUMERIC);
-												$most_picks_ids = array();
-												$most_picks_vals = array();
-												foreach($CountedValues as $key => $val){ 
-													$most_picks_ids[] = $key;
-													$most_picks_vals[] = $val;
-												}
-
-												// GET LEAST PICKS
-												asort($CountedValues, SORT_NUMERIC);
-												$least_picks_ids = array();
-												$least_picks_vals = array();
-												foreach($CountedValues as $key => $val){ 
-													$least_picks_ids[] = $key;
-													$least_picks_vals[] = $val;
-												}
-											}
-											?>
-												
-												<?php
 												// DISPLAY TOP 3 MOST PICKED
 												for($i=0;$i<3;$i++){
 													if($i===0){
@@ -700,9 +432,92 @@ include('header_content.html');
 
 
 												}
-											}else{
-											echo '<p>Join or start a league to get enable league stats.</p>';
 											}
+											?>
+
+												
+											</tbody>
+										</table>
+										<p class="tabletitle">All-time:</p>
+										<table>
+											<tbody>
+											<?php
+											// CALCULATE MOST PICKED FOR LEAGUE IN ALL WEEKS
+											$query = "SELECT contestant_id FROM picks WHERE league_id = $LEAGUE_ID AND league_id > 0";
+											$result = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
+											if(mysqli_num_rows($result)!=0){
+												$pick_array = array();
+												while($this_pick = mysqli_fetch_array($result,MYSQLI_NUM)){
+													//$curr_cont_id = (int)$this_pick[0]; // 0 index for contestant_id queried
+													//$CONTESTANT_ID_NUM_PICKS[$curr_cont_id-1] = $CONTESTANT_ID_NUM_PICKS[$curr_cont_id-1] + 1; // add pick count 
+													$pick_array[] = (int)$this_pick[0];
+												}
+												$CountedValues = array_count_values($pick_array);
+												
+												// GET MOST PICKS
+												arsort($CountedValues, SORT_NUMERIC);
+												$most_picks_ids = array();
+												$most_picks_vals = array();
+												foreach($CountedValues as $key => $val){ 
+													$most_picks_ids[] = $key;
+													$most_picks_vals[] = $val;
+												}
+
+												// GET LEAST PICKS
+												asort($CountedValues, SORT_NUMERIC);
+												$least_picks_ids = array();
+												$least_picks_vals = array();
+												foreach($CountedValues as $key => $val){ 
+													$least_picks_ids[] = $key;
+													$least_picks_vals[] = $val;
+												}
+											
+								
+												// DISPLAY TOP 3 MOST PICKED
+												for($i=0;$i<3;$i++){
+													if($i===0){
+														$statcat = ' statcategory';
+														$identifier = 'MOST PICKED';
+													}else{
+														$statcat = '';
+														$identifier = '';
+													}
+													$ind = $most_picks_ids[$i]-1;
+													?>
+													<tr>
+														<td class=<?php echo '"col-md-5' .$statcat. '"';?>><?php echo $identifier;?></td>
+														<td class="col-md-3 contestantname"><?php echo $CONTESTANT_NAME_ARRAY[$ind];?></td>
+														<td class="col-md-4"><?php echo $most_picks_vals[$i]?> picks</td>
+													</tr>
+												<?php
+												}
+
+												// DISPLAY 1 LEAST PICKED
+												for($i=0;$i<1;$i++){
+													if($i===0){
+														$statcat = ' statcategory';
+														$identifier = 'LEAST PICKED';
+
+													}else{
+														$statcat = '';
+														$identifier = '';
+													}
+													$ind = $least_picks_ids[$i]-1;
+													?>
+													<tr>
+														<td class=<?php echo '"col-md-5' .$statcat. '"';?>><?php echo $identifier;?></td>
+														<td class="col-md-3 contestantname"><?php echo $CONTESTANT_NAME_ARRAY[$ind];?></td>
+														<td class="col-md-4"><?php echo $least_picks_vals[$i]?> picks</td>
+													</tr>
+												<?php
+
+
+												}
+											}
+
+										}else{
+										echo '<p>Join or start a league to get enable league stats.</p>';
+										}
 										?>
 										<!--
 											<tr>

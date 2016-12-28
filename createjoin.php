@@ -19,84 +19,22 @@
 	<script src="bootstrap.min.js"></script>
 </head>
 <body>
-	<nav class="navbar nonhome nav-border-bottom">
-		<div class="navbar-header">
-			<a class="navbar-toggle" data-toggle="overlay" data-target=".navbar-collapse" href="#">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</a>
-			<a class="navbar-brand navbar-brand-centered" href="index.php"><img src="img/logo.png" alt="brand-image" /></a>
-			<ul class="nav pull-right" style="text-align:right">
-				<?php 
-				if($IS_SIGNED_IN){
-				?>
-					<li style="display:none" class="loginnav"><a class="logout" href="logout.php">Logout</a></li>
-				<?php
-				}else{
-				?>
-					<li style="display:none" class="loginnav"><a data-toggle="modal" data-target="#loginmodal" href="#">Login</a></li>
-				<?php
-				}
-				?>
-			</ul>
-		</div>
-		<!-- NAVIGATION PANE START -->
-		<div class="navbar-collapse overlay navbar-right">
-			<ul class="nav navbar-nav">
-				<?php
-				if($IS_SIGNED_IN){
-					if($LEAGUE_ID > 0){
-						if($IS_COMMISH){
-				?>
-							<li><a href="commissioner.php">Commissioner Tools</a></li>
-				<?php
-						}
-				?>
-						<li><a href="league.php">League</a></li>
-						<li><a href="lineup.php">Lineup</a></li>
-						<li><a href="trashtalk.php">Trash Talk</a></li>
-				<?php
-					}else{
-				?>
-						<li><a href="createjoin.php">Create/Join League</a></li>
-				<?php
-					}
-				?>
-					<li><a href="contestants.php">Contestants</a></li>
-					<li><a href="blog.php">Blog</a></li>
-				<?php
-				}else{
-				?>
-					<li><a href="contestants.php">Contestants</a></li>
-					<li><a href="blog.php">Blog</a></li>
-				<?php
-				}
-				if($IS_ADMIN){
-				?>
-					<li class="active"><a href="admin.php">Admin</a></li>
-				<?php
-				}
-				?>
-			</ul>
-			<ul class="nav navbar-nav pull-right" style="text-align:right">
-			<?php 
-			if($IS_SIGNED_IN){
-			?>
-				<li><a class="greeting">Hi <?php echo $ALIAS . '!'?></a></li>
-				<li><a class="logout" href="logout.php">Logout</a></li>
-			<?php
-			}else{
-			?>
-				<li style="border-right: 1px solid rgba(255,255,255,0.5)"><a class="signup"data-toggle="modal" data-target="#signupmodal" href="#">Sign up</a></li>
-				<li><a class="login" data-toggle="modal" data-target="#loginmodal" href="#">Login</a></li>
-			<?php
-			}
-			?>
-			</ul>
-		</div>
-		<!-- NAVIGATION PANE END -->
-	</nav>
+	<!-- NAVIGATION PANE START -->
+	<?php
+	//  $nav_page_id index:
+	//  1: commisioner.php
+	//  2: league.php
+	//  3: lineup.php
+	//  4: trashtalk.php
+	//  5: createjoin.php
+	//  6: contestants.php
+	//  7: blog.php
+	//  8: admin.php
+	$nav_page_id = 5;
+	include('navbar_content.php');
+	?>
+	<!-- NAVIGATION PANE END -->
+
 	
 	<div class="container-fluid">
 		<div class="container">
@@ -140,12 +78,20 @@
 					            <div class="panel-body">
 					            	<form action="joinleague.php" method="post">
 										<fieldset>
+										<div class = "tile">
 											<label>League name:</label>
 											<input type="text" style="display:none"> <!-- tricks browser into autofilling this non-visual entry -->
 											<input type="password" style="display:none"> <!-- tricks browser into autofilling this non-visual entry -->
 											<input type="text" class="form-control" name="leaguename" value="" placeholder = "Enter league name here"/>
 											<label>League's password:</label>
 											<input type="password" class="form-control" name="leaguepassword" value="" placeholder = "Enter league password here"/>
+										</div>
+										<br>
+										<div>OR:</div>
+										<div class = "tile">
+											<label>League Code:</label>
+											<input type="text" class="form-control" name="leaguecode" value="" placeholder = "Enter emailed code here"/>
+										</div>
 											<div class="text-center">
 												<input type="submit" class="btn" name="joinleague" value="JOIN">
 											</div>
