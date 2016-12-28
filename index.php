@@ -16,13 +16,12 @@ include('header_content.html');
 		<div class="jumbotron">
 			<nav class="navbar" role="navigation">
 				<div class="navbar-header">	
+					<div class="navbar-brand-centered navbar-brand"><a href="index.php"><img src="img/logowhite.png" alt="brand-image" /></a></div>
 					<a class="navbar-toggle" data-toggle="overlay" data-target=".navbar-collapse" href="#">
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</a>
-
-					<a class="navbar-brand navbar-brand-centered" href="index.php"><img src="img/logowhite.png" alt="logo" /></a>
 					<ul class="nav pull-right" style="text-align:right">
 						<?php 
 						if($IS_SIGNED_IN){
