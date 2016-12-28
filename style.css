@@ -90,7 +90,7 @@ hr {
 	outline: none;
 }
 .nav-border-bottom {
-	border-bottom-color: #dddddd;
+	/*border-bottom-color: #dddddd;*/
 }
 /*---colors---*/
 .white {
@@ -631,6 +631,8 @@ hr.style-eight:after {
 	width: 172px;*/
 }
 nav.navbar.nonhome {
+	background-color: #6E7778;
+	border-radius: 0px;
 	margin-bottom: 0;
 }
 .navbar .nav > li {
@@ -639,7 +641,7 @@ nav.navbar.nonhome {
 .navbar .nav > li > a {
 	font-size: 14px;
 	text-shadow: none;
-	color: #5A5A5A;
+	color: #fff;
 	font-weight: 400;
 /*	letter-spacing: 1.2px;
 	padding: 5px;
@@ -651,8 +653,8 @@ nav.navbar.nonhome {
 	background-color: #25B4C2;
 }
 .navbar.nonhome .nav > li.active > a {
-	color: #FFF;
-	background-color: #17C3D3;
+	color: #17C3D3;
+	background-color: transparent;
 	font-weight: 500;
 	/*border-bottom: 2px solid rgba(0,197,213,1);*/
 }
@@ -677,7 +679,7 @@ nav.navbar.nonhome {
 
 /*===LEAGUE===*/
 #background {
-	background-color: rgba(0,0,0,0.01);
+	/*background-color: rgba(0,0,0,0.01);*/
 }
 #sidebar {
 	background-color: #0086AD;
