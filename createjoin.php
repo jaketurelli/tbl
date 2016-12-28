@@ -41,22 +41,30 @@
 				?>
 			</ul>
 		</div>
-		<div class=" navbar-collapse overlay navbar-right">
-			<ul class="nav navbar-nav nav-pills">
+		<!-- NAVIGATION PANE START -->
+		<div class="navbar-collapse overlay navbar-right">
+			<ul class="nav navbar-nav">
 				<?php
 				if($IS_SIGNED_IN){
+					if($LEAGUE_ID > 0){
+						if($IS_COMMISH){
 				?>
-					<li class="active"><a href="createjoin.php">Create/Join League</a></li>
-					<li><a href="league.php">League</a></li>
-					<?php
-					if($IS_COMMISH){
-					?>
-						<li><a href="commissioner.php">Commissioner Tools</a></li>
-					<?php
+							<li><a href="commissioner.php">Commissioner Tools</a></li>
+				<?php
+						}
+				?>
+						<li><a href="league.php">League</a></li>
+						<li><a href="lineup.php">Lineup</a></li>
+						<li><a href="trashtalk.php">Trash Talk</a></li>
+				<?php
+					}else{
+				?>
+						<li><a href="createjoin.php">Create/Join League</a></li>
+				<?php
 					}
-					?>
-					<li><a href="lineup.php">Lineup</a></li>
-					<li><a href="trashtalk.php">Trash Talk</a></li>
+				?>
+					<li><a href="contestants.php">Contestants</a></li>
+					<li><a href="blog.php">Blog</a></li>
 				<?php
 				}else{
 				?>
@@ -66,26 +74,28 @@
 				}
 				if($IS_ADMIN){
 				?>
-					<li><a href="admin.php">Admin</a></li>
+					<li class="active"><a href="admin.php">Admin</a></li>
 				<?php
 				}
 				?>
 			</ul>
-			<ul class="nav navbar-nav pull-right">
-				<?php 
-				if($IS_SIGNED_IN){
-				?>
-					<li><a class="logout" href="logout.php">Logout</a></li>
-				<?php
-				}else{
-				?>
-					<li style="border-right: 1px solid rgba(255,255,255,0.5); text-align: right"><a class="signup"  data-toggle="modal" data-target="#signupmodal" href="#">Sign up</a></li>
-					<li style="text-align:right!important"><a class="login" data-toggle="modal" data-target="#loginmodal" href="#">Login</a></li>
-				<?php
-				}
-				?>
+			<ul class="nav navbar-nav pull-right" style="text-align:right">
+			<?php 
+			if($IS_SIGNED_IN){
+			?>
+				<li><a class="greeting">Hi <?php echo $ALIAS . '!'?></a></li>
+				<li><a class="logout" href="logout.php">Logout</a></li>
+			<?php
+			}else{
+			?>
+				<li style="border-right: 1px solid rgba(255,255,255,0.5)"><a class="signup"data-toggle="modal" data-target="#signupmodal" href="#">Sign up</a></li>
+				<li><a class="login" data-toggle="modal" data-target="#loginmodal" href="#">Login</a></li>
+			<?php
+			}
+			?>
 			</ul>
 		</div>
+		<!-- NAVIGATION PANE END -->
 	</nav>
 	
 	<div class="container-fluid">
@@ -105,11 +115,13 @@
 									<form action="createleague.php" method="post">
 										<fieldset>
 											<label>Enter a name for your league:</label>
-											<input type="text" class="form-control" name="leaguename" value="" />
+											<input type="text" style="display:none"> <!-- tricks browser into autofilling this non-visual entry -->
+											<input type="password" style="display:none"> <!-- tricks browser into autofilling this non-visual entry -->
+											<input type="text" class="form-control" name="leaguename" value="" placeholder = "Enter league name here"/>
 											<label>Create a password for your league that users will enter to join:</label>
-											<input type="password" class="form-control" name="leaguepassword" value="" />
-											<label>Enter the email addresses of friends you want to add to your league. (Separate email addresses with commas.)</label>
-											<input type="text" class="form-control" name="emailaddresses" value="">
+											<input type="password" class="form-control" name="leaguepassword" value="" placeholder = "Enter league password here"/>
+											<label>Enter the email addresses of friends you want to add to your league. (Optional. Separate email addresses with commas.)</label>
+											<input type="text" class="form-control" name="emailaddresses" placeholder = "john@email.com, jane@email.com" value="">
 											<div class="text-center">
 												<input type="submit" class="btn" name="createleague" value="CREATE">
 											</div>
@@ -129,9 +141,11 @@
 					            	<form action="joinleague.php" method="post">
 										<fieldset>
 											<label>League name:</label>
-											<input type="text" class="form-control" name="leaguename" value="" />
+											<input type="text" style="display:none"> <!-- tricks browser into autofilling this non-visual entry -->
+											<input type="password" style="display:none"> <!-- tricks browser into autofilling this non-visual entry -->
+											<input type="text" class="form-control" name="leaguename" value="" placeholder = "Enter league name here"/>
 											<label>League's password:</label>
-											<input type="password" class="form-control" name="leaguepassword" value="" />
+											<input type="password" class="form-control" name="leaguepassword" value="" placeholder = "Enter league password here"/>
 											<div class="text-center">
 												<input type="submit" class="btn" name="joinleague" value="JOIN">
 											</div>
