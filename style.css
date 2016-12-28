@@ -122,7 +122,7 @@ hr {
 	background-color: #25B4C2;
 }
 .btn-secondary {
-	background-color: #0086AD;
+	background-color: #0794A9;
 	color: #fff;
 	border-radius: 1.5px;
 	margin: 8px 5px;
@@ -346,7 +346,7 @@ hr {
 }
 .greeting:hover {
 	background-color: transparent!important;
-	color: #5A5A5A!important;
+	color: #fff!important;
 }
 
 
@@ -633,6 +633,7 @@ hr.style-eight:after {
 nav.navbar.nonhome {
 	background-color: #6E7778;
 	border-radius: 0px;
+	box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.2);;
 	margin-bottom: 0;
 }
 .navbar .nav > li {
@@ -650,7 +651,7 @@ nav.navbar.nonhome {
 }
 .navbar.nonhome .nav > li > a:hover{
 	color: rgba(255,255,255,0.9);
-	background-color: #25B4C2;
+	background-color: #848E8F;
 }
 .navbar.nonhome .nav > li.active > a {
 	color: #17C3D3;
@@ -682,12 +683,13 @@ nav.navbar.nonhome {
 	/*background-color: rgba(0,0,0,0.01);*/
 }
 #sidebar {
-	background-color: #0086AD;
+	background-color: #0794A9;
 	color: #fff;
 	float: left;
 	height: 100vh;
 	/*height: 100vh;
 	border-right: 3px solid rgba(255,149,135,0.2);*/
+	z-index: -1;
 }
 /*
 #standings tr td:nth-child(1) {
@@ -829,7 +831,7 @@ nav.navbar.nonhome {
 	font-weight: 600;
 }
 .here {
-	background-color: #0086AD!important;
+	background-color: #0794A9!important;
 	color: #fff;
 	font-weight: 600;
 }
@@ -874,7 +876,7 @@ nav.navbar.nonhome {
 	padding: 10px 10px 0 10px;
 }
 #ceremony-dropdown .dropdown-toggle {
-	background-color: #0086AD;
+	background-color: #0794A9;
 	border-radius: 2px;
 	color: #fff;
 }
@@ -1185,7 +1187,7 @@ tr > td > span.arrow {
 }
 #contestant-table > thead > tr > th {
 	border: 2px solid white;
-	background-color: #0086AD;
+	background-color: #0794A9;
 	color: #fff;
 	font-weight: 400;
 	font-size: 14px;
