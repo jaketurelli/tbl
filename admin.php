@@ -11,12 +11,13 @@ include('header_content.html');
 <body>
 	<nav class="navbar nonhome nav-border-bottom">
 		<div class="navbar-header">
+			<div class="navbar-brand-centered navbar-brand"><a href="index.php"><img src="img/logo.png" alt="brand-image" /></a></div>
 			<a class="navbar-toggle" data-toggle="overlay" data-target=".navbar-collapse" href="#">
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</a>
-			<a class="navbar-brand navbar-brand-centered" href="index.php"><img src="img/logo.png" alt="brand-image" /></a>
+			
 			<ul class="nav pull-right" style="text-align:right">
 				<?php 
 				if($IS_SIGNED_IN){
