@@ -958,11 +958,12 @@ nav.navbar.nonhome {
 	padding: 10px;
 	background-color: #fff;
 	font-size: 12px;
+	-webkit-overflow-scrolling: touch;
 }
 .ceremony-schedule th {
-	border: 2px solid white !important;
+	/*border: 2px solid white !important;
 	background-color: #657278;
-	color: #fff;
+	color: #fff;*/
 	font-weight: 400;
 	font-size: 12px;
 	padding: 6px 8px !important;
