@@ -466,10 +466,12 @@ hr {
 @media(max-width: 800px){
 	.navbar-brand-centered {
         position: absolute;
-        left: 50%;
+        left: 0;
+        top: 0;
         display: block;
         text-align: center;
-        margin-left: -55px;
+        margin: auto;
+        width: 100%;
     }
 
 }
@@ -800,6 +802,9 @@ nav.navbar.nonhome {
 /*===LINEUP===*/
 
 /*-- new lineup --*/
+#ceremony-dropdown.nav-tabs {
+	border-bottom: 1px solid transparent;
+}
 .move-btn {
 	background-color: #00BED0;
 	color: #fff;
@@ -823,6 +828,7 @@ nav.navbar.nonhome {
 .changes-saved {
 	color: #F2385A;
 	font-weight: 600;
+	vertical-align: middle;
 }
 .changes-hidden {
 	visibility: hidden;
@@ -946,6 +952,9 @@ nav.navbar.nonhome {
 }
 
 @media (max-width: 768px) {
+	#ceremony-row {
+		padding: 10px 0px 0px 0px;
+	}
 	#lineup-bg, .row-bg {
 		background-color: transparent!important;
 	}
@@ -953,8 +962,14 @@ nav.navbar.nonhome {
 		padding: 0px;
 		margin: 0px auto;
 	}
+	#lineup-instructions {
+		display: none;
+		text-align: center;
+	}
 	#lineup-instructions h3 {
+		font-size: 16px;
 		margin-top: 0px;
+		padding: 10px 0px 0px 0px;
 	}
 	.blog-title {
 		font-size: 20px;

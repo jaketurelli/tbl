@@ -68,7 +68,7 @@ include('header_content.html');
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</a>
-			<a class="navbar-brand navbar-brand-centered" href="index.php"><img src="img/logo.png" alt="brand-image" /></a>
+			<div class="navbar-brand-centered navbar brand"><a  href="index.php"><img src="img/logo.png" alt="brand-image" /></a></div>
 			<ul class="nav pull-right" style="text-align:right">
 				<?php 
 				if($IS_SIGNED_IN){
@@ -219,9 +219,9 @@ include('header_content.html');
 </div> -->
 							</div>
 						</div>
-						<div class="row row-bg">
-							<div class="col-xs-8">
-								<ul id="myTab" class="nav nav-tabs">
+						<div id="ceremony-row" class="row row-bg">
+							<div class="col-xs-6">
+								<ul id="ceremony-dropdown" class="nav nav-tabs">
 									<li class="dropdown">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="selected">Ceremony <?php echo $CURRENT_CEREMONY ?></span> <b class="caret"></b></a>
 										<ul class="dropdown-menu" id="ceremonytabs">
@@ -246,7 +246,7 @@ include('header_content.html');
 									</li>
 								</ul>
 							</div>
-							<div class="col-xs-4">
+							<div class="col-xs-6">
 								<div class="pull-right changes-saved changes-hidden"><p >Changes saved!</p></div>
 
 							
