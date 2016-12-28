@@ -5,17 +5,19 @@
 
 	$league_name      = $_POST['leaguename'];
 	$league_pword     = $_POST['leaguepassword'];
+	$league_emails    = $_POST['emailaddresses'];
+	//echo $league_emails;
 
 	$SPECIAL_CHARACTERS = "/[\'^£$%&*()}{@#~?><>,|=_+¬-]/";
 	if(preg_match($SPECIAL_CHARACTERS, $league_name) ){
 		echo "<script>alert('No special characters allowed.');
-					 window.location.href='createjoin.html';
+					 window.location.href='createjoin.php';
 						</script>";
 	}
 
 	if(!$_POST['createleague']) {
 		echo "<script>alert('Please fill out the form.');
-					 window.location.href='createjoin.html';
+					 window.location.href='createjoin.php';
 						</script>";
 	} else {
 		$query = "SELECT * FROM `league` WHERE `name` LIKE '$league_name' ";
@@ -36,18 +38,20 @@
 			$_SESSION['LEAGUE_ID'] = $league_id;
 			$_SESSION['LEAGUE_NAME'] = $league['name'];
 
-			$query = "SELECT * FROM `user` WHERE `user_id` LIKE '$USER_ID'";
+			$query = "SELECT * FROM `user` WHERE `user_id` = $USER_ID";
 			$result = mysqli_query($dbc,$query) or die ("Error in query: $query " . mysqli_error($dbc));
 			$user = mysqli_fetch_array($result);
-			$_SESSION['COMMISSIONER'] = $user['username'];
-			$_SESSION['COMMISH_ID'] = $league['commissioner_id'];
+			$_SESSION['COMMISSIONER'] = $user['alias'];
+			$_SESSION['COMMISH_ID']   = $user['user_id'];
+			$user_email = $user['email'];
+			$user_first_name = $user['first_name'];
+			$user_last_name = $user['last_name'];
+			$user_full_name = $user_first_name . ' ' . $user_last_name;
 
-			$query = "UPDATE `user` SET `league_id` = '$league_id' WHERE `user`.`user_id` = '$USER_ID'";
+			$query = "UPDATE `user` SET `league_id` = $league_id WHERE `user`.`user_id` = $USER_ID";
 			mysqli_query($dbc , $query );
 
 
-
-/////////////////////////////////////////////////////////////
 			// SET DEFUALT PICKS FOR ANY CEREMONY NOT LOCKED (ALPHABETICAL SELECTION)
 			$query = "SELECT * FROM ceremony";
 			$ceremony_query = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
@@ -73,13 +77,74 @@
 					}
 				}
 			}
-/////////////////////////////////////////
+			echo "<script>winddow.location.href='createjoin.php';</script>";
 
-			header('Location: index.php');
-			exit();
+
+			// EMAIL ALL MEMBERS IF THEIR EMAILS ARE INCLUDED UPON CREATION
+			if(isset($_POST['emailaddresses'])){
+				if(!empty($_POST['emailaddresses'])){
+					$headers[] = 'MIME-Version: 1.0';
+					$headers[] = 'Content-type: text/html; charset=iso-8859-1';
+					
+					$email_dev      = "admin@thebachleague.com"; // send dev an email
+					$email_commish  = $user_email;               // send commish and email 
+
+					$subject_dev     = "[BachLeague League Addition]: ". $league_name;
+					$subject_commish = "BachLeague League, ". $league_name . " Created!";
+
+					$message_dev =  '<html>';
+					$message_dev .= '  <head>';
+					$message_dev .= '    <title>[BachLeague League Addition]: ' . $league_name . '</title>';
+					$message_dev .= '  </head>';
+					$message_dev .= '  <body>';
+					$message_dev .= '    <p>Commissioner Email: '. $user_email . '<br>';
+					$message_dev .= 'Commissioner Name: ' . $user_full_name . '</p>';
+
+					$message_commish =  '<html>';
+					$message_commish .= '  <head>';
+					$message_commish .= '    <title>BachLeague League,' . $league_name . 'created</title>';
+					$message_commish .= '  </head>';
+					$message_commish .= '  <body>';
+					$message_commish .= '    <p>You have created the ' . $league_name . ' league with password, ' . $league_pword . ', and invited the following people:<br>';
+
+					$email_addresses = explode(',',$league_emails);
+					foreach($email_addresses as $email_address){					
+						$email_inivitee = $email_address;
+					    $subject_invitee = "You Have Been Invited to Join BachLeague!";
+
+						$message_dev     .= 'Invitee email: '. $email_address . '<br>';
+						$message_commish .=  $email_address . '<br>';
+
+						$message_invitee =  '<html>';
+						$message_invitee .= '  <head>';
+						$message_invitee .= '    <title>You Have Been Invtied to Join ' . $league_name . '</title>';
+						$message_invitee .= '  </head>';
+						$message_invitee .= '  <body>';
+						$message_invitee .= '    <p>You have been invited to join '. $league_name .'. <a href="thebachleague.com>Create an account or login</a> and go to Create/Join League to enter the league name and password to join.</p>';
+						$message_invitee .= '    <p>League name: '. $league_name .'<br>';
+						$message_invitee .= 'League password: '. $league_pword . '</p>';
+						$message_invitee .= '  </body>';
+						$message_invitee .= '</html>';
+
+						mail($email_inivitee, $subject_invitee, $message_invitee, implode("\r\n", $headers));
+					}
+					$message_dev .= '  	</p>';
+					$message_dev .= '  </body>';
+					$message_dev .= '</html>';
+
+					$message_commish .= '  	</p>';
+					$message_commish .= '  </body>';
+					$message_commish .= '</html>';
+
+					mail($email_dev,    $subject_dev,     $message_dev,     implode("\r\n", $headers));
+					mail($email_commish,$subject_commish, $message_commish, implode("\r\n", $headers));
+					echo "<script>winddow.location.href='resetpassword_success.php';</script>";
+				}
+			}
+
 		}else{
 			echo "<script>alert('This league name already exists.');
-					 window.location.href='createjoin.html';
+					 window.location.href='createjoin.php';
 						</script>";
 		}
 	}

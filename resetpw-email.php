@@ -32,6 +32,7 @@ if (!isset($_POST['resetpw'])) {
     $headers[] = 'Content-type: text/html; charset=iso-8859-1';
     mail($to,   $subject, $message1, implode("\r\n", $headers));
     mail($email,$subject2,$message2,implode("\r\n", $headers));
-    header('Location: resetpassword_success.php');
+    //header('Location: resetpassword_success.php');
+    echo "<script>winddow.location.href='resetpassword_success.php';</script>";
 }
 ?>
