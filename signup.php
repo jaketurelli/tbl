@@ -46,6 +46,9 @@ if($_POST['signup']) {
 		$_SESSION['LEAGUE_ID']    = $user['league_id'];
 		$_SESSION['IS_ADMIN']     = $user['is_admin'];
 		$_SESSION['IS_SIGNED_IN'] = true;
+
+		emailUser($email, $alias);
+		
 		echo '<script>window.location.href="' . $redirectPage . '";</script>';
 	}else{
 		echo '<script>alert("email account already exists for another user.");
@@ -53,25 +56,7 @@ if($_POST['signup']) {
 					</script>';
 	}
 
-	/* NOT SURE WHERE TO PUT EMAIL STUFF */
-	$to = "admin@thebachleague.com";
-	$subject = "New user";
-	$subject2 = "Thank you for joining The Bach League!";
-	$message = $first_name . $last_name . $email;
-	$message2 = "Hi " . $first_name . "! ";
-	$message2 =  '<html>';
-    $message2 .= '  <head>';
-    $message2 .= '    <title>Sign up</title>';
-    $message2 .= '  </head>';
-    $message2 .= '  <body>';
-    $message2 .= '    <p>Hi '. $first_name . '!<p>';
-    $message2 .= '    <p>Thank you for signing up for The Bach League! <a href="thebachleague.com">Login</a> to create a new league or join an existing league if you have not done so already.<p>';
-    $message2 .= '  </body>';
-    $message2 .= '</html>';
-    $headers[] = 'MIME-Version: 1.0';
-    $headers[] = 'Content-type: text/html; charset=iso-8859-1';
-	mail($to,$subject,$message, implode("\r\n", $headers));
-	mail($email,$subject2,$message2, implode("\r\n", $headers));
+
 	
 }elseif(isset($_POST['fb_id'])) {
 	$fb_id	 	= $_POST['fb_id'];
@@ -104,6 +89,8 @@ if($_POST['signup']) {
 		$_SESSION['IS_ADMIN']     = $user['is_admin'];
 		$_SESSION['IS_SIGNED_IN'] = true;
 		
+		emailUser($email, $first);
+
 		echo '<script>window.location.href="' . $redirectPage . '";
 					</script>;';
 		//echo "<script>window.location.href='index.php';</script>";
@@ -119,5 +106,28 @@ if($_POST['signup']) {
 				 window.location.href="' . $redirectPage . '";
 					</script>';
 	
+}
+
+function emailUser($email, $alias){
+	$email_dev = "admin@thebachleague.com";
+	$subject_dev= "New user";
+	$message_dev =  $email;
+	
+
+	$subject2 = "Thank you for joining The Bach League!";
+	$message2 = "Hi " . $alias . "! ";
+	$message2 =  '<html>';
+    $message2 .= '  <head>';
+    $message2 .= '    <title>Sign up</title>';
+    $message2 .= '  </head>';
+    $message2 .= '  <body>';
+    $message2 .= '    <p>Hi '. $alias . '!<p>';
+    $message2 .= '    <p>Thank you for signing up for The Bach League! <a href="thebachleague.com">Login</a> to create a new league or join an existing league if you have not done so already.<p>';
+    $message2 .= '  </body>';
+    $message2 .= '</html>';
+    $headers[] = 'MIME-Version: 1.0';
+    $headers[] = 'Content-type: text/html; charset=iso-8859-1';
+	mail($email_dev,$subject_dev,$message_dev, implode("\r\n", $headers));
+	mail($email,$subject2,$message2, implode("\r\n", $headers));
 }
 ?>
