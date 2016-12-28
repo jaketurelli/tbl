@@ -68,7 +68,7 @@ include('header_content.html');
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</a>
-			<div class="navbar-brand-centered navbar brand"><a  href="index.php"><img src="img/logo.png" alt="brand-image" /></a></div>
+			<div class="navbar-brand-centered navbar-brand"><a href="index.php"><img src="img/logo.png" alt="brand-image" /></a></div>
 			<ul class="nav pull-right" style="text-align:right">
 				<?php 
 				if($IS_SIGNED_IN){
@@ -181,7 +181,7 @@ include('header_content.html');
 						<div class="row">
 							<div class="col-md-12">
 								<div id="lineup-instructions">
-									<h3>Set your lineup</h3>
+									<!-- <h3>Set your lineup</h3> -->
 									
 								</div>
 								
@@ -414,49 +414,49 @@ include('header_content.html');
 								<thead>
 									<tr>
 										<th class="td-center">Ceremony</th>
-										<th>Air Date</th>
+										<th class="td-center">Air Date</th>
 									</tr>
 								</thead>
 								<tbody>
 									<tr>
 										<td class="td-center">1</td>
-										<td>May 23</td>
+										<td>Jan 02</td>
 									</tr>
 									<tr>
 										<td class="td-center">2</td>
-										<td>May 30</td>
+										<td>Jan 09</td>
 									</tr>
 									<tr>
 										<td class="td-center">3</td>
-										<td>June 6</td>
+										<td>Jan 16</td>
 									</tr>
 									<tr>
 										<td class="td-center">4</td>
-										<td>June 7</td>
+										<td>Jan 23</td>
 									</tr>
 									<tr>
 										<td class="td-center">5</td>
-										<td>June 20</td>
+										<td>Jan 30</td>
 									</tr>
 									<tr>
 										<td class="td-center">6</td>
-										<td>June 27</td>
+										<td>Feb 06</td>
 									</tr>
 									<tr>
 										<td class="td-center">7</td>
-										<td>July 11</td>
+										<td>Feb 13</td>
 									</tr>
 									<tr>
 										<td class="td-center">8</td>
-										<td>July 18</td>
+										<td>Feb 20</td>
 									</tr>
 									<tr>
 										<td class="td-center">9</td>
-										<td>July 25</td>
+										<td>Feb 27</td>
 									</tr>
 									<tr>
 										<td class="td-center">10</td>
-										<td>August 1</td>
+										<td>Mar 3</td>
 									</tr>
 								</tbody>
 							</table>

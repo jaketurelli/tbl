@@ -644,8 +644,8 @@ nav.navbar.nonhome {
 	background-color: rgba(65,217,214,0.2);
 }
 .navbar.nonhome .nav > li.active > a {
-	color: #FF918D;
-	background-color: transparent;
+	color: #FFF;
+	background-color: #17C3D3;
 	font-weight: 500;
 	/*border-bottom: 2px solid rgba(0,197,213,1);*/
 }
@@ -806,7 +806,7 @@ nav.navbar.nonhome {
 	border-bottom: 1px solid transparent;
 }
 .move-btn {
-	background-color: #00BED0;
+	background-color: #17C3D3;
 	color: #fff;
 	padding: 4px 8px;
 }
@@ -851,12 +851,22 @@ nav.navbar.nonhome {
 	margin-bottom: 20px;
 }
 #lineup-instructions h3 {
-	padding: 20px 20px 0 20px;
 	margin-top: 40px;
+}
+#ceremony-row {
+	padding: 20px 0px 0px 0px;
 }
 .ceremony-nav, #ceremonypages .tab-pane {
 	background-color: #fff;
 	padding: 10px 10px 0 10px;
+}
+#ceremony-dropdown .dropdown-toggle {
+	background-color: #0086AD;
+	border-radius: 2px;
+	color: #fff;
+}
+#ceremony-dropdown .dropdown-toggle:focus {
+	border-color: transparent;
 }
 .btn-submit {
 	margin: 0 0 10px 0;
@@ -875,8 +885,7 @@ nav.navbar.nonhome {
 .lineup-table > thead > tr > th {
 	/*border: 2px solid white !important;*/
 	/*background-color: #022D41;*/
-	border-bottom: thin solid #598CB2;
-	color: #598CB2;
+	color: #777;
 	font-weight: 400;
 	font-size: 14px;
 	padding: 8px !important;
