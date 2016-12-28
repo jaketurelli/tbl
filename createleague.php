@@ -6,7 +6,6 @@
 	$league_name      = $_POST['leaguename'];
 	$league_pword     = $_POST['leaguepassword'];
 	$league_emails    = $_POST['emailaddresses'];
-	//echo $league_emails;
 
 	$SPECIAL_CHARACTERS = "/[\'^£$%&*()}{@#~?><>,|=_+¬-]/";
 	if(preg_match($SPECIAL_CHARACTERS, $league_name) ){
@@ -77,15 +76,13 @@
 					}
 				}
 			}
-			echo "<script>winddow.location.href='createjoin.php';</script>";
-
 
 			// EMAIL ALL MEMBERS IF THEIR EMAILS ARE INCLUDED UPON CREATION
 			if(isset($_POST['emailaddresses'])){
 				if(!empty($_POST['emailaddresses'])){
 					$headers[] = 'MIME-Version: 1.0';
 					$headers[] = 'Content-type: text/html; charset=iso-8859-1';
-					
+
 					$email_dev      = "admin@thebachleague.com"; // send dev an email
 					$email_commish  = $user_email;               // send commish and email 
 
@@ -120,7 +117,7 @@
 						$message_invitee .= '    <title>You Have Been Invtied to Join ' . $league_name . '</title>';
 						$message_invitee .= '  </head>';
 						$message_invitee .= '  <body>';
-						$message_invitee .= '    <p>You have been invited to join '. $league_name .'. <a href="thebachleague.com>Create an account or login</a> and go to Create/Join League to enter the league name and password to join.</p>';
+						$message_invitee .= '    <p>You have been invited to join '. $league_name .'. <a href="thebachleague.com">Create an account or login</a> and go to Create/Join League to enter the league name and password to join.</p>';
 						$message_invitee .= '    <p>League name: '. $league_name .'<br>';
 						$message_invitee .= 'League password: '. $league_pword . '</p>';
 						$message_invitee .= '  </body>';
@@ -138,7 +135,7 @@
 
 					mail($email_dev,    $subject_dev,     $message_dev,     implode("\r\n", $headers));
 					mail($email_commish,$subject_commish, $message_commish, implode("\r\n", $headers));
-					echo "<script>winddow.location.href='resetpassword_success.php';</script>";
+					echo "<script>window.location.href='league.php';</script>";
 				}
 			}
 
