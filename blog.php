@@ -97,7 +97,7 @@ include('header_content.html');
 		</div>
 		<!-- NAVIGATION PANE END -->
 	</nav>
-	<div ><!-- removed id="blog-bg" class="container-fluid" -->
+	<div class="container-fluid" ><!-- removed id="blog-bg" class="container-fluid" -->
 		<div class="container"><!-- removed id="blog-content" -->
 			<div class="row">
 				<div class="blog-header">
