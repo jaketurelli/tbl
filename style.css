@@ -111,7 +111,7 @@ hr {
 /* ===BUTTONS=== */
 .btn {
 	color: #fff;
-	background-color: #00BED0;
+	background-color: #17C3D3;
 	border-radius: 2px;
 	box-shadow: 0.7px 0.7px 0.7px 1px rgba(0,0,0,0.1);
 	margin: 8px 5px;
@@ -119,13 +119,16 @@ hr {
 }
 .btn:hover, .btn:focus {
 	color: #fff;
-	background-color: #7EC0CE;
+	background-color: #25B4C2;
 }
 .btn-secondary {
-	background-color: #008995;
+	background-color: #0086AD;
 	color: #fff;
 	border-radius: 1.5px;
-	margin: 10px 5px;
+	margin: 8px 5px;
+}
+.btn-secondary:hover, .btn-secondary:focus {
+	background-color: #076F8D;
 }
 @media (max-width: 840px){
 	.center-button-mobile {
@@ -341,6 +344,10 @@ hr {
 .section-title {
 	line-height: 44px;
 }
+.greeting:hover {
+	background-color: transparent!important;
+	color: #5A5A5A!important;
+}
 
 
 /*---home jumbotron mobile---*/
@@ -481,10 +488,10 @@ a.login, a.signup, a.logout {
 	color: #fff;
 	/*font-size: 0.8em;*/
 }
-a.login:hover, a.signup:hover, a.logout:hover {
+/*a.login:hover, a.signup:hover, a.logout:hover {
 	color: #ACACAC!important;
 	border-bottom: none!important;
-}
+}*/
 .or-container {
 	text-align: center;
 	margin: 0;
@@ -640,8 +647,8 @@ nav.navbar.nonhome {
 	text-decoration: none;
 }
 .navbar.nonhome .nav > li > a:hover{
-	color: rgba(104,104,104,0.7);
-	background-color: rgba(65,217,214,0.2);
+	color: rgba(255,255,255,0.9);
+	background-color: #25B4C2;
 }
 .navbar.nonhome .nav > li.active > a {
 	color: #FFF;
@@ -784,7 +791,8 @@ nav.navbar.nonhome {
 	color: #5A5A5A;
 }
 .nav-stacked > li > a:hover {
-	background-color: rgba(0,197,213,0.5);
+	background-color: #25B4C2;
+	color: #fff;
 }
 .nav-stacked > li.active > a {
 	background-color: #00C5D5!important;
@@ -1174,15 +1182,15 @@ tr > td > span.arrow {
 }
 #contestant-table > thead > tr > th {
 	border: 2px solid white;
-	background-color: #00C5D5;
+	background-color: #0086AD;
 	color: #fff;
 	font-weight: 400;
 	font-size: 14px;
 	padding: 8px !important;
 }
 #contestant-table > thead > tr > th:hover {
-	background-color: rgba(226,243,243,0.5);
-	color: #999;
+	background-color: #046885;
+	color: #fff;
 	cursor: pointer;
 }
 #contestant-table td {
