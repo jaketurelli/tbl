@@ -100,7 +100,7 @@ $_SESSION['CURRENT_PAGE'] = 'privacy.php';
 			<div class="row">
 				<div class="col-md-3"></div>
 				<div class="col-md-6 col-xs-12">
-					<h3>privacy policy</h3>
+					<h3>Privacy Policy</h3>
 					<p>This privacy policy describes how The Bach League makes use of information collected from users of the wwww.thebachleague.com website. If you are asked to provide information when using this website, it will only be used in the ways described in this privacy policy. If you have any questions about this policy, please contact us through our <a href="contact-us.php">contact form</a>.</p>
 					<!--<h4>What data we gather</h4>
 					<h4>How we use this data</h4>

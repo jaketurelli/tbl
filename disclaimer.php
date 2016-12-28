@@ -94,7 +94,7 @@ include('header_content.html');
 			<div class="row">
 				<div class="col-md-3"></div>
 				<div class="col-md-6 col-xs-12">
-					<h3>disclaimer</h3>
+					<h3>Disclaimer</h3>
 					<p>The Bach League provides the www.thebachleague.com website as a service to the public and website owners. The Bach League is not responsible for, and expressly disclaims all liability for, damages of any kind arising out of use, reference to, or reliance on any information contained within the site.<br><br>Although The Bach League website may include links providing direct access to other Internet resources, including websites, The Bach League is not responsible for the accuracy or content of information contained in these sites.<br><br>Links from The Bach League to third-party sites do not constitute an endorsement by The Bach League of the parties or their products and services. The appearance on the website of advertisements and product or service information does not constitute an endorsement by The Bach League, and The Bach League has not investigated the claims made by any advertiser.</p>
 				</div>
 				<div class="col-md-3"></div>
