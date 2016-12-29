@@ -8,8 +8,10 @@
 <?php
 include('header_content.html');
 ?>
+
 <script type="text/javascript" src="overlay.js"></script>
 <script src="jquery.tablesorter.min.js"></script>
+<!-- <script src="main.js"></script> -->
 </head>
 <body>
 	<!-- NAVIGATION PANE START -->
@@ -30,31 +32,37 @@ include('header_content.html');
 
 	<div id="contestants-info" class="container-fluid">
 		<div class="container">
-			<div class="row contestant-content">
+			<!-- <div class="row contestant-content">
 				<div class="col-md-12">
 					<h3>Meet this season's contestants</h3>
 					<a id="collapse-init-ex" class="pull-right" href="#">+ Expand all</a>
 					<a id="collapse-init-col" class="pull-right" href="#">- Collapse all</a>
 				</div>
 				
-			</div>
+			</div> -->
 			<div class="row contestant-content">
 				<div class="col-md-12">
 					<table id="contestant-table" class="table table-condensed">
 						<thead>
 							<tr>
-								<th class="arrow-col"></th>
+								<th></th>
 								<th>First Name</th>
 								<th>Last Name</th>
+								<th>Hometown</th>
+
 								<?php 
-								if(!$IS_MOBILE){ 
-								?>
+								//if(!$IS_MOBILE){ 
+								?> 
+
 									<th>Occupation</th>
 									<th>Age</th>
 									<th>Height</th>
+									<th>More</th>
+
 								<?php
-								}
+								//}
 								?>
+
 							</tr>
 						</thead>
 						<tbody id="accordion" aria-multiselectable="true">
@@ -80,21 +88,24 @@ include('header_content.html');
 								$collapseTarget = '"#collapse' . $this_id . '"';
 						?>
 						    <tr class="collapsed" id= <?php echo $rowID?> data-toggle="collapse" data-parent="#accordion" data-target=<?php echo $collapseTarget;?> aria-expanded="true" aria-controls=<?php echo $collapseID;?>>
-								<td><span class="arrow"><button style="display:none;"></button></span></td>
+								<!-- <td><span class="arrow"><button style="display:none;"></button></span></td> -->
+								<td><a href=<?php echo $this_image_dir?> class="preview"><img style="width:50px;" src=<?php echo $this_image_dir?> alt=<?php echo '"' . $this_first_name . '"'?> /></a></td>
 								<td><?php echo $this_first_name;?></td>
 								<td><?php echo $this_last_name;?></td>
+								<td><?php echo $this_city;?></td>
 								<?php 
-								if(!$IS_MOBILE){ 
+								//if(!$IS_MOBILE){ 
 								?>
 									<td><?php echo $this_occupation;?></td>
 						         	<td><?php echo $this_age;?></td>
 						         	<td><?php echo $this_height;?></td>
+						         	<td><a href=<?php echo $this_bio?> target="_blank">Full Bio</a><br><a href=<?php echo $this_search?> target="_blank">Google Search</a></td>
 								<?php
-								}
+								//}
 								?>
 						    </tr>
-						    <tr>
-						    	<td aria-labelledby=<?php echo $rowID?> colspan="6" class="hiddenRow"><!--removed colspan="6"-->
+						    <!-- <tr>
+						    	<td aria-labelledby=<?php echo $rowID?> colspan="6" class="hiddenRow">
 						    		<div id=<?php echo $collapseID?> class="accordion-body collapse">
 						      			<div class="row row-padding">
 						      			<?php 
@@ -131,8 +142,7 @@ include('header_content.html');
 						      			?>
 						      		</div>
 						  		</td>
-						    </tr>
-
+						    </tr> -->
 
 						<?php
 							}
@@ -160,7 +170,9 @@ include('header_content.html');
 	            $('.accordion-body').collapse('hide');
 	            $('.collapsed').attr('data-toggle', 'collapse');
         });
+
 	});
+	
 	</script>
 </body>
 </html>
