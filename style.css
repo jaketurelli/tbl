@@ -630,8 +630,11 @@ hr.style-eight:after {
 	height: 33px;
 	width: 172px;*/
 }
+.navbar-brand > a > img {
+	width: 104px;
+}
 nav.navbar.nonhome {
-	background-color: #6E7778;
+	background-color: #252626; /*#6E7778;*/
 	border-radius: 0px;
 	box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.2);;
 	margin-bottom: 0;
@@ -951,6 +954,7 @@ nav.navbar.nonhome {
 }
 .lineup-img {
 	padding: 0 10px 0 0;
+	width: 38px;
 }
 #bench-title th {
 	color: #303030;
