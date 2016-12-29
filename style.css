@@ -409,7 +409,7 @@ hr {
 	}
 	.navbar-collapse {
 		max-height: none!important;
-		background-color: rgba(255,255,255,0.9);
+		background-color: rgba(255,255,255,1);
 		text-align: left;
 	}
 	.navbar-collapse.overlay {
@@ -435,10 +435,10 @@ hr {
 		border-bottom: 0!important;
 	}
 	.navbar.nonhome > .navbar-collapse > .navbar-nav > li.active > a {
-		color: #fff!important;
-		font-weight: 400;
+		color: #41D9D6!important;
+		font-weight: 600;
 		border-bottom: 0!important;
-		background-color: #41D9D6;
+		background-color: transparent;
 		padding: 15px;
 	}
 	.navbar-collapse > .navbar-nav > li > a:hover {
@@ -457,7 +457,7 @@ hr {
 		background-color: #fff;
 	}
 	.icon-bar {
-		background-color: #41D9D6;
+		background-color: #fff;
 	}
 	#howitworks, #contestants, #blog, #app {
 		padding: 10px 0px 20px 0px!important;
