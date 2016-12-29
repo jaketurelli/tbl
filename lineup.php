@@ -414,6 +414,7 @@ include('header_content.html');
 	?>
 	<script type="text/javascript">
 	$(document).ready(function() { 
+		document.getElementsByClassName('disabled').disabled=true;
 		$('.dropdown-menu > li > a').click(function(){
 			$('.dropdown-menu > li > a').not(this).each(function() {
 		 		$(this).closest('li').removeClass("active");
@@ -425,7 +426,7 @@ include('header_content.html');
 
 		$(function(){
 			$(document).on('click','.move-btn',function(){
-				if($(this).hasClass('here')){
+				if(($(this).hasClass('here'))&&(!$(this).hasClass('disabled'))){
 					var move_id=$('.grey').prop("id");
 					var replacewith_id=this.id;
 
@@ -453,13 +454,13 @@ include('header_content.html');
 					
 
 				} 
-				else if($(this).hasClass('grey')){
+				else if(($(this).hasClass('grey'))&&(!$(this).hasClass('disabled'))){
 					$('.move-btn').each(function(){
 						$(this).removeClass('here').text('MOVE');
 						$(this).removeClass('grey').blur();
 					});
 				}
-				else {
+				else if(!$(this).hasClass('disabled')){
 					$(this).addClass('grey');
 					$('.move-btn').not(this).each(function() {
 						$(this).addClass('here');

@@ -848,6 +848,11 @@ nav.navbar.nonhome {
 	box-shadow: none!important;
 	font: rgba(255,255,255,0.7);
 }
+.disabled:focus, .disabled:hover {
+	background-color: #7AD4DC;
+	box-shadow: none!important;
+	font: rgba(255,255,255,0.7);
+}
 .changes-saved {
 	color: #F2385A;
 	font-weight: 600;
