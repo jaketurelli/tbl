@@ -320,7 +320,7 @@ include('header_content.html');
 								<thead>
 									<tr>
 										<th class="td-center">Ceremony</th>
-										<th class="td-center">Air Date</th>
+										<th>Air Date</th>
 									</tr>
 								</thead>
 								<tbody>
