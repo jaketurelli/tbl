@@ -171,12 +171,12 @@ include('header_content.html');
 											$curr_lockout_time = $TABLE_CEREMONY_ARRAY[$this_ceremony_num][1];
 											if($curr_lockout_time < $CURRENT_TIME){
 												// TABEL_CEREMONY_ARRAY[ceremony_index][1] where 1 is index for lockout time
-												$curr_dragDrop_class = '';
+												//$curr_dragDrop_class = '';
 												$curr_button_text = '"Ceremony ' . $this_ceremony_num . ' locked" ' ; 
 												$curr_button_disable = ' disabled';
 												$curr_disable_class = ' disabled';
 											}else{
-												$curr_dragDrop_class = 'dragdrop';
+												//$curr_dragDrop_class = 'dragdrop';
 												$curr_button_text = '"Submit Lineup for Ceremony ' . $this_ceremony_num . '" ' ; 
 												$curr_button_disable = '';
 												$curr_disable_class = '';
@@ -203,7 +203,7 @@ include('header_content.html');
 															<th>Occupation</th>
 															<th class="td-right">Age</th>
 															<th class="td-center">Height</th>
-															<th class="td-center" data-html="true" data-toggle="tooltip" title="Number of times the contestant has been picked all season.">Picked</th>
+															<!-- <th class="td-center" data-html="true" data-toggle="tooltip" title="Number of times the contestant has been picked all season.">Picked</th> -->
 															<th class="td-center" data-html="true" data-toggle="tooltip" title="Percentage of lineups with this contestant.">Starting %</th>
 														<?php
 														} ?>
@@ -237,7 +237,7 @@ include('header_content.html');
 																			$curr_status = 'OUT';
 																		}
 																		?>
-																			<tr class=<?php echo '"' . $curr_dragDrop_class . '"'?> id = <?php echo '"' . $this_ceremony_num . '-' . $curr_contestant_id . '"'; ?>>
+																			<tr id = <?php echo '"' . $this_ceremony_num . '-' . $curr_contestant_id . '"'; ?>>
 																				<td class="td-center">
 																					<button class=<?php echo '"move-btn btn' . $curr_disable_class . '"'?> id = <?php echo '"' . $this_ceremony_num . '-' . $curr_contestant_id . '"'; ?> >MOVE</button>
 																				</td>
@@ -248,8 +248,8 @@ include('header_content.html');
 																				<td><?php echo $curr_occupation ?></td>
 																				<td class="td-right"><?php echo $curr_age;?></td>
 																				<td class="td-right"><?php echo $curr_height;?></td>
-																				<td class="td-right"><?php echo $curr_pick_count;?></td>
-																				<td class="td-right"><?php echo $curr_pick_percent . '%';?></td>
+																				<!-- <td class="td-right"><?php echo $curr_pick_count;?></td> -->
+																				<td class="td-center"><?php echo $curr_pick_percent . '%';?></td>
 																			<?php 
 																			} ?>
 																			</tr> 
@@ -283,7 +283,7 @@ include('header_content.html');
 																		$curr_status = 'OUT';
 																	}
 																	?>
-																	<tr class=<?php echo '"' . $curr_dragDrop_class . '"'?> id = <?php echo '"' . $this_ceremony_num . '-' . $curr_contestant_id . '"';?>>
+																	<tr id = <?php echo '"' . $this_ceremony_num . '-' . $curr_contestant_id . '"';?>>
 																		<td class="td-center">
 																			<button class=<?php echo '"move-btn btn' . $curr_disable_class . '"'?> id = <?php echo '"' . $this_ceremony_num . '-' . $curr_contestant_id . '"'; ?> >MOVE</button>
 																		</td>
@@ -294,8 +294,8 @@ include('header_content.html');
 																			<td><?php echo $curr_occupation ?></td>
 																			<td class="td-right"><?php echo $curr_age  ?></td>
 																			<td class="td-right"><?php echo $curr_height  ?></td>
-																			<td class="td-right"><?php echo $curr_pick_count;?></td>
-																			<td class="td-right"><?php echo $curr_pick_percent . '%';?></td>
+																			<!-- <td class="td-right"><?php echo $curr_pick_count;?></td> -->
+																			<td class="td-center"><?php echo $curr_pick_percent . '%';?></td>
 																		<?php
 																		} ?>
 																	</tr> <?php

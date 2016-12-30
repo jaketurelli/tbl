@@ -16,7 +16,7 @@ include('header_content.html');
 		<div class="jumbotron">
 			<nav class="navbar" role="navigation">
 				<div class="navbar-header">	
-					<div class="navbar-brand-centered navbar-brand"><a href="index.php"><img src="img/logowhite.png" alt="brand-image" /></a></div>
+					<div class="navbar-brand-centered navbar-brand"><a href="index.php"><img src="img/logo.png" alt="brand-image" /></a></div>
 					<a class="navbar-toggle" data-toggle="overlay" data-target=".navbar-collapse" href="#">
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
