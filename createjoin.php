@@ -17,6 +17,8 @@
 	 <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
 	<!--<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>-->
 	<script src="bootstrap.min.js"></script>
+	<script type="text/javascript" src="tbl.js"></script>
+	<script type="text/javascript" src="overlay.js"></script> 
 </head>
 <body>
 	<!-- NAVIGATION PANE START -->
