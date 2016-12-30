@@ -29,7 +29,6 @@
     			$query = "DELETE FROM league_join_code WHERE user_email like '$EMAIL' AND code = $league_code";
     			$clearRow = mysqli_query($dbc,$query) or die ("Error in query: $query " . mysqli_error($dbc));
 
-    			echo "<script>window.location.href='league.php';</script>";
 			}
 		}else{
 			$query = "SELECT * FROM `league` WHERE `name` LIKE '$league_name' ";
@@ -57,7 +56,7 @@
 					mysqli_query($dbc, "UPDATE `user` SET `league_id` = '$league_id' WHERE `user`.`user_id` = '$USER_ID'");
 
 
-					echo "<script>window.location.href='league.php';</script>";
+					// echo "<script>window.location.href='league.php';</script>";
 				}else{
 					echo "<script>alert('League name and password do not match.');
 						 window.location.href='createjoin.php';
@@ -92,6 +91,6 @@
 				}
 			}
 		}
-
+		echo "<script>window.location.href='league.php';</script>";
 	}
 ?>
