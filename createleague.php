@@ -140,8 +140,11 @@ if(!$_POST['createleague']) {
 			}
 		}
 
+		// CALCULATE PICK PERCENTAGE FOR EACH CONTESTANT
+		calculatePickPercent($dbc);
+
+
 		// SET SESSION VARIABLES
-		//function setSessionVariables($USER_ID){}
 		setSessionVariables($dbc, $USER_ID);
 
 		echo "<script>window.location.href='league.php';</script>";
