@@ -27,8 +27,6 @@ if(!$_POST['joinleague']) {
 			$query = "UPDATE user SET league_id = $league_join_id WHERE user_id = $USER_ID";
 			$joinLeague = mysqli_query($dbc,$query) or die ("Error in query: $query " . mysqli_error($dbc));
 
-			$_SESSION['LEAGUE_ID'] = $league_join_id;
-
 			$query = "DELETE FROM league_join_code WHERE user_email like '$EMAIL' AND code = $league_code";
 			$clearRow = mysqli_query($dbc,$query) or die ("Error in query: $query " . mysqli_error($dbc));
 
@@ -46,19 +44,8 @@ if(!$_POST['joinleague']) {
 			if(password_verify($league_pword,$pswd_hash2compare )){
 				$league_id = $league['league_id'];
 				$commissioner_id = $league['commissioner_id'];
-				$_SESSION['LEAGUE_ID'] = $league_id;
-				$_SESSION['LEAGUE_NAME'] = $league['name'];
-				$_SESSION['COMMISH_ID'] = $commissioner_id;
-
-				$query = "SELECT * FROM `user` WHERE `user_id` LIKE '$commissioner_id'";
-				$result = mysqli_query($dbc,$query) or die ("Error in query: $query " . mysqli_error($dbc));
-				$commissioner = mysqli_fetch_array($result);
-
-				$_SESSION['COMMISSIONER'] = $commissioner['username'];
-
-				mysqli_query($dbc, "UPDATE `user` SET `league_id` = '$league_id' WHERE `user`.`user_id` = '$USER_ID'");
-
-
+				$query = "UPDATE user SET league_id = $league_id WHERE user_id = $USER_ID";
+				$updateUserLeague = mysqli_query($dbc,$query) or die ("Error in query: $query " . mysqli_error($dbc));
 				// echo "<script>window.location.href='league.php';</script>";
 			}else{
 				echo "<script>alert('League name and password do not match.');
