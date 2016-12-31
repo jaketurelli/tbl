@@ -23,8 +23,8 @@ if(!$_POST['joinleague']) {
 						</script>";
 		}else{
 			$league_join_data = mysqli_fetch_array($result);
-			$league_join_id = $league_join_data['league_id'];
-			$query = "UPDATE user SET league_id = $league_join_id WHERE user_id = $USER_ID";
+			$league_id = $league_join_data['league_id'];
+			$query = "UPDATE user SET league_id = $league_id WHERE user_id = $USER_ID";
 			$joinLeague = mysqli_query($dbc,$query) or die ("Error in query: $query " . mysqli_error($dbc));
 
 			$query = "DELETE FROM league_join_code WHERE user_email like '$EMAIL' AND code = $league_code";
