@@ -73,8 +73,13 @@ function calculateUserScores($dbc){
 function calculatePickPercent($dbc){
 	$query = "SELECT ceremony_number FROM ceremony WHERE is_current";
 	$getCurrentCeremony = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
-	$ceremony = mysqli_fetch_array($getCurrentCeremony);
-	$current_ceremony = $ceremony['ceremony_number'];
+	if(mysqli_num_rows($getCurrentCeremony)==0){
+		$current_ceremony=0;
+	}else{
+		$ceremony = mysqli_fetch_array($getCurrentCeremony);
+		$current_ceremony = $ceremony['ceremony_number'];
+	}
+	
 
 	$query = "SELECT user_id FROM user WHERE league_id > 0";
 	$getUserCount = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
@@ -91,7 +96,11 @@ function calculatePickPercent($dbc){
 			$query = "SELECT pick_ind FROM picks WHERE contestant_id = $this_contestant_id AND ceremony <= $current_ceremony AND league_id > 0";
 			$getContestantPicks = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
 			$pick_count = mysqli_num_rows($getContestantPicks);
-			$pick_percent = round($pick_count*100/$total_selectable);
+			if($total_selectable==0){
+				$pick_percent = 0;
+			}else{
+				$pick_percent = round($pick_count*100/$total_selectable);
+			}
 			$query = "UPDATE contestants SET pick_count = $pick_count, pick_percent = $pick_percent WHERE contestant_id = $this_contestant_id";
 			$updatePickCounts = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
 		}
