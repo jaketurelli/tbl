@@ -1,5 +1,9 @@
 <?php
-function setSessionVariables($user){
+function setSessionVariables($dbc, $USER_ID){
+	$query = "SELECT * FROM user WHERE user_id = $USER_ID";
+	$result = mysqli_query($dbc,$query) or die ("Error in query: $query " . mysqli_error($dbc));
+	$user = mysqli_fetch_array($result);
+
 	$_SESSION['USER_ID']      = $user['user_id'];
 	$_SESSION['EMAIL']        = $user['email'];
 	$_SESSION['ALIAS']        = $user['alias'];
@@ -8,7 +12,8 @@ function setSessionVariables($user){
 	$_SESSION['IS_SIGNED_IN'] = true;
 	$_SESSION['fb_id']        = $user['fb_id']; // testing purposes
 
-	if($user['league_id'] > 0){
+	$league_id = $user['league_id'];
+	if($league_id > 0){
 		$league_id = $user['league_id'];
 		$query = "SELECT * FROM `league` WHERE `league_id` = $league_id";
 		$result = mysqli_query($dbc,$query) or die ("Error in query: $query " . mysqli_error($dbc));

@@ -38,12 +38,13 @@ if($_POST['login']) {
 			$_SESSION['LEAGUE_ID'] = $user['league_id'];
 			$_SESSION['IS_ADMIN'] = $user['is_admin'];
 */
-			setSessionVariables($user);
+			setSessionVariables($dbc, $user_id);
 			$league_id = $user['league_id'];
 
 			$query =  "UPDATE `user` SET `is_logged_in` = 1 WHERE `user`.`user_id` = $user_id";
 			$result = mysqli_query($dbc,$query) or die ("Error in query: $query " . mysqli_error($dbc));
-
+			echo '<script>window.location.href="' . $redirectPage . '";
+					</script>;';
 		}else{
 			echo "<script>alert('Incorrect Password.');
 					</script>";
@@ -79,7 +80,7 @@ if($_POST['login']) {
 		$_SESSION['IS_SIGNED_IN'] = true;
 */
 		$league_id = $user['league_id'];
-		setSessionVariables($user);
+		setSessionVariables($dbc, $user_id);
 		//echo "<script>window.location.reload();</script>";
 		echo '<script>window.location.href="' . $redirectPage . '";
 					</script>;';
@@ -122,4 +123,6 @@ if($league_id <= 0){
 					</script>;';
 }
 */
+echo '<script>window.location.href="' . $redirectPage . '";
+					</script>;';
 ?>

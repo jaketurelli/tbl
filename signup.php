@@ -40,13 +40,13 @@ if($_POST['signup']) {
 		$pswd_hash = password_hash($pswd, PASSWORD_DEFAULT);
 		$query = "INSERT INTO `user` (`user_id` ,`email`,`first_name`,`last_name`,`alias`,`password`) VALUES (NULL, '$email', '$first_name', '$last_name', '$alias', '$pswd_hash')";
 		//$query = "INSERT INTO `user` (`user_id`, `email`, `alias`,`password`) VALUES (NULL, '$uname', '$alias', '$pswd_hash')";
-		mysqli_query($dbc,  $query) or die(mysqli_error($dbc));
+		$addUser = mysqli_query($dbc,  $query) or die(mysqli_error($dbc));
 		
 		$query = "SELECT * FROM `user` WHERE `email` LIKE '$email' AND `password` LIKE '$pswd_hash'";
 		$result = mysqli_query($dbc,$query) or die ("Error in query: $query " . mysqli_error($dbc));
 		$user = mysqli_fetch_array($result);
-
-		setSessionVariables($user);
+		$USER_ID = $user['user_id'];
+		setSessionVariables($dbc, $USER_ID);
 /*
 		$_SESSION['USER_ID']      = $user['user_id'];
 		$_SESSION['EMAIL']        = $user['email'];
@@ -84,11 +84,11 @@ if($_POST['signup']) {
 		$query = "INSERT INTO `user` (`user_id`, `username`, `alias`,`password`,`fb_id`, `is_logged_in`, `email`) VALUES (NULL, '$first', '$first', '$pswd_hash', $fb_id, 1, '$email')";
 		$addUser = mysqli_query($dbc,  $query) or die(mysqli_error($dbc));
 		$id = mysqli_insert_id($dbc); // USER IS LATEST INSERTED 
-
+/*
 		$query = "SELECT * FROM `user` WHERE `user_id` = $id";
 		$result = mysqli_query($dbc,$query) or die ("Error in query: $query " . mysqli_error($dbc));
 		$user = mysqli_fetch_array($result);
-/*
+
 		$_SESSION['USER_ID']      = $user['user_id'];
 		$_SESSION['fb_id']        = $user['fb_id']; // testing purposes
 		$_SESSION['USERNAME']     = $user['username'];
@@ -97,7 +97,7 @@ if($_POST['signup']) {
 		$_SESSION['IS_ADMIN']     = $user['is_admin'];
 		$_SESSION['IS_SIGNED_IN'] = true;
 */
-		setSessionVariables($user);
+		setSessionVariables($dbc, $id);
 
 		emailUser($email, $first);
 
