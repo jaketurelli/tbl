@@ -2,8 +2,7 @@
 
 include('get_SESSION.php');
 
-//function setSessionVariables($user){}
-include('function_setSessionVariables.php');
+include('functions.php');
 
 $league_name      = $_POST['leaguename'];
 $league_pword     = $_POST['leaguepassword'];

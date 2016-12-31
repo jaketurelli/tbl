@@ -3,9 +3,7 @@ session_start();
 //session_unset ();
 require_once('../includes/connection.php');
 
-
-//function setSessionVariables($user){}
-include('function_setSessionVariables.php');
+include('functions.php');
 
 
 $redirectPage = $_SESSION['CURRENT_PAGE'];
