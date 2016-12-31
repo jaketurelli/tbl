@@ -82,7 +82,7 @@ if(!$_POST['joinleague']) {
 	}
 
 	setSessionVariables($dbc, $USER_ID);
-	calculateUserScores();
+	calculateUserScores($dbc);
 	echo "<script>window.location.href='league.php';</script>";
 }
 

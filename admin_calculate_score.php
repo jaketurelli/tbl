@@ -27,7 +27,7 @@ foreach($picks as $pick){
 }
 
 // Update score table for all users
-calculateUserScores();
+calculateUserScores($dbc);
 
 
 header('Location: admin.php');
