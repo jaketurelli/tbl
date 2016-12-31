@@ -1,5 +1,6 @@
 <?php
 	include('get_SESSION.php');
+	include('functions.php');
 	$_SESSION['CURRENT_PAGE'] = 'league.php';
 ?>
 

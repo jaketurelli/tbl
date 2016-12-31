@@ -38,4 +38,35 @@ function setSessionVariables($dbc, $USER_ID){
 		}
 	}
 }
+
+
+function calculateScores(){
+	$query = "SELECT * FROM user WHERE league_id > 0";
+	$users = mysqli_query($dbc, $query);
+	foreach($users as $user){
+		$user_id = $user['user_id'];
+		$league_id = $user['league_id'];
+
+		$query = "SELECT score FROM picks WHERE user_id =  $user_id AND league_id = $league_id";
+		$scores = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
+		$total_score = 0;
+		foreach($scores as $score){
+			$this_score = $score['score'];
+			$total_score = $total_score+$this_score;
+		}
+
+		$query = "SELECT * FROM score WHERE user_id = $user_id AND league_id = $league_id";
+		$this_user = mysqli_query($dbc, $query);
+		if(mysqli_num_rows($this_user)==0){
+			$query = "INSERT INTO score (id, user_id, league_id, total_score) VALUES (NULL, $user_id, $league_id, $total_score)";
+			mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
+		}else{
+			$query = "UPDATE score SET total_score = $total_score WHERE `score`.`user_id` = $user_id AND `score`.`league_id` = $league_id";
+			mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
+		}
+
+
+
+	}
+}
 ?>

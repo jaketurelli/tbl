@@ -1,5 +1,7 @@
 <?php
 require_once( '../includes/connection.php');
+include('functions.php');
+
 if(isset($_POST['submit'])){//to run PHP script on submit
 	if(!empty($_POST['contestant_ids_in'])){
 		echo "<h5> In: </h5>";
@@ -16,6 +18,8 @@ if(isset($_POST['submit'])){//to run PHP script on submit
 			mysqli_query($dbc,$query) or die(mysqli_error($dbc));
 		}
 	}
+
+	calculateUserScores();
 }
 
 
