@@ -81,8 +81,12 @@ if(!$_POST['joinleague']) {
 		}
 	}
 
-	setSessionVariables($dbc, $USER_ID);
 	calculateUserScores($dbc);
+
+	calculatePickPercent($dbc);
+
+	setSessionVariables($dbc, $USER_ID);
+	
 	echo "<script>window.location.href='league.php';</script>";
 }
 

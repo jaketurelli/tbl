@@ -32,6 +32,8 @@ foreach($picks as $pick){
 // Update score table for all users
 calculateUserScores($dbc);
 
+calculatePickPercent($dbc);
+
 
 header('Location: admin.php');
 exit();

@@ -140,6 +140,10 @@ if(!$_POST['createleague']) {
 			}
 		}
 
+
+		calculateUserScores($dbc);
+
+		
 		// CALCULATE PICK PERCENTAGE FOR EACH CONTESTANT
 		calculatePickPercent($dbc);
 
