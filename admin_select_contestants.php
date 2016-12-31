@@ -10,7 +10,7 @@ if(isset($_POST['submit'])){//to run PHP script on submit
 		}
 	}
 	if(!empty($_POST['contestant_ids_out'])){
-		echo "<h5> In: </h5>";
+		echo "<h5> Out: </h5>";
 		foreach($_POST['contestant_ids_out'] as $selected){
 			$query = "UPDATE `contestants` SET `eliminated` = 0 WHERE `contestants`.`contestant_id` = $selected " ;
 			mysqli_query($dbc,$query) or die(mysqli_error($dbc));

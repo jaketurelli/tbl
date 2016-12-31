@@ -200,7 +200,7 @@ include('header_content.html');
 
 
 										// CALCULATE MOST PICKED FOR ALL LEAGUES IN PREVIOUS WEEK
-										$query = "SELECT contestant_id FROM picks WHERE ceremony = $previous_ceremony";
+										$query = "SELECT contestant_id FROM picks WHERE ceremony = $previous_ceremony AND league_id > 0";
 										$result = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
 										if(mysqli_num_rows($result)!=0){
 											$pick_array = array();
@@ -278,7 +278,7 @@ include('header_content.html');
 										<tbody>
 										<?php
 										// CALCULATE MOST PICKED FOR ALL LEAGUES IN ALL WEEKS
-										$query = "SELECT contestant_id FROM picks";
+										$query = "SELECT contestant_id FROM picks WHERE league_id > 0";
 										$result = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
 										if(mysqli_num_rows($result)!=0){
 											$pick_array = array();
