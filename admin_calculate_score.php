@@ -1,5 +1,8 @@
 <?php
 require_once("../includes/connection.php");
+
+include('functions.php');
+
 $query = "SELECT * FROM picks";
 $picks = mysqli_query($dbc, $query);
 foreach($picks as $pick){

@@ -1,5 +1,8 @@
 <?php
 include('get_SESSION.php');
+
+include('functions.php');
+
 date_default_timezone_set("America/Los_Angeles");
 if(isset($_POST['submit'])){
 	$ceremony_num     = $_POST['ceremony_num'];
@@ -61,6 +64,7 @@ if(isset($_POST['submit'])){
 		
 	}
 	//header('Location: admin.php');
+	calculatePickPercent($dbc);
 
 }elseif(isset($_POST['update'])){
 	$ceremony_num     = $_POST['ceremony_num'];
@@ -156,6 +160,7 @@ if(isset($_POST['submit'])){
 		
 	}
 	//header('Location: admin.php');
+	calculatePickPercent($dbc);
 
 }elseif(isset($_POST['delete'])){
 	$ceremony_num     = $_POST['ceremony_num'];
@@ -168,12 +173,14 @@ if(isset($_POST['submit'])){
 
 	$query = "UPDATE contestants SET eliminated = 0 WHERE eliminated = $ceremony_num";
 	$update_contestants = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
+	calculatePickPercent($dbc);
 	header('Location: admin_calculate_score.php');
 	exit();
 }elseif(isset($_POST['is_current'])){
 	$ceremony_num = $_POST['is_current'];
 	$query = "UPDATE ceremony SET is_current = 1 WHERE ceremony_number = $ceremony_num";
 	$update_current_ceremony = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
+	calculatePickPercent($dbc);
 }
 
 

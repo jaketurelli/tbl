@@ -1,5 +1,7 @@
 <?php
 include('get_SESSION.php');
+
+include('functions.php');
 // Unescape the string values in the JSON array
 $tableData = stripcslashes($_POST['lineupTableData']);
 
@@ -35,31 +37,7 @@ if (mysqli_num_rows($result)>0){
 
 
 // CALCULATE PICK COUNT AND PICK PERCENTAGE FOR EACH CONTESTANT
-$query = "SELECT ceremony_number FROM ceremony WHERE is_current";
-$getCurrentCeremony = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
-$ceremony = mysqli_fetch_array($getCurrentCeremony);
-$current_ceremony = $ceremony['ceremony_number'];
-
-$query = "SELECT user_id FROM user WHERE league_id > 0";
-$getUserCount = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
-$user_count = mysqli_num_rows($getUserCount);
-
-$total_selectable = $current_ceremony * $user_count;
-
-$query = "SELECT contestant_id FROM contestants";
-$getContestants = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
-
-if (mysqli_num_rows($getContestants)>0){
-	while($this_contestant = mysqli_fetch_array($getContestants)){
-		$this_contestant_id = $this_contestant['contestant_id'];
-		$query = "SELECT pick_ind FROM picks WHERE contestant_id = $this_contestant_id AND ceremony <= $current_ceremony AND league_id > 0";
-		$getContestantPicks = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
-		$pick_count = mysqli_num_rows($getContestantPicks);
-		$pick_percent = round($pick_count*100/$total_selectable);
-		$query = "UPDATE contestants SET pick_count = $pick_count, pick_percent = $pick_percent WHERE contestant_id = $this_contestant_id";
-		$updatePickCounts = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
-	}
-}
+calculatePickPercent($dbc);
 
 
 // FOR DEBUGGING
