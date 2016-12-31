@@ -2,6 +2,12 @@
 session_start();
 //session_unset ();
 require_once('../includes/connection.php');
+
+
+//function setSessionVariables($user){}
+include('function_setSessionVariables.php');
+
+
 $redirectPage = $_SESSION['CURRENT_PAGE'];
 
 if($_POST['signup']) {
@@ -40,13 +46,15 @@ if($_POST['signup']) {
 		$result = mysqli_query($dbc,$query) or die ("Error in query: $query " . mysqli_error($dbc));
 		$user = mysqli_fetch_array($result);
 
+		setSessionVariables($user);
+/*
 		$_SESSION['USER_ID']      = $user['user_id'];
 		$_SESSION['EMAIL']        = $user['email'];
 		$_SESSION['ALIAS']        = $user['alias'];
 		$_SESSION['LEAGUE_ID']    = $user['league_id'];
 		$_SESSION['IS_ADMIN']     = $user['is_admin'];
 		$_SESSION['IS_SIGNED_IN'] = true;
-
+*/
 		emailUser($email, $alias);
 		
 		echo '<script>window.location.href="' . $redirectPage . '";</script>';
@@ -80,7 +88,7 @@ if($_POST['signup']) {
 		$query = "SELECT * FROM `user` WHERE `user_id` = $id";
 		$result = mysqli_query($dbc,$query) or die ("Error in query: $query " . mysqli_error($dbc));
 		$user = mysqli_fetch_array($result);
-
+/*
 		$_SESSION['USER_ID']      = $user['user_id'];
 		$_SESSION['fb_id']        = $user['fb_id']; // testing purposes
 		$_SESSION['USERNAME']     = $user['username'];
@@ -88,7 +96,9 @@ if($_POST['signup']) {
 		$_SESSION['LEAGUE_ID']    = $user['league_id'];
 		$_SESSION['IS_ADMIN']     = $user['is_admin'];
 		$_SESSION['IS_SIGNED_IN'] = true;
-		
+*/
+		setSessionVariables($user);
+
 		emailUser($email, $first);
 
 		echo '<script>window.location.href="' . $redirectPage . '";
@@ -130,4 +140,7 @@ function emailUser($email, $alias){
 	mail($email_dev,$subject_dev,$message_dev, implode("\r\n", $headers));
 	mail($email,$subject2,$message2, implode("\r\n", $headers));
 }
+
+
+
 ?>

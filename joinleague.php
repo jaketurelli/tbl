@@ -1,6 +1,9 @@
 <?php
 	include('get_SESSION.php');
 
+	//function setSessionVariables($user){}
+	include('function_setSessionVariables.php');
+
 	$league_name  = $_POST['leaguename'];
 	$league_pword = $_POST['leaguepassword'];
 	$league_code  = $_POST['leaguecode'];
@@ -91,6 +94,13 @@
 				}
 			}
 		}
+
+		$query = "SELECT * FROM user WHERE user_id = $USER_ID";
+		$result = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
+		$user = mysqli_fetch_array($result);
+		setSessionVariables($user);
+
 		echo "<script>window.location.href='league.php';</script>";
 	}
+
 ?>

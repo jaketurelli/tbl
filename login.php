@@ -1,9 +1,13 @@
 <?php
 require_once( '../includes/connection.php');
 session_start();
+
+//function setSessionVariables($user){}
+include('function_setSessionVariables.php');
+
 //session_unset ();
 $redirectPage = $_SESSION['CURRENT_PAGE'];
-$league_id = -1;
+$league_id = 0;
 $email    = $_POST['email'];
 $pswd     = $_POST['pword'];
 //$redirect_page = $_POST['redirect_page'];
@@ -26,12 +30,15 @@ if($_POST['login']) {
 		$pswd_hash2compare = $user['password'];
 		if(password_verify($pswd,$pswd_hash2compare )){
 			$user_id = $user['user_id'];
+/*
 			$_SESSION['IS_SIGNED_IN'] = TRUE;
 			$_SESSION['USER_ID'] =  $user_id;
 			$_SESSION['EMAIL'] = $user['email'];
 			$_SESSION['ALIAS'] = $user['alias'];
 			$_SESSION['LEAGUE_ID'] = $user['league_id'];
 			$_SESSION['IS_ADMIN'] = $user['is_admin'];
+*/
+			setSessionVariables($user);
 			$league_id = $user['league_id'];
 
 			$query =  "UPDATE `user` SET `is_logged_in` = 1 WHERE `user`.`user_id` = $user_id";
@@ -62,7 +69,7 @@ if($_POST['login']) {
 		$user_id = $user['user_id'];
 		$query =  "UPDATE `user` SET `is_logged_in` = 1 WHERE `user`.`user_id` = $user_id";
 		$updateIsLoggedIn = mysqli_query($dbc,$query) or die ("Error in query: $query " . mysqli_error($dbc));
-
+/*
 		$_SESSION['USER_ID']      = $user['user_id'];
 		$_SESSION['fb_id']        = $user['fb_id']; // testing purposes
 		$_SESSION['EMAIL']        = $user['email'];
@@ -70,8 +77,9 @@ if($_POST['login']) {
 		$_SESSION['LEAGUE_ID']    = $user['league_id'];
 		$_SESSION['IS_ADMIN']     = $user['is_admin'];
 		$_SESSION['IS_SIGNED_IN'] = true;
+*/
 		$league_id = $user['league_id'];
-
+		setSessionVariables($user);
 		//echo "<script>window.location.reload();</script>";
 		echo '<script>window.location.href="' . $redirectPage . '";
 					</script>;';
@@ -85,7 +93,8 @@ if($_POST['login']) {
 
 
 // GET SESSION VARIABLES FOR LEAGUE INFO IF IN A LEAGUE
-if($league_id == -1){
+/*
+if($league_id <= 0){
 	echo '<script>window.location.href="' . $redirectPage . '";
 					</script>;';
 }else{
@@ -112,4 +121,5 @@ if($league_id == -1){
 	echo '<script>window.location.href="' . $redirectPage . '";
 					</script>;';
 }
+*/
 ?>

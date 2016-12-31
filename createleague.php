@@ -2,6 +2,8 @@
 
 	include('get_SESSION.php');
 
+	//function setSessionVariables($user){}
+	include('function_setSessionVariables.php');
 
 	$league_name      = $_POST['leaguename'];
 	$league_pword     = $_POST['leaguepassword'];
@@ -138,6 +140,11 @@
 					
 				}
 			}
+
+			// SET SESSION VARIABLES
+			//function setSessionVariables($user){}
+			setSessionVariables($user);
+
 			echo "<script>window.location.href='league.php';</script>";
 		}else{
 			echo "<script>alert('This league name already exists.');
@@ -145,4 +152,6 @@
 						</script>";
 		}
 	}
+
+
 ?>
