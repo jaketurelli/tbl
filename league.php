@@ -150,13 +150,14 @@ include('header_content.html');
 								<div class="tile">
 									<h3>Eliminations</h3>
 									<p>Ceremony <?php echo $CURRENT_CEREMONY-1;?>:</p>
-								
+							
 									<?php 
 									if ($previous_ceremony!=0){
 										// DISPLAY ELIMINATED CONTESTANTS FROM THE PREVIOUS ROUND (1 LESS THAN CURRENT CEREMONY)
 										$query = "SELECT contestant_id, name, image_dir FROM contestants WHERE eliminated = $previous_ceremony";
 										$result = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
-										if(mysqli_num_rows($result)!=0){
+										$total = mysqli_num_rows($result); 
+										if($total!=0){
 											$count=1;
 											while($loser = mysqli_fetch_array($result)){
 												if(($count+1)%2==0){
@@ -168,7 +169,7 @@ include('header_content.html');
 													<img class="contestantimg" src=<?php echo '"'. $curr_loser_image. '"';?>/><p class="contestantname"><?php echo $curr_loser_name?></p>
 												</div>
 										<?php
-												if(($count)%2==0){
+												if(($count)%2==0 || $count == $total){
 													echo '</div>';
 												}
 												$count=$count+1;
@@ -820,7 +821,8 @@ include('header_content.html');
 									// DISPLAY ELIMINATED CONTESTANTS FROM THE PREVIOUS ROUND (1 LESS THAN CURRENT CEREMONY)
 									$query = "SELECT contestant_id, name, image_dir FROM contestants WHERE eliminated = $previous_ceremony";
 									$result = mysqli_query($dbc, $query) or die ("Error in query: $query " . mysqli_error($dbc));
-									if(mysqli_num_rows($result)!=0){
+									$total = mysqli_num_rows($result); 
+									if($total!=0){
 										$count=1;
 										while($loser = mysqli_fetch_array($result)){
 											if(($count+1)%2==0){
@@ -832,7 +834,7 @@ include('header_content.html');
 												<img class="contestantimg" src=<?php echo '"'. $curr_loser_image. '"';?>/><p class="contestantname"><?php echo $curr_loser_name?></p>
 											</div>
 									<?php
-											if(($count)%2==0){
+											if(($count)%2==0 || $count == $total){
 												echo '</div>';
 											}
 											$count=$count+1;
