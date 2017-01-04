@@ -84,11 +84,12 @@ include('header_content.html');
 											}else{
 												// IF SCORES ARE THE SAME, COUNTER STAYS THE SAME
 												if($previous_score==$curr_score){
-													$curr_standing = $standing_counter;
+
 												}else{ // ELSE, STANDINGS INCREASE
 													$standing_counter=1+$standing_counter;
 													$curr_standing= $standing_counter;
 												}
+												
 											}
 
 											$counter =$counter + 1;

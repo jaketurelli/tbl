@@ -19,13 +19,14 @@ if(isset($_POST['submit'])){//to run PHP script on submit
 		}
 	}
 
-	calculateUserScores();
+	calculateUserScores($dbc);
 }
 
 
 include('admin_calculate_score.php');
 
-header('Location: admin.php');
-exit();
+echo "<script>window.location.href='admin.php';</script>";
+// header('Location: admin.php');
+// exit();
 
 ?>

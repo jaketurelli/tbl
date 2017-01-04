@@ -1,7 +1,7 @@
 <?php
 require_once("../includes/connection.php");
 
-include('functions.php');
+//include('functions.php');
 
 $query = "SELECT * FROM picks";
 $picks = mysqli_query($dbc, $query);
@@ -35,7 +35,7 @@ calculateUserScores($dbc);
 calculatePickPercent($dbc);
 
 
-header('Location: admin.php');
-exit();
+//header('Location: admin.php');
+//exit();
 
 ?>
