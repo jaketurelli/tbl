@@ -83,11 +83,9 @@ include('header_content.html');
 												$curr_standing = $standing_counter;
 											}else{
 												// IF SCORES ARE THE SAME, COUNTER STAYS THE SAME
-												if($previous_score==$curr_score){
-
-												}else{ // ELSE, STANDINGS INCREASE
-													$standing_counter=1+$standing_counter;
-													$curr_standing= $standing_counter;
+												if($previous_score!=$curr_score){
+													$standing_counter=$counter;
+													$curr_standing= $counter;
 												}
 												
 											}
@@ -583,12 +581,11 @@ include('header_content.html');
 										$curr_standing = $standing_counter;
 									}else{
 										// IF SCORES ARE THE SAME, COUNTER STAYS THE SAME
-										if($previous_score==$curr_score){
-											$curr_standing = $standing_counter;
-										}else{ // ELSE, STANDINGS INCREASE
-											$standing_counter=1+$standing_counter;
-											$curr_standing= $standing_counter;
+										if($previous_score!=$curr_score){
+											$standing_counter=$counter;
+											$curr_standing= $counter;
 										}
+										
 									}
 
 									$counter =$counter + 1;
